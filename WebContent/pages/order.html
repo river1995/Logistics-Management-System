@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>BMS Management System</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../vendors/layui-css/layui.css">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+     <!-- bms -->
+    <link href="../build/css/bms.css" rel="stylesheet">
+     <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- Dropzone.js -->
+    <link href="../vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+	
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>BMS</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/user.png"  id="user-img-left" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2 id="user-name-left"></h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Management</h3>
+                <ul class="nav side-menu" style="margin-top:30px;">
+                 
+                  <li class="current-page account-li" ><a href="order.html"><i class="fa fa-address-book-o fa-fw "></i> Order </a>
+                    
+                  </li>
+                </ul>
+              </div>
+             
+
+            </div>
+            <!-- /sidebar menu -->
+
+           
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/user.png" id="user-img-top" alt=""><font id="user-name-top"></font>
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    
+                    <li>
+                      <a href="settings.html">
+                        
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    
+                    <li><a href="../api/v1.0/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Order Management</h3>
+              </div>
+			  <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group pull-right">
+                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target=".add-info">Add New Order</button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="clearfix"></div>
+ 
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">               
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Order</a>
+                        
+                        </li>
+                        
+                      </ul>
+                      <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in " id="tab_content1" aria-labelledby="home-tab">
+                          <table id="datatable" class="table table-striped " >
+                      <thead>
+                        <tr>
+                          <th>OrderId</th>
+                          <th>SubmitTime</th>
+                          <th>ArrivedTime</th>
+                          <th>Edit</th>                         
+                        </tr>
+                      </thead>
+
+
+                      <tbody class="user-table">
+                        <tr>
+                        	<td>1234567891234</td>
+                        	<td>2017-11-11 23:18</td>
+                        	<td>2017-11-17 05:29</td>
+                        	<td><a href='#' class='btn btn-primary btn-xs view' data-toggle='modal' data-target='.view-info'><i class='fa fa-folder'></i> View </a></td>
+                        </tr>
+                        
+                       
+                        
+                        
+                       
+                      </tbody>
+                    </table>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>                
+              </div>
+                    
+              </div>
+                       
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            BMS -  
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+
+ <!-- add -->
+                  
+
+                  <div class="modal fade add-info" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Add New Order</h4>
+                        </div>
+                        <div class="modal-body">
+                        
+                    <!-- Smart Wizard -->
+                    <p>Please complete registration according to the following tips </p>
+                    <div id="wizard" class="form_wizard wizard_horizontal">
+                      
+                      <ul class="wizard_steps">
+                        <li>
+                          <a href="#step-1">
+                            <span class="step_no">1</span>
+                            <span class="step_descr">
+                                              Step 1<br />
+                                              <small>Basic Information</small>
+                                          </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#step-2">
+                            <span class="step_no">2</span>
+                            <span class="step_descr">
+                                              Step 2<br />
+                                              <small>Photo of ID</small>
+                                          </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#step-3">
+                            <span class="step_no">3</span>
+                            <span class="step_descr">
+                                              Step 3<br />
+                                              <small>Photo of Credentials</small>
+                                          </span>
+                          </a>
+                        </li>
+                       
+                      </ul> 
+                      
+                      <span class="wizard-content">
+                      <div id="step-1">
+                        <form class="form-horizontal form-label-left" id="account-form" role="form" data-toggle="validator">
+
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" id="name" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="email" class="form-control col-md-7 col-xs-12" type="text" name="email">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Character <span class="required">*</span></label>
+                        	<div class="col-md-6 col-sm-6 col-xs-12">
+                         	 <select class="form-control character-select">
+                         	 	
+                          	</select>
+                        	</div>
+                      		</div>
+                      	  
+                      	  <div class="form-group">
+                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Company <span class="required">*</span></label>
+                        	<div class="col-md-6 col-sm-6 col-xs-12">
+                         	 <select class="form-control company-select">
+                          	</select>
+                        	</div>
+                      		</div>
+                          
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="address" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="Staff Only">
+                            </div>
+                          </div>
+
+                        </form>
+
+                      </div>
+                      <div id="step-2">
+                       <div class="x_content">
+                    <p>Drag multiple files to the box below for multi upload or click to select files. </p>
+                    <form action="form_upload.html" class="dropzone"></form>
+                    <br>
+                   
+                  </div>
+                      </div>
+                      <div id="step-3">
+                        <div class="x_content">
+                    <p>Drag multiple files to the box below for multi upload or click to select files.(Staff Only) </p>
+                    <form action="form_upload.html" class="dropzone"></form>
+                    <br>
+                   
+                  </div>
+                      </div>
+                      </span>
+
+                    </div>
+                    <!-- End SmartWizard Content -->                    
+
+       
+                        </div>
+                       
+                      </div>
+                    </div>
+                  </div>
+ <!-- view -->
+ 
+ 				  <div class="modal fade view-info" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Personal Info</h4>
+                        </div>
+                        <div class="modal-body" style="text-align:center;">
+                        	<div class="view-body">
+                        	<img src="images/icon_account_user@3x.png" width="20%" class="img-thumbnail img-circle" id="view-profile-photo">
+                   			<h2 class="show-name"></h2>
+                   			<h4 class="show-character"></h4>
+                   			<div class="personal-info">
+                   				<div class="row">
+                   					<div class="col-md-4 col-sm-4 col-xs-4  left">
+                   						<p><i class="fa fa-phone fa-fw"></i>&nbsp; Phone<p>
+                   						<p><i class="fa fa-envelope-o fa-fw"></i>&nbsp; Email<p>
+                   						<p><i class="fa fa-suitcase fa-fw"></i>&nbsp; Company<p>
+                   						<p><i class="fa fa-map-marker fa-fw"></i>&nbsp; Address<p>
+                   					</div>
+                   					
+                   					<div class="col-md-8 col-sm-8 col-xs-8  right">
+                   						<p class="show-phone"><p>
+                   						<p class="show-email"><p>
+                   						<p class="show-company"><p>
+                   						<p class="show-address"><p>
+                   					</div>
+                   					
+                   				</div>
+                   			</div>
+                   			
+                   			<div class="personal-pic">
+                   				<h5>Photo of ID</h5>
+                   				<img id="id-photo"  class="img-thumbnail" width="20%" >
+                   			</div>
+                   			
+                   			<div class="personal-pic2">
+                   				<h5 >Photo of Credential</h5>
+                   				<div id="cert-photo"></div>
+                   			</div>
+                   			</div>
+       
+                        </div>
+                       
+                      </div>
+                    </div>
+                  </div>
+
+ <!-- edit -->				  
+				  <div class="modal fade edit-info" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Edit Info</h4>
+                        </div>
+                        <div class="modal-body">
+                        	<form class="form-horizontal form-label-left" id="edit-form">
+
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" id="edit-phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Character <span class="required">*</span></label>
+                        	<div class="col-md-6 col-sm-6 col-xs-12">
+                         	 <select class="form-control character-select" id="edit-character">
+                          	</select>
+                        	</div>
+                      		</div>
+                      	  
+                      	  <div class="form-group">
+                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Company <span class="required">*</span></label>
+                        	<div class="col-md-6 col-sm-6 col-xs-12">
+                         	 <select class="form-control company-select" id="edit-company">
+                          	</select>
+                        	</div>
+                      		</div>
+                          
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="edit-address" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="Staff Only">
+                            </div>
+                          </div>
+
+                        </form>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary edit-submit" >Save</button>
+                        </div>
+                   
+                       
+                      </div>
+                    </div>
+                  </div>
+				
+				  <div class="modal" id="picModal">
+				  	
+				  <div class="picModal-content">
+				  	<span class="close picClose" onclick="document.getElementById('picModal').style.display='none'">&times;</span>
+				  	<img class="big-pic" id="bImg">
+				  </div>
+				  </div>
+
+	<!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/libs/bootstrapValidator.js"></script>
+    <script src="../js/libs/bootstrap-table.js"></script>
+    <script src="../js/libs/bootstrap-table-export.js"></script>
+    <!-- layer ui js -->
+    <script src="../js/libs/layui.all.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+ 
+  
+    <!-- Switchery -->
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Dropzone.js -->
+    <script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="../js/pages/order.js"></script>
+	<script>
+		var picModal=document.getElementById("picModal");
+		
+		var img=document.getElementById("id-photo");
+		var modalImg=document.getElementById("bImg");
+		
+		img.onclick=function(){
+			picModal.style.display="block";
+			modalImg.src=this.src;
+			
+		}
+		
+		
+	</script>
+  
+  </body>
+</html>

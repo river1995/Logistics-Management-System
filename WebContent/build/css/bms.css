@@ -1,0 +1,203 @@
+	/*services2*/		
+		.modal{margin-top:10%;}
+		.input-style{
+			margin-top:2%;
+			}
+		.aligncenter{
+			clear: both; 
+			display: block; 
+			margin:auto;
+			}
+		.main-service{
+			text-align:center;
+			}
+		.main-service h3{
+			margin-top:30px;
+			font-size:2em;
+			font-weight:400;
+			}
+		.main-service p{
+			font-size:1.2em;
+			color:#b6b6b6;
+			margin-bottom:40px;
+			}
+		.main-service img{
+			margin-top:20px;
+			}
+		.x_panel{
+			margin-bottom:20px;
+			}
+		.x_title{
+			border:none;
+			}
+		.sub-services{
+			text-align:center;
+			margin-bottom:20px;
+			}
+		.sub-services p{
+			font-size:1.2em;
+			border-bottom:1px dotted #d9d9d9;
+			padding:0px 20px 10px 20px;
+			font-weight:300;
+			}
+		.star{
+			position:absolute;
+			background-color:#fff;
+			width:40px;
+			height:40px;
+			text-align:center;
+			margin:-11px 0px 0px -22px;
+			border-radius:6px 0px 6px 0px;
+			padding-top:10px;
+			box-shadow:2px 2px 4px 0px #f2f2f2;
+			}
+		.star span{
+			color:#e77c6e;
+			}
+		.form-control{
+			border-radius:4px;
+			}
+		
+	/*account*/
+	
+	.user-table td{vertical-align:middle !important}
+	.personal-info{
+		margin:30px 10% 0px 10%;
+		border-bottom:1px solid #eeeeee;
+		}
+	.right{
+		text-align:right;
+		}
+	.left{
+		text-align:left;
+		}
+	.view-body h4{
+		color:#b6b6b6;
+		margin-top:-6px;
+		}
+	.personal-pic{
+		text-align:left;
+		margin:14px 10% 0px 10%;
+		padding-bottom:20px;
+		border-bottom:1px solid #eeeeee;
+		}
+	.personal-pic2{
+		text-align:left;
+		margin:14px 10% 0px 10%;
+		}
+	.view-body{
+		padding-bottom:40px;
+		}
+	
+	
+	/*services*/
+		.main-character{
+			text-align:center;
+			}
+		.main-character h3{
+			margin-top:50px;
+			font-size:2em;
+			font-weight:300;
+			}
+		.main-character p{
+			font-size:1.4em;
+			color:#b6b6b6;
+			margin-bottom:60px;
+			}
+		.main-character img{
+			margin-top:20px;
+			}
+
+	/*services*/
+.main-permission{
+	text-align:center;
+	}
+.main-permission.icon-permission{
+	margin-top:10px;
+	}
+.main-permission h3{
+	margin-top:20px;
+	font-size:2em;
+	font-weight:400;
+	}
+.main-permission p{
+	font-size:1.2em;
+	color:#b6b6b6;
+	}
+.main-permission p:last-child{
+	font-size:1.2em;
+	color:#303030;
+	font-weight:300;
+	}
+.main-permission p span{
+	color:#e77c6e;
+	}
+.permission-btn{
+	margin:30px 10% 20px 10%;
+	}
+.permission-btn a{
+	width:40%;
+	}
+.p-type{
+	padding-top:8px;
+	color:#e77c6e;
+	}
+
+/*login*/
+.login_form{
+	background-color:#fff;
+	padding:20px 40px 20px 40px;
+	border-radius:6px;
+	box-shadow:0px 2px 12px 2px #f0f0f0;
+	}
+.forget_form{
+	background-color:#fff;
+	padding:20px 40px 20px 40px;
+	border-radius:6px;
+	box-shadow:0px 2px 12px 2px #f0f0f0;
+	}
+/*settings*/
+.setting-item{
+	border-top:1px solid #eee;
+	border-bottom:1px solid #eee;	
+	padding:40px;
+	margin:0px;
+	}
+.setting{
+	margin:0px 40px;
+	}
+.setting-item-noline{
+	padding:40px;
+	margin:0px;
+	}
+.setting i{
+	color:#e77c6e
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

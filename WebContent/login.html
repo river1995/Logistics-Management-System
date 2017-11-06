@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Logistics Management System</title>
+
+    <!-- Bootstrap -->
+    <link rel="icon" type="image/png" href="./pages/images/user.png" />
+    <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./vendors/layui-css/layui.css">
+    <!-- Font Awesome -->
+    <link href="./pages/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
+    <!-- Animate.css -->
+    <link href="./vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- nprogress.css -->
+    <link href="./vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="./build/css/custom.css" rel="stylesheet">
+    <!-- bms -->
+    <link href="./build/css/bms.css" rel="stylesheet">
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form>
+              <input type="reset" id="reset" style="display:none">
+              <h1>Login</h1>
+              <div>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="required" />
+              </div>
+              <div>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required" />
+              </div>
+              <div>
+                <a class="btn btn-success form-control log-in" href="#">Log in</a>           
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">
+                  <a href="#signup" class="to_register"> Forget your password? </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> BMS</h1>
+                  <p>©BMS All Rights Reserved. </p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="forgot" class="animate form forget_form">
+          <section class="login_content">
+            <form>
+              <h1>Password Reset</h1>
+              
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <a class="btn btn-success form-control" href="reset-password.html" >Reset Password</a>            
+              </div>
+              
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+               <p class="change_link">
+                   Enter your email address. We'll send you password reset instructions.
+                </p>
+
+               
+                <div>
+                  <h1><i class="fa fa-paw"></i> BMS</h1>
+                  <p>©BMS All Rights Reserved.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery -->
+    <script src="./vendors/jquery/dist/jquery.min.js"></script>
+    <!-- layer ui js -->
+    <script src="./js/libs/nprogress.js"></script>
+    <script src="./js/libs/layui.all.js"></script>
+    
+  	<script src="./js/libs/director.min.js"></script>
+  	<script type="text/javascript">
+  	$(document).ready(function(){
+  		$('body').on('click','.log-in', login);
+  		
+  	});
+
+  	function KeyDown(){
+  		if (event.keyCode == 13)
+  		{
+  			login();
+  		}
+  	}
+
+  	function login() {
+  		
+  		NProgress.start();
+  		var name = $('#username').val();
+  		var password = $('#password').val();
+  		
+  		$.ajax({
+  			type: "POST",
+  			url: "./api/v1.0/login",
+  			data: "username="+name+"&password="+password,
+  			cache:false,
+  			error:function(data){
+  				console.log(data);
+  				NProgress.done();
+  			},
+  			success: function(data){
+  				console.log(data);
+  				NProgress.done();
+  				if(data.code === 0){
+  					var dataJSON = data.data;
+  					document.cookie = "user_info="+JSON.stringify(dataJSON);
+  					window.location.href = './pages/order.html';
+  				}else {
+  					alert(data.message);
+  				}
+  				/* if(data.result.indexOf("True") > -1){
+  					
+  					window.location.href = './home'+goUrl;
+  					
+  				}else{
+  					alert(data.msg);
+  				} */
+  			}
+  		});
+  	}
+  	</script>
+  </body>
+</html>
