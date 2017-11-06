@@ -2,6 +2,7 @@
 *.class
 *.classpath
 *.project
+*.MANIFEST.MF
 # Log file
 *.log
 
