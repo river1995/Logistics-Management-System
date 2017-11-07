@@ -64,9 +64,25 @@ public class DateFormatUtil {
 		return result;
 	}
 	
+	public static long  changeTimeStampToUnixTime(String timestamp){
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Long time = 0l;
+		try {
+			time = format.parse(timestamp).getTime();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return time;
+	}
+	
 	public static void main(String[] args) {
 		//getDate(1509351453385l);
 		//System.out.println(System.currentTimeMillis());
+		long time = changeTimeStampToUnixTime("2017-11-11 23:56:34");
+		String timeString = changeLongTimeToString(time);
+		System.out.println(time);
+		System.out.println(timeString);
 	}
 
 }

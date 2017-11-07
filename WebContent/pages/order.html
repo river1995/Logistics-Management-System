@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>BMS Management System</title>
+    <title>物流管理系统</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>BMS</span></a>
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>LMS</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -57,7 +57,7 @@
                 <h3>Management</h3>
                 <ul class="nav side-menu" style="margin-top:30px;">
                  
-                  <li class="current-page account-li" ><a href="order.html"><i class="fa fa-address-book-o fa-fw "></i> Order </a>
+                  <li class="current-page account-li" ><a href="order.html"><i class="fa fa-address-book-o fa-fw "></i> 物流订单 </a>
                     
                   </li>
                 </ul>
@@ -110,12 +110,12 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Order Management</h3>
+                <h3>物流订单管理</h3>
               </div>
 			  <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group pull-right">
-                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target=".add-info">Add New Order</button>
+                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target=".add-info">添加订单信息</button>
                   </div>
                 </div>
               </div>
@@ -129,7 +129,7 @@
                 <div class="x_panel">               
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Order</a>
+                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">订单信息</a>
                         
                         </li>
                         
@@ -139,10 +139,12 @@
                           <table id="datatable" class="table table-striped " >
                       <thead>
                         <tr>
-                          <th>OrderId</th>
-                          <th>SubmitTime</th>
-                          <th>ArrivedTime</th>
-                          <th>Edit</th>                         
+                          <th>订单号</th>
+                          <th>提交时间</th>
+                          <th>入关时间</th>
+                          <th>始发城市</th>
+                          <th>海关城市</th>
+                          <th>编辑信息</th>                         
                         </tr>
                       </thead>
 
@@ -152,7 +154,10 @@
                         	<td>1234567891234</td>
                         	<td>2017-11-11 23:18</td>
                         	<td>2017-11-17 05:29</td>
-                        	<td><a href='#' class='btn btn-primary btn-xs view' data-toggle='modal' data-target='.view-info'><i class='fa fa-folder'></i> View </a></td>
+                        	<td>Chicago</td>
+                        	<td>Shanghai</td>
+                        	<td><a href='#' class='btn btn-primary btn-xs view' data-toggle='modal' data-target='.view-info'><i class='fa fa-folder'></i> 查看 </a>
+                        	<a href='#' class='btn btn-info btn-xs edit' data-toggle='modal' data-target='.edit-info'><i class='fa fa-pencil'></i>编辑</a></td>
                         </tr>
                         
                        
@@ -185,233 +190,247 @@
         <!-- /footer content -->
       </div>
     </div>
+    
+<!-- add test  -->
 
-
-
- <!-- add -->
-                  
-
-                  <div class="modal fade add-info" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal fade add-info" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
-
-                        <div class="modal-header">
+						<div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Add New Order</h4>
+                          <h4 class="modal-title" id="myModalLabel">创建新物流信息</h4>
                         </div>
-                        <div class="modal-body">
                         
-                    <!-- Smart Wizard -->
-                    <p>Please complete registration according to the following tips </p>
-                    <div id="wizard" class="form_wizard wizard_horizontal">
-                      
-                      <ul class="wizard_steps">
+                        <div class="modal-body">
+                        	<div id="wizard" class="form_wizard wizard_horizontal">
+                      <ul class="wizard_steps anchor">
                         <li>
-                          <a href="#step-1">
+                          <a href="#step-1" class="selected" isdone="1" rel="1">
                             <span class="step_no">1</span>
                             <span class="step_descr">
-                                              Step 1<br />
-                                              <small>Basic Information</small>
+                                              Step 1<br>
+                                              <small>输入以下信息</small>
                                           </span>
                           </a>
                         </li>
                         <li>
-                          <a href="#step-2">
+                          <a href="#step-2" class="done" isdone="1" rel="2">
                             <span class="step_no">2</span>
                             <span class="step_descr">
-                                              Step 2<br />
-                                              <small>Photo of ID</small>
+                                              Step 2<br>
+                                              <small>生成物流信息</small>
                                           </span>
                           </a>
                         </li>
-                        <li>
-                          <a href="#step-3">
-                            <span class="step_no">3</span>
-                            <span class="step_descr">
-                                              Step 3<br />
-                                              <small>Photo of Credentials</small>
-                                          </span>
-                          </a>
-                        </li>
-                       
-                      </ul> 
+                        
+                        
+                      </ul>
                       
-                      <span class="wizard-content">
-                      <div id="step-1">
-                        <form class="form-horizontal form-label-left" id="account-form" role="form" data-toggle="validator">
+                      
+                      
+                      
+
+                    <div class="stepContainer" style="height: 220px;">
+                    <div id="step-1" class="content" style="display: block;">
+                    	<form class="form-horizontal form-label-left" id="edit-form">
 
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发货城市 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="name" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="from-city" name="from-city" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">入关城市 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="gateway-city" name="gateway-city" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>  
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">国外货运时长 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="expire-time" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
                             </div>
                           </div>
                           <div class="form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email <span class="required">*</span></label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="email" class="form-control col-md-7 col-xs-12" type="text" name="email">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Character <span class="required">*</span></label>
-                        	<div class="col-md-6 col-sm-6 col-xs-12">
-                         	 <select class="form-control character-select">
-                         	 	
-                          	</select>
-                        	</div>
-                      		</div>
-                      	  
-                      	  <div class="form-group">
-                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Company <span class="required">*</span></label>
-                        	<div class="col-md-6 col-sm-6 col-xs-12">
-                         	 <select class="form-control company-select">
-                          	</select>
-                        	</div>
-                      		</div>
-                          
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">国内货运公司 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="address" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="Staff Only">
+                              <input id="logistic-type" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
                             </div>
                           </div>
 
                         </form>
-
-                      </div>
-                      <div id="step-2">
-                       <div class="x_content">
-                    <p>Drag multiple files to the box below for multi upload or click to select files. </p>
-                    <form action="form_upload.html" class="dropzone"></form>
-                    <br>
-                   
-                  </div>
-                      </div>
-                      <div id="step-3">
+                    </div>
+                    <div id="step-2" class="content" style="display: none;">
                         <div class="x_content">
-                    <p>Drag multiple files to the box below for multi upload or click to select files.(Staff Only) </p>
-                    <form action="form_upload.html" class="dropzone"></form>
-                    <br>
+                  <ul class="list-unstyled timeline">
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Delivered, In/At Mailbox,KENT
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Out for Delivery,KENT,WA,98042
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Sorting Complete,KENT,WA,98042
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Arrived at USPS Regional Facility,SEATTLE WA DISTRIBUTION CENTER ANNEX
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Departed USPS Regional Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Arrived at USPS Regional Destination Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Departed USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Arrived at USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Processed Through Facility,SHENZHEN EMS,CHINA
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                </div>
+                    </div></div>
+                    </div>
+                        </div>
+                        
                    
-                  </div>
-                      </div>
-                      </span>
-
-                    </div>
-                    <!-- End SmartWizard Content -->                    
-
-       
-                        </div>
-                       
-                      </div>
-                    </div>
-                  </div>
- <!-- view -->
- 
- 				  <div class="modal fade view-info" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-md">
-                      <div class="modal-content">
-
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                          </button>
-                          <h4 class="modal-title" id="myModalLabel">Personal Info</h4>
-                        </div>
-                        <div class="modal-body" style="text-align:center;">
-                        	<div class="view-body">
-                        	<img src="images/icon_account_user@3x.png" width="20%" class="img-thumbnail img-circle" id="view-profile-photo">
-                   			<h2 class="show-name"></h2>
-                   			<h4 class="show-character"></h4>
-                   			<div class="personal-info">
-                   				<div class="row">
-                   					<div class="col-md-4 col-sm-4 col-xs-4  left">
-                   						<p><i class="fa fa-phone fa-fw"></i>&nbsp; Phone<p>
-                   						<p><i class="fa fa-envelope-o fa-fw"></i>&nbsp; Email<p>
-                   						<p><i class="fa fa-suitcase fa-fw"></i>&nbsp; Company<p>
-                   						<p><i class="fa fa-map-marker fa-fw"></i>&nbsp; Address<p>
-                   					</div>
-                   					
-                   					<div class="col-md-8 col-sm-8 col-xs-8  right">
-                   						<p class="show-phone"><p>
-                   						<p class="show-email"><p>
-                   						<p class="show-company"><p>
-                   						<p class="show-address"><p>
-                   					</div>
-                   					
-                   				</div>
-                   			</div>
-                   			
-                   			<div class="personal-pic">
-                   				<h5>Photo of ID</h5>
-                   				<img id="id-photo"  class="img-thumbnail" width="20%" >
-                   			</div>
-                   			
-                   			<div class="personal-pic2">
-                   				<h5 >Photo of Credential</h5>
-                   				<div id="cert-photo"></div>
-                   			</div>
-                   			</div>
-       
-                        </div>
                        
                       </div>
                     </div>
                   </div>
 
- <!-- edit -->				  
+
+<!-- edit -->				  
 				  <div class="modal fade edit-info" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
-
-                        <div class="modal-header">
+						<div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Edit Info</h4>
+                          <h4 class="modal-title" id="myModalLabel">添加国内物流单号</h4>
                         </div>
+                        
                         <div class="modal-body">
                         	<form class="form-horizontal form-label-left" id="edit-form">
 
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">国内物流订单号 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <input type="text" id="edit-phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           
-                          <div class="form-group">
-                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Character <span class="required">*</span></label>
-                        	<div class="col-md-6 col-sm-6 col-xs-12">
-                         	 <select class="form-control character-select" id="edit-character">
-                          	</select>
-                        	</div>
-                      		</div>
-                      	  
-                      	  <div class="form-group">
-                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Company <span class="required">*</span></label>
-                        	<div class="col-md-6 col-sm-6 col-xs-12">
-                         	 <select class="form-control company-select" id="edit-company">
-                          	</select>
-                        	</div>
-                      		</div>
-                          
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="edit-address" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="Staff Only">
-                            </div>
-                          </div>
+                         
 
                         </form>
                         </div>
@@ -425,6 +444,163 @@
                       </div>
                     </div>
                   </div>
+
+ <!-- view -->
+ 
+ 				  <div class="modal fade view-info" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md" style="width:70%;">
+                      <div class="modal-content">
+
+                        <div class="x_panel">
+                <div class="x_title">
+                  <h2>Logistic Tracking</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <ul class="list-unstyled timeline">
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Delivered, In/At Mailbox,KENT
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Out for Delivery,KENT,WA,98042
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Sorting Complete,KENT,WA,98042
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Arrived at USPS Regional Facility,SEATTLE WA DISTRIBUTION CENTER ANNEX
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Departed USPS Regional Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Arrived at USPS Regional Destination Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Departed USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Arrived at USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="block">
+                        <div class="tags">
+                          <a href="" class="tag">
+                            <span>2017-11-11 23:56</span>
+                          </a>
+                        </div>
+                        <div class="block_content">
+                         
+                          <p class="excerpt">Processed Through Facility,SHENZHEN EMS,CHINA
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+                        
+                       
+                      </div>
+                    </div>
+                  </div>
+
+ <!-- edit -->				  
+				  
 				
 				  <div class="modal" id="picModal">
 				  	
@@ -454,20 +630,15 @@
     <!-- Dropzone.js -->
     <script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
     <script src="../js/pages/order.js"></script>
-	<script>
-		var picModal=document.getElementById("picModal");
-		
-		var img=document.getElementById("id-photo");
-		var modalImg=document.getElementById("bImg");
-		
-		img.onclick=function(){
-			picModal.style.display="block";
-			modalImg.src=this.src;
-			
-		}
-		
-		
-	</script>
-  
+  	
   </body>
+  	<script type="text/javascript">
+	  	$(document).ready(function(){
+	  		$('.buttonFinish').on('click', function(){
+	  			$('.close').click();
+	  		});
+	  		
+	  	});
+	  	
+	</script>
 </html>

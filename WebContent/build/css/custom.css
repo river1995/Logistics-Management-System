@@ -2621,7 +2621,7 @@ ul.timeline li {
     border-left: 3px solid #e8e8e8;
     overflow: visible;
     padding: 10px 15px;
-    margin-left: 105px
+    margin-left: 18%
 }
 .timeline.widget {
     min-width: 0;
@@ -2634,7 +2634,7 @@ ul.timeline li {
     position: absolute;
     top: 15px;
     left: 0;
-    width: 84px
+    width: 16%
 }
 .timeline .tag {
     display: block;
@@ -2651,8 +2651,8 @@ ul.timeline li {
 }
 .tag {
     line-height: 1;
-    background: #1ABB9C;
-    color: #fff !important
+    background: #e6e6e6;
+    color: #2b384a !important
 }
 .tag:after {
     content: " ";
@@ -2665,7 +2665,7 @@ ul.timeline li {
     pointer-events: none;
     border-top: 14px solid transparent;
     border-bottom: 14px solid transparent;
-    border-left: 11px solid #1ABB9C
+    border-left: 11px solid #e6e6e6
 }
 .timeline h2.title {
     position: relative;
@@ -3940,7 +3940,19 @@ fieldset {
     text-align: right;
     margin-top: 10px
 }
+.actionBar1 {
+    width: 100%;
+    border-top: 1px solid #ddd;
+    padding: 10px 5px;
+    text-align: right;
+    margin-top: 10px
+}
+
+.actionBar .buttonPrevious{
+	display:none;
+}
 .actionBar .buttonDisabled {
+	display:none;
     cursor: not-allowed;
     pointer-events: none;
     opacity: .65;

@@ -50,6 +50,7 @@ public class loginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("pod-token", username + session.getId());
 				System.out.println(session.getAttribute("pod-token"));
+				session.setAttribute("user_id", userEntity.getId());
 				session.setAttribute("current_user", userEntity);
 				session.setAttribute("type", userEntity.getType());
 				resultEntity.setCode(0);
