@@ -10,9 +10,10 @@ public class DateFormatUtil {
 	public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public static String changeLongTimeToString(long unixTime) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String result = "";
 		if (unixTime > 0) {
-			result = dateFormat.format(unixTime);
+			result = format.format(unixTime);
 		}
 		return result;
 	}
@@ -79,10 +80,14 @@ public class DateFormatUtil {
 	public static void main(String[] args) {
 		//getDate(1509351453385l);
 		//System.out.println(System.currentTimeMillis());
-		long time = changeTimeStampToUnixTime("2017-11-11 23:56:34");
-		String timeString = changeLongTimeToString(time);
-		System.out.println(time);
-		System.out.println(timeString);
+//		long time = changeTimeStampToUnixTime("2017-11-11 23:56:34");
+//		String timeString = changeLongTimeToString(time);
+//		System.out.println(time);
+//		System.out.println(timeString);
+		long t1 = System.currentTimeMillis();
+		long t2 = (long) (t1 + 1000*60*60*23.5);
+		System.out.println("t1:"+changeLongTimeToString(t1));
+		System.out.println("t2:"+changeLongTimeToString(t2));
 	}
 
 }

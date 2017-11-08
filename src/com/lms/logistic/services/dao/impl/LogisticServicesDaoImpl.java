@@ -31,8 +31,7 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 
 	@Override
 	public List<LogisticStatusEntity> generateLogsiticInfo(LogisticEntity logisticEntity) {
-		List<LogisticStatusEntity> list = new ArrayList<>();
-		
+		List<LogisticStatusEntity> list = new ArrayList<>();		
 		return list;
 	}
 

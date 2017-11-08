@@ -4,6 +4,7 @@ public class LogisticEntity {
 	private int id;
 	private int userId;
 	private String orderSeq;
+	private String fromCountry;
 	private String fromCity;
 	private String gatewayCity;
 	private String expireTime;
@@ -32,6 +33,13 @@ public class LogisticEntity {
 	}
 	public void setCounts(int counts) {
 		this.counts = counts;
+	}
+	
+	public String getFromCountry() {
+		return fromCountry;
+	}
+	public void setFromCountry(String fromCountry) {
+		this.fromCountry = fromCountry;
 	}
 	public String getFromCity() {
 		return fromCity;

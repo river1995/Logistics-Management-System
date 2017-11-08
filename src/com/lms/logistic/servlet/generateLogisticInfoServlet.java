@@ -22,7 +22,7 @@ import net.sf.json.JsonConfig;
 /**
  * Servlet implementation class generateLogisticInfoServlet
  */
-@WebServlet("/generateLogisticInfoServlet")
+@WebServlet("/api/v1.0/generate_logistic_info")
 public class generateLogisticInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StringUtil stringUtil = new StringUtil();
@@ -43,12 +43,20 @@ public class generateLogisticInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ApiResultEntity<List<LogisticStatusEntity>> apiResultEntity = new ApiResultEntity<>();
+		String fromCountry = request.getParameter("from_country");
 		String fromCity = request.getParameter("from_city");
 		String gatewayCity = request.getParameter("gateway_city");
 		String lastTime = request.getParameter("last_time");
 		String logisticCompany = request.getParameter("logistic_company");
-		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity) && !stringUtil.isNullString(lastTime) && !stringUtil.isNullString(logisticCompany)) {
+		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity) && !stringUtil.isNullString(lastTime)
+				&& !stringUtil.isNullString(logisticCompany) && !stringUtil.isNullString(fromCountry)) {
 			LogisticEntity logisticEntity = new LogisticEntity();
+			logisticEntity.setExpireTime(lastTime);
+			logisticEntity.setFromCountry(fromCountry);
+			logisticEntity.setFromCity(fromCity);
+			logisticEntity.setGatewayCity(gatewayCity);
+			logisticEntity.setLogisticCompany(logisticCompany);
+			logisticEntity.setOrderSeq(System.currentTimeMillis()+"");
 			List<LogisticStatusEntity> list = logisticService.generateLogsiticInfo(logisticEntity);
 			if (list != null && list.size() > 0) {
 				apiResultEntity.setCode(0);

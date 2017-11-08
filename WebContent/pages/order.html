@@ -190,10 +190,11 @@
         <!-- /footer content -->
       </div>
     </div>
+
     
 <!-- add test  -->
 
-	<div class="modal fade add-info" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal fade add-info1" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
 						<div class="modal-header">
@@ -234,14 +235,14 @@
                     <div class="stepContainer" style="height: 220px;">
                     <div id="step-1" class="content" style="display: block;">
                     	<form class="form-horizontal form-label-left" id="edit-form">
-
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发货国家 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               	<select class="form-control character-select col-md-7 col-xs-12" id="from-country" >
-                              		<option class='us'>美国</option>
-                              		<option class='ita'>意大利</option>
+                              		<option>请选择发货国家</option>
+                              		<option value='0' class='us'>美国</option>
+                              		<option value='1' class='ita'>意大利</option>
                           		</select>
                             </div>
                           </div>
@@ -250,8 +251,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               	<select class="form-control character-select col-md-7 col-xs-12" id="from-city" >
-                              		<option class='us-city'>西雅图</option>
-                              		<option class='ita-city'>米兰</option>
+                              		
                           		</select>
                             </div>
                           </div>
@@ -259,7 +259,8 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">入关省份<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <select class="form-control character-select col-md-7 col-xs-12" id="gateway-city" >
+                              <select class="form-control character-select col-md-7 col-xs-12" id="gateway-province" >
+                              	<option>请选择入关省份</option>
                           	  </select>
                             </div>
                           </div>  
@@ -268,6 +269,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <select class="form-control character-select col-md-7 col-xs-12" id="gateway-city" >
+                              	<option>请选择入关城市</option>
                           		</select>
                             </div>
                           </div>  
@@ -275,7 +277,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">国外货运时长 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="expire-time" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                              <input id="expire-time" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="单位：天">
                             </div>
                           </div>
                           <div class="form-group">

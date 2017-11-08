@@ -21,7 +21,7 @@ public class LogisticDaoImpl implements LogisticDao {
 		Connection conn = null;
 		PreparedStatement stat = null;
 		try {
-			String sql = "insert into order(user_id,order_seq,from_city,gateway_city,expire_time,logistic_company,created_at) values(?,?,?,?,?,?,?)";
+			String sql = "insert into order(user_id,order_seq,from_city,gateway_city,expire_time,logistic_company,created_at,from_country) values(?,?,?,?,?,?,?,?)";
 			conn = DBConnector.getConnection();
 			stat = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			stat.setInt(1, logisticEntity.getUserId());
@@ -31,6 +31,7 @@ public class LogisticDaoImpl implements LogisticDao {
 			stat.setString(5, logisticEntity.getExpireTime());
 			stat.setString(6, logisticEntity.getLogisticCompany());
 			stat.setLong(7, System.currentTimeMillis());
+			stat.setString(8, logisticEntity.getFromCountry());
 			stat.executeUpdate();
 			rs = stat.getGeneratedKeys();
 			while (rs.next()) {

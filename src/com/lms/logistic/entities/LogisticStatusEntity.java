@@ -4,6 +4,16 @@ public class LogisticStatusEntity {
 	private int id;
 	private String address;
 	private String locatedTime;
+	
+	
+	public LogisticStatusEntity() {
+		super();
+	}
+	public LogisticStatusEntity(String address, String locatedTime) {
+		super();
+		this.address = address;
+		this.locatedTime = locatedTime;
+	}
 	public int getId() {
 		return id;
 	}

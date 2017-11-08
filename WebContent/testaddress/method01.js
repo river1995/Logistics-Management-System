@@ -9,7 +9,7 @@ function $(str) {
 var addrShow = $('addr-show');
 var btn = document.getElementsByClassName('met1')[0];
 var prov = $('prov');
-var city = $('city');
+var city = $('gateway-city');
 var country = $('country');
 
 

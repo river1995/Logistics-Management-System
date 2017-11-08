@@ -42,13 +42,16 @@ public class addLogisticServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = (int) request.getSession().getAttribute("user_id");
 		ApiResultEntity<String> apiResultEntity = new ApiResultEntity<>();
+		String fromCountry = request.getParameter("from_country");
 		String fromCity = request.getParameter("from_city");
 		String gatewayCity = request.getParameter("gateway_city");
 		String lastTime = request.getParameter("last_time");
 		String logisticCompany = request.getParameter("logistic_company");
-		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity) && !stringUtil.isNullString(lastTime) && !stringUtil.isNullString(logisticCompany)) {
+		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity) && !stringUtil.isNullString(lastTime)
+				&& !stringUtil.isNullString(logisticCompany) && !stringUtil.isNullString(fromCountry)) {
 			LogisticEntity logisticEntity = new LogisticEntity();
 			logisticEntity.setExpireTime(lastTime);
+			logisticEntity.setFromCountry(fromCountry);
 			logisticEntity.setFromCity(fromCity);
 			logisticEntity.setGatewayCity(gatewayCity);
 			logisticEntity.setLogisticCompany(logisticCompany);

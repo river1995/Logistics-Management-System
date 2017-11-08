@@ -1,4 +1,4 @@
-package com.bms.test;
+package com.bms.utils.common;
 
 
 import java.io.IOException;
@@ -10,7 +10,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
-public class TestPinYin {
+public class PinyinUtil {
 	
 	public static String toUpperCaseFirstOne(String s){
 		  if(Character.isUpperCase(s.charAt(0)))
@@ -19,7 +19,7 @@ public class TestPinYin {
 		    return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
 	}
 	
-	public static String changeChineseToPinyin(String Chinese) throws BadHanyuPinyinOutputFormatCombination{
+	public static String changeChineseToPinyin(String Chinese){
 		if (Chinese.equals("厦门")) {
 			return "Xiamen";
 		}
@@ -31,9 +31,15 @@ public class TestPinYin {
         StringBuffer output = new StringBuffer("");  
         for (int i = 0; i < input.length; i++) {  
             if (Character.toString(input[i]).matches("[\u4E00-\u9FA5]+")) {  
-                String[] temp = PinyinHelper.toHanyuPinyinStringArray(input[i], format);  
-                output.append(temp[0]);  
-                output.append("");  
+                String[] temp;
+				try {
+					temp = PinyinHelper.toHanyuPinyinStringArray(input[i], format);
+					output.append(temp[0]);  
+	                output.append("");  
+				} catch (BadHanyuPinyinOutputFormatCombination e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}                  
             } else  
                 output.append(Character.toString(input[i]));  
         }  
