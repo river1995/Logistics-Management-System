@@ -191,58 +191,26 @@
       </div>
     </div>
 
-    
-<!-- add test  -->
 
-	<div class="modal fade add-info1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade add-info" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
 						<div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">创建新物流信息</h4>
+                          <h4 class="modal-title" id="myModalLabel">生成物流信息</h4>
                         </div>
                         
                         <div class="modal-body">
-                        	<div id="wizard" class="form_wizard wizard_horizontal">
-                      <ul class="wizard_steps anchor">
-                        <li>
-                          <a href="#step-1" class="selected" isdone="1" rel="1">
-                            <span class="step_no">1</span>
-                            <span class="step_descr">
-                                              Step 1<br>
-                                              <small>输入以下信息</small>
-                                          </span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#step-2" class="done" isdone="1" rel="2">
-                            <span class="step_no">2</span>
-                            <span class="step_descr">
-                                              Step 2<br>
-                                              <small>生成物流信息</small>
-                                          </span>
-                          </a>
-                        </li>
-                        
-                        
-                      </ul>
-                      
-                      
-                      
-                      
-
-                    <div class="stepContainer" style="height: 220px;">
-                    <div id="step-1" class="content" style="display: block;">
-                    	<form class="form-horizontal form-label-left" id="edit-form">
+                        	<form class="form-horizontal form-label-left" id="edit-form">
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发货国家 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               	<select class="form-control character-select col-md-7 col-xs-12" id="from-country" >
                               		<option>请选择发货国家</option>
-                              		<option value='0' class='us'>美国</option>
-                              		<option value='1' class='ita'>意大利</option>
+                              		<option value='us' class='us'>美国</option>
+                              		<option value='ita' class='ita'>意大利</option>
                           		</select>
                             </div>
                           </div>
@@ -289,148 +257,44 @@
                           </div>
 
                         </form>
-                    </div>
-                    <div id="step-2" class="content" style="display: none;">
-                        <div class="x_content">
-                  <ul class="list-unstyled timeline">
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Delivered, In/At Mailbox,KENT
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Out for Delivery,KENT,WA,98042
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Sorting Complete,KENT,WA,98042
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Arrived at USPS Regional Facility,SEATTLE WA DISTRIBUTION CENTER ANNEX
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Departed USPS Regional Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Arrived at USPS Regional Destination Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Departed USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Arrived at USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Processed Through Facility,SHENZHEN EMS,CHINA
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-
-                </div>
-                    </div></div>
-                    </div>
                         </div>
                         
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                          <button type="button" class="btn btn-primary add-submit" >提交</button>
+                        </div>
                    
                        
                       </div>
                     </div>
                   </div>
+                  
+                  <div class="modal fade confirm" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+						<div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">添加国内物流单号</h4>
+                        </div>
+                        
+                        <div class="modal-body">
+                        	
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary edit-submit" >Save</button>
+                        </div>
+                   
+                       
+                      </div>
+                    </div>
+                  </div>
+    
+<!-- add test  -->
+
+	
 
 
 <!-- edit -->				  

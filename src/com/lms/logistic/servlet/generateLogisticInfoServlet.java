@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bms.commom.domain.ApiResultEntity;
 import com.bms.utils.common.StringUtil;
+import com.bms.utils.json.ChangeFieldNameStandard;
 import com.bms.utils.json.IgnoreNullProprety;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
@@ -46,8 +47,10 @@ public class generateLogisticInfoServlet extends HttpServlet {
 		String fromCountry = request.getParameter("from_country");
 		String fromCity = request.getParameter("from_city");
 		String gatewayCity = request.getParameter("gateway_city");
-		String lastTime = request.getParameter("last_time");
+		String lastTime = request.getParameter("expire_time");
 		String logisticCompany = request.getParameter("logistic_company");
+		System.out.println("fromCountry:"+fromCountry+"\n"+"fromCity:"+fromCity+"\n"+"gatewayCity:"+gatewayCity+"\n"
+				+"lastTime:"+lastTime+"\n"+"logisticCompany:"+logisticCompany+"\n");
 		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity) && !stringUtil.isNullString(lastTime)
 				&& !stringUtil.isNullString(logisticCompany) && !stringUtil.isNullString(fromCountry)) {
 			LogisticEntity logisticEntity = new LogisticEntity();
@@ -74,6 +77,7 @@ public class generateLogisticInfoServlet extends HttpServlet {
 		
 		JsonConfig jsonConfig = new JsonConfig();
 		jsonConfig.setJsonPropertyFilter(new IgnoreNullProprety());
+		jsonConfig.registerJsonPropertyNameProcessor(LogisticStatusEntity.class, new ChangeFieldNameStandard());
 		response.getWriter().print(JSONObject.fromObject(apiResultEntity ,jsonConfig));
 	}
 

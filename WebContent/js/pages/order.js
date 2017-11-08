@@ -16,9 +16,32 @@ $(document).ready(function(){
 		
 	});
 	
-	$('.buttonNext').on('click',function(){
-		//alert('run test');
-		SmartWizard.prototype.goForward;
+	$('.add-submit').on('click',function(){
+		var fromCountry = $('#from-country').children('option:selected').val();
+		var fromCity = $('#from-city').children('option:selected').html();
+		//var gatewayProvince = $('#gateway-province').children('option:selected').html();
+		var gatewayCity = $('#gateway-city').children('option:selected').html();
+		var expireTime = $('#expire-time').val();
+		var logisticCompany = $('#logistic-type').val();
+		$.ajax({
+			type : 'POST',
+			url : '../api/v1.0/generate_logistic_info',
+			data  : {'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'expire_time' : expireTime,'logistic_company' : logisticCompany},
+			dataType : 'JSON',
+			success : function(res){
+				console.log(res);
+				if(res.code === 0){
+					
+				}else{
+					layer.msg('deleted success', {
+						  icon: 1,
+						  time: 1500 //2秒关闭（如果不配置，默认是3秒）
+					  }, function(){
+						  $('#datatable').bootstrapTable('refresh');
+					  }); 
+				}
+			}
+		});
 	})
 	
 	function showUser(){		
@@ -66,9 +89,9 @@ $(document).ready(function(){
 		$('#from-city').empty();
 		var countryVal = $(this).children('option:selected').val()
 		console.log(countryVal);
-		if(countryVal === '0'){
+		if(countryVal === 'us'){
 			$('#from-city').append("<option value='0' class='us-city'>西雅图</option>");
-		}else if(countryVal === '1'){
+		}else if(countryVal === 'ita'){
 			$('#from-city').append("<option value='0' class='ita-city'>米兰</option>");
 		}
 	});
