@@ -37,4 +37,10 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 		return list;
 	}
 
+	@Override
+	public List<LogisticDetailEntity> logisticList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

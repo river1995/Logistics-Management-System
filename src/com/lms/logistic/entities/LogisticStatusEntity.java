@@ -3,16 +3,16 @@ package com.lms.logistic.entities;
 public class LogisticStatusEntity {
 	private int id;
 	private String address;
-	private String locatedTime;
+	private String time	;
 	
 	
 	public LogisticStatusEntity() {
 		super();
 	}
-	public LogisticStatusEntity(String address, String locatedTime) {
+	public LogisticStatusEntity(String address, String time) {
 		super();
 		this.address = address;
-		this.locatedTime = locatedTime;
+		this.time = time;
 	}
 	public int getId() {
 		return id;
@@ -26,12 +26,13 @@ public class LogisticStatusEntity {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getLocatedTime() {
-		return locatedTime;
+	public String getTime() {
+		return time;
 	}
-	public void setLocatedTime(String locatedTime) {
-		this.locatedTime = locatedTime;
+	public void setTime(String time) {
+		this.time = time;
 	}
+	
 	
 	
 }
