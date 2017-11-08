@@ -236,17 +236,39 @@
                     	<form class="form-horizontal form-label-left" id="edit-form">
 
                           <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发货国家 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              	<select class="form-control character-select col-md-7 col-xs-12" id="from-country" >
+                              		<option class='us'>美国</option>
+                              		<option class='ita'>意大利</option>
+                          		</select>
+                            </div>
+                          </div>
+                          <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发货城市 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="from-city" name="from-city" required="required" class="form-control col-md-7 col-xs-12">
+                              	<select class="form-control character-select col-md-7 col-xs-12" id="from-city" >
+                              		<option class='us-city'>西雅图</option>
+                              		<option class='ita-city'>米兰</option>
+                          		</select>
                             </div>
                           </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">入关省份<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <select class="form-control character-select col-md-7 col-xs-12" id="gateway-city" >
+                          	  </select>
+                            </div>
+                          </div>  
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">入关城市 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="gateway-city" name="gateway-city" required="required" class="form-control col-md-7 col-xs-12">
+                              <select class="form-control character-select col-md-7 col-xs-12" id="gateway-city" >
+                          		</select>
                             </div>
                           </div>  
                           <div class="form-group">
@@ -619,6 +641,8 @@
     <script src="../js/libs/bootstrap-table-export.js"></script>
     <!-- layer ui js -->
     <script src="../js/libs/layui.all.js"></script>
+    <!-- city js -->
+    <script src="../js/libs/city.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
     <!-- jQuery Smart Wizard -->
