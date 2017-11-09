@@ -47,16 +47,16 @@ $(document).ready(function(){
 					$('.add-info').modal('hide');
 					var logList = res.data;
 					for(var i = 0;i<logList.length;i++){
-						$('.confirm-tbody').append('<tr><th scope="row">'+(i+1)+'</th><td><input type="text" class="time" style="width:100%;height:100%;border:0px;" value="'+logList[i].time+'"></td><td><input type="text" value="'+logList[i].address+'" class="address" style="width:100%;height:100%;border:0px;"></td></tr>');
+						$('.confirm-tbody').append('<tr><th scope="row">'+(i+1)+'</th><td><input type="text" class="add-time" style="width:100%;height:100%;border:0px;" value="'+logList[i].time+'"></td><td><input type="text" value="'+logList[i].address+'" class="add-address" style="width:100%;height:100%;border:0px;"></td></tr>');
 					}
 					$('.confirm').modal('show');
 					
 					$('.confirm-submit').on('click' ,function(){
 						var logisticList = new Array();
-						var count = $('.time').length;
+						var count = $('.add-time').length;
 						for(var i=0;i<count;i++){
-							var time = $('.time').eq(i).val();
-							var address = $('.address').eq(i).val();
+							var time = $('.add-time').eq(i).val();
+							var address = $('.add-address').eq(i).val();
 							var logisticNew = new Logistic(time,address);
 							logisticList[i] = logisticNew;
 						}
@@ -65,8 +65,8 @@ $(document).ready(function(){
 							url : '../api/v1.0/add_logstic',
 							data  : {'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'expire_time' : expireTime,'logistic_company' : logisticCompany ,'logistic_json' : JSON.stringify(logisticList)},
 							dataType : 'JSON',
-							success : function(res){
-								console.log("add_logistic:"+JSON.stringify(res));
+							success : function(data){
+								console.log("add_logistic:"+JSON.stringify(data));
 								if(res.code === 0){
 									layer.msg('添加物流信息成功', {
 										  icon: 1,
@@ -141,16 +141,42 @@ $(document).ready(function(){
 	});
 	
 	
+	
 	function showLogisticData(){
+		window.operateEvents = {
+			    'click .view': function (e, value, row, index) {
+			    	$('.view-tbody').empty();
+			    	console.log($('.view-tbody').val());
+			    	NProgress.start();
+			    	$.ajax({
+						type : 'POST',
+						url : '../api/v1.0/logistic_status_list',
+						data  : {"order_id":value},
+						cache : 'false',
+						dataType : 'JSON',
+						success : function(res){
+							console.log("status_list:"+JSON.stringify(res))
+							var logList = res.data;
+							for(var i = 0;i<logList.length;i++){
+								$('.view-tbody').append('<tr><th scope="row">'+(i+1)+'</th><td><input type="text" class="time" style="width:100%;height:100%;border:0px;" value="'+logList[i].time+'"></td><td><input type="text" value="'+logList[i].address+'" class="address" style="width:100%;height:100%;border:0px;"></td></tr>');
+							}
+							$('.view-info').modal('show');
+							NProgress.done();
+							
+						}
+					});
+			    }
+			};
+		
 		$('#datatable').bootstrapTable({
 			pagination: true,
 			pageSize : 10,
-			url: '../api/v1.0/user_list',
+			url: '../api/v1.0/logistic_list',
 			contentType:"application/x-www-form-urlencoded",
-			queryParams : {"type" : type},
+			//queryParams : {"type" : type},
 			method: 'POST',
 			responseHandler: function(res) {
-            	//console.log(res);
+            	console.log(res);
             	if(res.code == 0){
             		return res.data;
             	}else{
@@ -159,24 +185,22 @@ $(document).ready(function(){
             },
 			columns: [
 			{
-				field:"profile_photo",
-				formatter:function(value,row,index){
-					return "<img src='http://192.168.2.175:8080/photo/img/upload/"+value+"' class='avatar' alt='Avatar'>";
-				}
+				field:'order_seq'
 			},{
-				field:'real_name'
+				field:'from_country'
 			},{
-				field:'phone'
+				field:'from_city'
 			},{
-				field:'email'
+				field:'create_time'
 			},{
-				field:'company'
+				field:'finish_time'
+			},{
+				field:'gateway_city'
 			},{
 				field:'id',
 				formatter:function(value,row,index){
-					return "<a href='#' class='btn btn-primary btn-xs view' data-toggle='modal' data-target='.view-info'><i class='fa fa-folder'></i> View </a>"
-			        + "<a href='#' class='btn btn-info btn-xs edit' data-toggle='modal' data-target='.edit-info'><i class='fa fa-pencil'></i> Edit </a>"
-			         +"<a href='#' class='btn btn-danger btn-xs delete'><i class='fa fa-trash-o'></i> Delete </a>";
+					return "<a href='#' class='btn btn-primary btn-xs view clear-view' data-toggle='modal'><i class='fa fa-folder'></i> 查看 </a>"+
+					"<a href='./print.html' class='btn btn-primary btn-xs ' ><i class='fa fa-folder'></i> 打印 </a>";
 				},
 				events : operateEvents
 				

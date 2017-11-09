@@ -22,6 +22,8 @@
     <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- Dropzone.js -->
     <link href="../vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+    <!-- nprogress.css -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
 	
   </head>
 
@@ -140,9 +142,10 @@
                       <thead>
                         <tr>
                           <th>订单号</th>
-                          <th>提交时间</th>
-                          <th>入关时间</th>
+                          <th>始发国家</th>
                           <th>始发城市</th>
+                          <th>创建时间</th>
+                          <th>入关时间</th>
                           <th>海关城市</th>
                           <th>编辑信息</th>                         
                         </tr>
@@ -150,15 +153,6 @@
 
 
                       <tbody class="user-table">
-                        <tr>
-                        	<td>1234567891234</td>
-                        	<td>2017-11-11 23:18</td>
-                        	<td>2017-11-17 05:29</td>
-                        	<td>Chicago</td>
-                        	<td>Shanghai</td>
-                        	<td><a href='#' class='btn btn-primary btn-xs view' data-toggle='modal' data-target='.view-info'><i class='fa fa-folder'></i> 查看 </a>
-                        	<a href='#' class='btn btn-info btn-xs edit' data-toggle='modal' data-target='.edit-info'><i class='fa fa-pencil'></i>编辑</a></td>
-                        </tr>
                         
                        
                         
@@ -350,160 +344,44 @@
                     </div>
                   </div>
 
- <!-- view -->
- 
- 				  <div class="modal fade view-info" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-md" style="width:70%;">
+ <!-- view -->             
+                  <div class="modal fade view-info" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" style="width:70%;">
                       <div class="modal-content">
-
-                        <div class="x_panel">
-                <div class="x_title">
-                  <h2>完整物流信息</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li> <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+						<div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <ul class="list-unstyled timeline">
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
+                          <h4 class="modal-title" id="myModalLabel">物流信息确认</h4>
                         </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Delivered, In/At Mailbox,KENT
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Out for Delivery,KENT,WA,98042
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Sorting Complete,KENT,WA,98042
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Arrived at USPS Regional Facility,SEATTLE WA DISTRIBUTION CENTER ANNEX
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Departed USPS Regional Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Arrived at USPS Regional Destination Facility,SEATTLE WA NETWORK DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Departed USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Arrived at USPS Regional Facility,CHICAGO IL INTERNATIONAL DISTRIBUTION CENTER
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="block">
-                        <div class="tags">
-                          <a href="" class="tag">
-                            <span>2017-11-11 23:56</span>
-                          </a>
-                        </div>
-                        <div class="block_content">
-                         
-                          <p class="excerpt">Processed Through Facility,SHENZHEN EMS,CHINA
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-
-                </div>
-              </div>
                         
+                        <div class="modal-body" >
+
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>time</th>
+                          <th>address</th>
+                        </tr>
+                      </thead>
+                      <tbody class="view-tbody">
+                        
+                        
+                      </tbody>
+                    </table>
+
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                          <button type="button" class="btn btn-primary confirm-submit" >确认</button>
+                        </div>
+                   
                        
                       </div>
                     </div>
                   </div>
-
+ 				 
  <!-- edit -->				  
 				  
 				
@@ -530,6 +408,8 @@
     <script src="../build/js/custom.min.js"></script>
     <!-- jQuery Smart Wizard -->
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    <!-- nrogress js -->
+    <script src="../js/libs/nprogress.js"></script>
  
   
     <!-- Switchery -->
