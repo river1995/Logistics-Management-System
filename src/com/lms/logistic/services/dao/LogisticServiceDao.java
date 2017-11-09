@@ -20,5 +20,14 @@ public interface LogisticServiceDao {
 	 * @param logisticEntity
 	 * @return
 	 */
+	
+	
 	List<LogisticStatusEntity> generateLogsiticInfo(LogisticEntity logisticEntity);
+	
+	/**
+	 * 获取物流信息列表
+	 * @param logisticEntity
+	 * @return
+	 */
+	List<LogisticDetailEntity> logisticList();
 }

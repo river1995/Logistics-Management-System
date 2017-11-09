@@ -3,6 +3,7 @@ package com.lms.logistic.services.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bms.utils.common.GenerateLogisticInfoUtil;
 import com.lms.logistic.dao.impl.LogisticDaoImpl;
 import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
@@ -12,6 +13,7 @@ import com.lms.logistic.services.dao.LogisticServiceDao;
 public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	
 	private LogisticDaoImpl logisticDao = new LogisticDaoImpl();
+	private GenerateLogisticInfoUtil generateUtil = new GenerateLogisticInfoUtil();
 
 	@Override
 	public boolean addLogistic(LogisticDetailEntity detailEntity) {
@@ -31,8 +33,14 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 
 	@Override
 	public List<LogisticStatusEntity> generateLogsiticInfo(LogisticEntity logisticEntity) {
-		List<LogisticStatusEntity> list = new ArrayList<>();		
+		List<LogisticStatusEntity> list = 	generateUtil.generateLogisticInfoUtil(logisticEntity);
 		return list;
+	}
+
+	@Override
+	public List<LogisticDetailEntity> logisticList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

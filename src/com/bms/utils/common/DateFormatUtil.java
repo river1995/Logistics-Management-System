@@ -66,7 +66,7 @@ public class DateFormatUtil {
 	}
 	
 	public static long  changeTimeStampToUnixTime(String timestamp){
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Long time = 0l;
 		try {
 			time = format.parse(timestamp).getTime();

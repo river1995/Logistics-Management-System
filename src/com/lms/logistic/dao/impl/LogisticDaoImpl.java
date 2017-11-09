@@ -9,6 +9,7 @@ import java.util.List;
 import com.bms.utils.common.DBConnector;
 import com.bms.utils.common.DateFormatUtil;
 import com.lms.logistic.dao.LogisticDao;
+import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
 
@@ -21,17 +22,17 @@ public class LogisticDaoImpl implements LogisticDao {
 		Connection conn = null;
 		PreparedStatement stat = null;
 		try {
-			String sql = "insert into order(user_id,order_seq,from_city,gateway_city,expire_time,logistic_company,created_at,from_country) values(?,?,?,?,?,?,?,?)";
+			String sql = "insert into `order`(order_seq,from_city,gateway_city,expire_time,logistic_company,created_at,from_country) values(?,?,?,?,?,?,?)";
 			conn = DBConnector.getConnection();
 			stat = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-			stat.setInt(1, logisticEntity.getUserId());
-			stat.setString(2, logisticEntity.getOrderSeq());
-			stat.setString(3, logisticEntity.getFromCity());
-			stat.setString(4, logisticEntity.getGatewayCity());
-			stat.setString(5, logisticEntity.getExpireTime());
-			stat.setString(6, logisticEntity.getLogisticCompany());
-			stat.setLong(7, System.currentTimeMillis());
-			stat.setString(8, logisticEntity.getFromCountry());
+			stat.setString(1, logisticEntity.getOrderSeq());
+			stat.setString(2, logisticEntity.getFromCity());
+			stat.setString(3, logisticEntity.getGatewayCity());
+			stat.setString(4, logisticEntity.getExpireTime());
+			stat.setString(5, logisticEntity.getLogisticCompany());
+			stat.setLong(6, System.currentTimeMillis());
+			stat.setString(7, logisticEntity.getFromCountry());
+			System.out.println("LogisticDaoImpl.addLogistic():"+stat.toString());
 			stat.executeUpdate();
 			rs = stat.getGeneratedKeys();
 			while (rs.next()) {
@@ -62,10 +63,10 @@ public class LogisticDaoImpl implements LogisticDao {
 				stat.setInt(1, orderId);
 				stat.setString(2, statusEntity.getAddress());
 				stat.setLong(3, System.currentTimeMillis());
-				stat.setLong(4, DateFormatUtil.changeTimeStampToUnixTime(statusEntity.getLocatedTime()));
+				stat.setLong(4, DateFormatUtil.changeTimeStampToUnixTime(statusEntity.getTime()));
 				stat.addBatch();
 			}
-			System.out.println("LogisticDaoImpl.addLogisticStatus():" + stat.toString());
+			System.out.println("LogisticDaoImpl.addLogisticStatus():" + stat.toString());			
 			stat.executeBatch();
 			conn.commit();
 			rs = 1;
@@ -98,6 +99,12 @@ public class LogisticDaoImpl implements LogisticDao {
 			DBConnector.closeConnection(conn);
 		}
 		return rs;
+	}
+
+	@Override
+	public List<LogisticDetailEntity> logisticList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

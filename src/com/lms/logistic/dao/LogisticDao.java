@@ -2,6 +2,7 @@ package com.lms.logistic.dao;
 
 import java.util.List;
 
+import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
 
@@ -26,4 +27,10 @@ public interface LogisticDao {
 	 * @return
 	 */
 	int deleteLogistic(int orderId);
+	
+	/**
+	 * 获取物流信息列表
+	 * @return
+	 */
+	List<LogisticDetailEntity> logisticList();
 }
