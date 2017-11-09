@@ -52,6 +52,12 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 		return list;
 	}
 
+	@Override
+	public List<LogisticStatusEntity> customerLogisticList(String orderSeq) {
+		List<LogisticStatusEntity> list = logisticDao.customerLogisticList(orderSeq);
+		return list;
+	}
+
 
 	
 

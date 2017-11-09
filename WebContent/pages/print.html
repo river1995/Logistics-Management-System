@@ -6,294 +6,160 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>BMS Management System</title>
+	<link rel="shortcut icon" href="images/truck-s.png">
+    <title>Zaleno Express | Logistic & Transportation</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/bootstrap/dist/css/bootstrap-table.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- layer ui css-->
-    <link rel="stylesheet" href="../vendors/layui-css/layui.css">
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.css" rel="stylesheet">
-     <!-- bms -->
-    <link href="../build/css/bms.css" rel="stylesheet">  
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">   
+   
+ 	<style>
+ 	/*order*/
+.order{
+	margin:4% auto;
+	border:2px solid black;
+	height:900px;
+	width:500px;
+	}
+.brand{
+	border-bottom:2px solid black
+	}
+.brand img{
+	width:100%
+	}
+.brand h4{
+	margin-top:4%
+	}
+.ex-info{
+	border-bottom:2px solid black;
+	padding:0;
+	}
+.ex-number{
+	text-align:center;
+	margin-top:3%
+	}
+
+.ex-qr{
+	text-align:center;
+	border-left:2px solid black;
+	padding:4px 0;
+	}	
+.ex-qr img{
+	width:100px;
+	}
+.main-section{
+	border-bottom:2px solid black;
+	}
+.hint{
+	margin-left:-20px;
+	margin-top:6px
+	}		
+.sub-hint{
+	font-size:16px;
+	font-weight:200
+	}	
+.person-info{
+	margin-top:-10px;
+	font-size:18px;
+	font-weight:500
+	}	
+.bar{
+	text-align:Center;
+	padding-top:10px
+	}	
+.bar img{
+	width:380px
+	}	
+	
+ 	</style>
   </head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>BMS</span></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/user.png"  id="user-img-left" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2 id="user-name-left"></h2>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section active">
-                <h3>Management</h3>
-                <ul class="nav side-menu" style="margin-top: 30px;">
-                 
-                  <li class="current-page account-li"><a href="order.html"><i class="fa fa-address-book-o fa-fw "></i> 物流订单 </a>
-                    
-                  </li>
-                </ul>
-              </div>
-             
-
-            </div>
-            <!-- /sidebar menu -->
-
-          </div>
-        </div>
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/user.png" id="user-img-top" alt=""><font id="user-name-top"></font>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    
-                    <li>
-                      <a href="settings.html">
-                        
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    
-                    <li><a href="../bms/v1.0/admin_logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-
-                
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-        	<div class="row no-print">
-              <div class="col-xs-12">
-                <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>                
-                <button class="btn btn-primary pull-right generate-btn" style="margin-right: 5px;" id="export-pdf"><i class="fa fa-download"></i> Generate PDF</button>
-              </div>
-            </div>
-          <div class="invoice-main">
-          	
-            <div class="page-title">
-              <div class="title_left">
-                <ol class="breadcrumb">
-   			 		<li><a href="order.html" class="bread">物流订单</a></li>
-   			 		<li class="unbread">打印物流单号</li>   			 		
-				</ol>
-              </div>
-
-              <div class="title_right">
-                
-              </div>
-            </div>
+  <body>
+	<div class="row">
+	<div class="col-md-12">
+		<div class="order">
+			<div class="col-md-12 col-xs-12 brand">
+				<div class="col-md-2 col-xs-2">
+					<img src="images/truck.png">
+				</div>
+				<div class="col-md-10 col-xs-10">
+					<h4>Zaleno Express</h4>
+				</div>
+			</div><!--brand-->
 			
-            <div class="clearfix"></div>
+			<div class="col-md-12 col-xs-12 ex-info">
+				<div class="col-md-8 col-xs-8 ex-number">
+					<h2>WA 4867 - 68</h2>
+				</div>
+				<div class="col-md-4 col-xs-4 ex-qr">
+					<img src="images/qr.png">
+				</div>
+			</div><!--ex-info-->
 			
-            <div class="row" id="invoice-row">
-              <div class="col-md-12">
-                <div class="x_panel" id="invoice-pdf">
-                  <div class="x_title">
-                    <font style="font-size:30px;">BMS Invoice</font>
-                  
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
+			<div class="col-md-12 col-xs-12 main-section">
+				<div class="col-md-12 col-xs-12">
+					<h3 class="hint">From:</h3>
+				</div>
+				<div class="col-md-6 col-xs-6">
+					<p class="sub-hint">#Sender's Name</h3>
+					<p class="person-info">Selena Gomez</p>
+				</div>
+				<div class="col-md-6 col-xs-6">
+					<p class="sub-hint">#Phone</h3>
+					<p class="person-info">13265889655</p>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<p class="sub-hint">#Address</h3>
+					<p class="person-info">99 Margaret Corbin Drive</p>
+					<p class="person-info">Fort Tryon Park</p>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<p class="sub-hint">#City</h3>
+					<p class="person-info">New York, NY 10040</p>					
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<p class="sub-hint">#Country</h3>
+					<p class="person-info">America</p>					
+				</div>
+			</div><!--marin-section-->
+			<div class="col-md-12 col-xs-12 main-section">
+				<div class="col-md-12 col-xs-12">
+					<h3 class="hint">To:</h3>
+				</div>
+				<div class="col-md-6 col-xs-6">
+					<p class="sub-hint">#Recipient's Name</h3>
+					<p class="person-info">John Doe</p>
+				</div>
+				<div class="col-md-6 col-xs-6">
+					<p class="sub-hint">#Phone</h3>
+					<p class="person-info">13266558899</p>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<p class="sub-hint">#Address</h3>
+					<p class="person-info">99 Margaret Corbin Drive</p>
+					<p class="person-info">Fort Tryon Park</p>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<p class="sub-hint">#City</h3>
+					<p class="person-info">New York, NY 10040</p>					
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<p class="sub-hint">#Country</h3>
+					<p class="person-info">America</p>					
+				</div>
+			</div><!--marin-section-->
+			
+			<div class="col-md-12 col-xs-12 bar">
+				<img src="images/bar.jpg">
+			</div>
+		</div><!--order-->
 
-                    <section class="content invoice">
-                      <!-- title row -->
-                      <div class="row">
-                        <div class="col-xs-12 invoice-header">
-                          <h1>
-                                          <i class="fa fa-globe"></i> Invoice.
-                                          <small class="pull-right">Date: <font class="invoice_time"></font></small>
-                                      </h1>
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- info row -->
-                      <div class="row invoice-info">
-                        <div class="col-sm-6 invoice-col">
-                          From
-                          <address>
-                                          <strong class="from_company_name"></strong>
-                                          <br><font class="from_company_street"></font>
-                                          <br><font class="from_company_area"></font>
-                                          <br><font class="from_company_phone"></font>
-                                          <br><font class="from_company_email"></font>
-                                      </address>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6 pull-right invoice-col">
-                          To
-                          <address>
-                                          <strong class="to_company_name"></strong>
-                                          <p class="to_company_street"></p>
-                                          <p class="to_company_area"></p>
-                                          <p class="to_company_phone"></p>
-                                          <p class="to_company_email"></p>
-                                      </address>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6 invoice-col">
-                          <b>Invoice No:</b>&nbsp;&nbsp;<font class="invoice_no"></font>
-                          <br>
-                          <b>Terms:</b>&nbsp;&nbsp;<font class="invoice_terms"></font>
-                          <br>
-                          <b>Account Number:</b> &nbsp;&nbsp;<font class="invoice_account_no"></font>
-                          <br>
-                          <b>Branch Code:</b>&nbsp;&nbsp;<font class="branch_code"></font>
-                          <br>
-                          <b>Account Type:</b>&nbsp;&nbsp;<font class="account_type"></font>
-                          <br>
-                          <b>Claim Number:</b>&nbsp;&nbsp;<font class="claim_no"></font>
-                          <br>                    
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      <!-- Table row -->
-                      <div class="row" style="margin-top:30px;">
-                        <div class="col-xs-12 table">
-                          <table class="table table-striped" id="order-table">
-                            <thead>
-                              <tr>
-                                <th>Quality</th>
-                                <th>Product</th>
-                                <th>Service</th>
-                                <th>Price</th>
-                                <th>Discount</th>
-                                <th>tax</th>                                
-                                <th>Subtotal</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      <div class="row">
-                       <div class="col-xs-6">
-                          <p class="lead">Amount Due : <font class="invoice_time"></font></p>
-                          <div class="table-responsive">
-                            <table class="table">
-                              <tbody>
-                                <tr>
-                                  <th class="col-sm-3">Subtotal:</th>
-                                  <td class="subtotal col-sm-3"></td>
-                                </tr>
-                                <tr>
-                                  <th>VAT <font class="vat-percent"></font></th>
-                                  <td class="vat"></td>
-                                </tr>                                
-                                <tr>
-                                  <th>Total:</th>
-                                  <td class="total"></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <!-- accepted payments column -->
-                        <div class="col-xs-12">
-                          
-                          <h3 class="text-muted well well-md no-shadow" style="margin-top: 10px;">
-                            Balance Due: <br><br><font class='total'>265.24</font>
-                          </h3>
-                        </div>
-                        <!-- /.col -->
-                       
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-
-                      <!-- this row will not appear when printing -->
-                      
-                    </section>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            BMS-
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
-    </div>
-
-    <!-- jQuery -->
+	</div>
+	</div><!--row-->
+     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    
-    <!-- bootstrap table 插件 -->
-    <script src="../js/libs/bootstrapValidator.js"></script>
-    <script src="../js/libs/bootstrap-table.js"></script>
-    <script src="../js/libs/bootstrap-table-export.js"></script>
-    <!-- FastClick -->
-   <!-- <script src="../vendors/fastclick/lib/fastclick.js"></script>-->
-    <!-- NProgress -->
-    <!--<script src="../vendors/nprogress/nprogress.js"></script>-->
 
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-    <!-- layer ui -->
-    <script src="../js/libs/layui.all.js"></script>
-   
-  	 <!-- jsPDF插件 -->
-    <script src="../js/libs/jspdf.min.js"></script>
-    <!-- html2Canvas 插件 -->
-  	<script src="../js/libs/html2canvas.js"></script>
-  	<script src="../js/pages/nav-option.js"></script>
-  	<script src="../js/pages/invoice-detail.js"></script>
+
   </body>
 </html>

@@ -15,6 +15,8 @@ public class ConstantsUtil {
 	public static String redisUrl;
 	public static String redisPassword;
 	public static int redisPort;
+	
+	public static String accessIp;
 
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
@@ -74,11 +76,17 @@ public class ConstantsUtil {
 	public final static String ROLE_SUPER_ADMIN = "super_admin";
 	public final static String ROLE_COMPANY_ADMIN = "company_admin";
 	public final static String ROLE_INVOICE_ADMIN = "invoice_admin";
+	
+	
+
+	
+	
 
 	static {
 
 		dbdriver = "com.mysql.jdbc.Driver";
 		if (mode.equals("dev")) {
+			accessIp = "192.168.2.175";
 			dburl = "jdbc:mysql://localhost:3306/logistics_center?characterEncoding=UTF-8";
 			dbusername = "root";
 			dbpassword = "1234";
@@ -96,6 +104,7 @@ public class ConstantsUtil {
 			imagePath = basePath + "/img/upload/";
 			exportPath = basePath + "/export-file/";
 		} else if (mode.equals("test")) {
+			accessIp = "45.79.74.195";
 			dburl = "jdbc:mysql://localhost:3306/bms_center?characterEncoding=UTF-8";
 			dbusername = "root";
 			dbpassword = "8dT9i}j[78Td";

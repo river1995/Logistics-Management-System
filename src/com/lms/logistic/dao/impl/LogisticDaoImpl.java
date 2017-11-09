@@ -168,6 +168,38 @@ public class LogisticDaoImpl implements LogisticDao {
 		return list;
 	}
 
+	@Override
+	public List<LogisticStatusEntity> customerLogisticList(String orderSeq) {
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stat = null;
+		List<LogisticStatusEntity> list = new ArrayList<>();
+		try {
+			String sql = "select os.located_at,os.address from `order` join order_status os on `order`.id = os.order_id where `order`.order_seq = ? and os.located_at<?";
+			conn = DBConnector.getConnection();
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, orderSeq);
+			stat.setLong(2, System.currentTimeMillis());
+			System.out.println("LogisticDaoImpl.customerLogisticList():" + stat.toString());
+			rs = stat.executeQuery();
+			while(rs.next()){
+				LogisticStatusEntity statusEntity = new LogisticStatusEntity();
+				statusEntity.setAddress(rs.getString("address"));
+				statusEntity.setTime(DateFormatUtil.changeLongTimeToString(rs.getLong("located_at")));
+				list.add(statusEntity);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return list;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(System.currentTimeMillis());
+	}
 	
 
 }
