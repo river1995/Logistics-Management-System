@@ -8,6 +8,8 @@ public class LogisticEntity {
 	private String fromCity;
 	private String gatewayCity;
 	private String expireTime;
+	private String finishTime;
+	private String createTime;
 	private String logisticCompany;
 	private int counts;
 	public int getId() {
@@ -52,6 +54,19 @@ public class LogisticEntity {
 	}
 	public void setGatewayCity(String gatewayCity) {
 		this.gatewayCity = gatewayCity;
+	}
+	
+	public String getFinishTime() {
+		return finishTime;
+	}
+	public void setFinishTime(String finishTime) {
+		this.finishTime = finishTime;
+	}
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 	public String getExpireTime() {
 		return expireTime;

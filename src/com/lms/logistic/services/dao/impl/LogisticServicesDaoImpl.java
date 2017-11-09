@@ -10,6 +10,8 @@ import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
 import com.lms.logistic.services.dao.LogisticServiceDao;
 
+import net.sf.json.JSONArray;
+
 public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	
 	private LogisticDaoImpl logisticDao = new LogisticDaoImpl();
@@ -20,6 +22,7 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 		boolean flag = false;
 		int orderId = logisticDao.addLogistic(detailEntity.getLogisticEntity());
 		if (orderId > 0) {
+			
 			int rs = logisticDao.addLogisticStatus(detailEntity.getStatusEntity(), orderId);
 			if (rs > 0) {
 				flag = true;
@@ -38,9 +41,18 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	}
 
 	@Override
-	public List<LogisticDetailEntity> logisticList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<LogisticStatusEntity> statusList(int orderId) {
+		List<LogisticStatusEntity> list = logisticDao.statusList(orderId);
+		return list;
 	}
+
+	@Override
+	public List<LogisticEntity> logisticList() {
+		List<LogisticEntity> list = logisticDao.logisticList();
+		return list;
+	}
+
+
+	
 
 }
