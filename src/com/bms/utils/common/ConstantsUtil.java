@@ -21,7 +21,7 @@ public class ConstantsUtil {
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
 	public final static String encrypt = "yes";
-	public final static String mode = "dev";
+	public final static String mode = "test";
 	public final static String server = "outside";
 	public final static String dateFormat = "yyyy-MM-dd HH:mm:ss";
 	public final static int dbSharping = 10;
@@ -86,7 +86,7 @@ public class ConstantsUtil {
 
 		dbdriver = "com.mysql.jdbc.Driver";
 		if (mode.equals("dev")) {
-			accessIp = "192.168.2.175";
+			accessIp = "192.168.199.230";
 			dburl = "jdbc:mysql://localhost:3306/logistics_center?characterEncoding=UTF-8";
 			dbusername = "root";
 			dbpassword = "1234";
@@ -105,9 +105,9 @@ public class ConstantsUtil {
 			exportPath = basePath + "/export-file/";
 		} else if (mode.equals("test")) {
 			accessIp = "45.79.74.195";
-			dburl = "jdbc:mysql://localhost:3306/bms_center?characterEncoding=UTF-8";
+			dburl = "jdbc:mysql://localhost:3306/logistics_center?characterEncoding=UTF-8";
 			dbusername = "root";
-			dbpassword = "8dT9i}j[78Td";
+			dbpassword = "f2jsEQ!u)";
 			// redis数据库配置
 			redisUrl = "127.0.0.1";
 			redisPort = 6379;

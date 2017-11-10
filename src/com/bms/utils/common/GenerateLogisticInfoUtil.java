@@ -15,7 +15,6 @@ public class GenerateLogisticInfoUtil {
 		String fromCountry = logisticEntity.getFromCountry();
 		String fromCity = logisticEntity.getFromCity();
 		String gatewayCity = logisticEntity.getGatewayCity();
-		String expireTime = logisticEntity.getExpireTime();
 		
 		long beginTime = System.currentTimeMillis();
 		long RandomBeginTime = (long) (beginTime+1000*60*60*(RandomUtil.getRandomTime(20 ,32)));

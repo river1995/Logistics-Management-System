@@ -25,16 +25,21 @@ public class LogisticDaoImpl implements LogisticDao {
 		Connection conn = null;
 		PreparedStatement stat = null;
 		try {
-			String sql = "insert into `order`(order_seq,from_city,gateway_city,expire_time,logistic_company,created_at,from_country) values(?,?,?,?,?,?,?)";
+			String sql = "insert into `order`(order_seq,from_city,gateway_city,created_at,from_country,contact,phone,sender,sender_address,contact_address,finished_at) values(?,?,?,?,?,?,?,?,?,?,?)";
 			conn = DBConnector.getConnection();
 			stat = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			stat.setString(1, logisticEntity.getOrderSeq());
 			stat.setString(2, logisticEntity.getFromCity());
 			stat.setString(3, logisticEntity.getGatewayCity());
-			stat.setString(4, logisticEntity.getExpireTime());
-			stat.setString(5, logisticEntity.getLogisticCompany());
-			stat.setLong(6, System.currentTimeMillis());
-			stat.setString(7, logisticEntity.getFromCountry());
+			//stat.setString(4, logisticEntity.getExpireTime());
+			stat.setLong(4, System.currentTimeMillis());
+			stat.setString(5, logisticEntity.getFromCountry());
+			stat.setString(6, logisticEntity.getContact());
+			stat.setString(7, logisticEntity.getPhone());
+			stat.setString(8, logisticEntity.getSender());
+			stat.setString(9, logisticEntity.getFromCountry());
+			stat.setString(10, logisticEntity.getContactAddress());
+			stat.setLong(11, DateFormatUtil.changeTimeStampToUnixTime(logisticEntity.getFinishTime()));
 			System.out.println("LogisticDaoImpl.addLogistic():"+stat.toString());
 			stat.executeUpdate();
 			rs = stat.getGeneratedKeys();
@@ -141,7 +146,7 @@ public class LogisticDaoImpl implements LogisticDao {
 		PreparedStatement stat = null;
 		List<LogisticEntity> list = new ArrayList<>();
 		try {
-			String sql = "select id,order_seq,counts,created_at,finished_at,from_city,gateway_city,logistic_company,from_country  from `order` ";
+			String sql = "select id,order_seq,counts,created_at,finished_at,from_city,gateway_city,logistic_company,from_country,contact,phone,sender,sender_address,contact_address  from `order` ";
 			conn = DBConnector.getConnection();
 			stat = conn.prepareStatement(sql);
 			System.out.println("LogisticDaoImpl.logisticList():" + stat.toString());
@@ -156,7 +161,12 @@ public class LogisticDaoImpl implements LogisticDao {
 				logisticEntity.setLogisticCompany(rs.getString("logistic_company"));
 				logisticEntity.setOrderSeq(rs.getString("order_seq"));
 				logisticEntity.setCreateTime(DateFormatUtil.changeLongTimeToString(rs.getLong("created_at")));
-				logisticEntity.setFinishTime(DateFormatUtil.changeDateToSimple(rs.getLong("finished_at")));
+				logisticEntity.setFinishTime(DateFormatUtil.changeLongTimeToString(rs.getLong("finished_at")));
+				logisticEntity.setContact(rs.getString("contact"));
+				logisticEntity.setPhone(rs.getString("phone"));
+				logisticEntity.setSender(rs.getString("sender"));
+				logisticEntity.setSenderAddress(rs.getString("sender_address"));
+				logisticEntity.setContactAddress(rs.getString("contact_address"));
 				list.add(logisticEntity);				
 			}
 		} catch (SQLException e) {
@@ -197,8 +207,67 @@ public class LogisticDaoImpl implements LogisticDao {
 		return list;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(System.currentTimeMillis());
+	
+	@Override
+	public LogisticEntity logisticInfo(int orderId) {
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement stat = null;
+		LogisticEntity logisticEntity = new LogisticEntity();
+		try {
+			String sql = "select id,order_seq,counts,created_at,finished_at,from_city,gateway_city,logistic_company,from_country,contact,phone,sender,sender_address,contact_address  from `order` where id=?";
+			conn = DBConnector.getConnection();
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, orderId);
+			System.out.println("LogisticDaoImpl.logisticInfo():" + stat.toString());
+			rs = stat.executeQuery();
+			while(rs.next()){
+				logisticEntity.setId(rs.getInt("id"));
+				logisticEntity.setFromCity(rs.getString("from_city"));
+				logisticEntity.setFromCountry(rs.getString("from_country"));
+				logisticEntity.setGatewayCity(rs.getString("gateway_city"));
+				logisticEntity.setCounts(rs.getInt("counts"));
+				logisticEntity.setLogisticCompany(rs.getString("logistic_company"));
+				logisticEntity.setOrderSeq(rs.getString("order_seq"));
+				logisticEntity.setCreateTime(DateFormatUtil.changeLongTimeToString(rs.getLong("created_at")));
+				logisticEntity.setFinishTime(DateFormatUtil.changeDateToSimple(rs.getLong("finished_at")));
+				logisticEntity.setContact(rs.getString("contact"));
+				logisticEntity.setPhone(rs.getString("phone"));
+				logisticEntity.setSender(rs.getString("sender"));
+				logisticEntity.setSenderAddress(rs.getString("sender_address"));
+				logisticEntity.setContactAddress(rs.getString("contact_address"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return logisticEntity;
+	}
+
+	@Override
+	public int addLogisticNo(String logisticNo, String logisticCompany, int orderId) {
+		int rs = 0;
+		Connection conn = null;
+		PreparedStatement stat = null;
+		try {
+			String sql = "update `order` set logistic_company=?,logistic_no=? where id=?";
+			conn = DBConnector.getConnection();
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, logisticCompany);
+			stat.setString(2, logisticNo);
+			stat.setInt(3, orderId);
+			System.out.println("LogisticDaoImpl.addLogisticNo():" + stat.toString());
+			stat.executeUpdate();
+			rs = 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return rs;
 	}
 	
 

@@ -3,6 +3,11 @@ package com.lms.logistic.entities;
 public class LogisticEntity {
 	private int id;
 	private int userId;
+	private String contact;
+	private String contactAddress;
+	private String phone;
+	private String sender;
+	private String senderAddress;
 	private String orderSeq;
 	private String fromCountry;
 	private String fromCity;
@@ -17,6 +22,38 @@ public class LogisticEntity {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	
+	public String getContactAddress() {
+		return contactAddress;
+	}
+	public void setContactAddress(String contactAddress) {
+		this.contactAddress = contactAddress;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getSender() {
+		return sender;
+	}
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+	public String getSenderAddress() {
+		return senderAddress;
+	}
+	public void setSenderAddress(String senderAddress) {
+		this.senderAddress = senderAddress;
 	}
 	public int getUserId() {
 		return userId;

@@ -47,19 +47,15 @@ public class generateLogisticInfoServlet extends HttpServlet {
 		String fromCountry = request.getParameter("from_country");
 		String fromCity = request.getParameter("from_city");
 		String gatewayCity = request.getParameter("gateway_city");
-		String lastTime = request.getParameter("expire_time");
-		String logisticCompany = request.getParameter("logistic_company");
-		System.out.println("fromCountry:"+fromCountry+"\n"+"fromCity:"+fromCity+"\n"+"gatewayCity:"+gatewayCity+"\n"
-				+"lastTime:"+lastTime+"\n"+"logisticCompany:"+logisticCompany+"\n");
-		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity) && !stringUtil.isNullString(lastTime)
-				&& !stringUtil.isNullString(logisticCompany) && !stringUtil.isNullString(fromCountry)) {
+		//String lastTime = request.getParameter("expire_time");
+		System.out.println("fromCountry:"+fromCountry+"\n"+"fromCity:"+fromCity+"\n"+"gatewayCity:"+gatewayCity+"\n");
+		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity)
+				 && !stringUtil.isNullString(fromCountry)) {
 			LogisticEntity logisticEntity = new LogisticEntity();
-			logisticEntity.setExpireTime(lastTime);
 			logisticEntity.setFromCountry(fromCountry);
 			logisticEntity.setFromCity(fromCity);
 			logisticEntity.setGatewayCity(gatewayCity);
-			logisticEntity.setLogisticCompany(logisticCompany);
-			logisticEntity.setOrderSeq(System.currentTimeMillis()+"");
+			logisticEntity.setOrderSeq(StringUtil.generateLogisticNo());
 			List<LogisticStatusEntity> list = logisticService.generateLogsiticInfo(logisticEntity);
 			if (list != null && list.size() > 0) {
 				apiResultEntity.setCode(0);

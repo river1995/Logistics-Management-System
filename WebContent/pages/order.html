@@ -142,7 +142,9 @@
                       <thead>
                         <tr>
                           <th>订单号</th>
-                          <th>始发国家</th>
+                          <th>收件人</th>
+                          <th>联系方式</th>
+                          <th>发件人</th>
                           <th>始发城市</th>
                           <th>创建时间</th>
                           <th>入关时间</th>
@@ -197,9 +199,45 @@
                         
                         <div class="modal-body">
                         	<form class="form-horizontal form-label-left" id="edit-form">
+                        	
                         	<div class="form-group" style="display:none">
                         		<input type="reset" id="reset" class="reset">
                         	</div>
+                        	<div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">收件人 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="contact" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                        	<div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">收件人地址<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="contact-address" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">联系方式 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">发件人<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="sender" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">发件人地址<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="sender-address" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发货国家 <span class="required">*</span>
                             </label>
@@ -238,20 +276,6 @@
                           		</select>
                             </div>
                           </div>  
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">国外货运时长 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="expire-time" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="单位：天">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">国内货运公司 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="logistic-type" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
-                            </div>
-                          </div>
 
                         </form>
                         </div>
@@ -320,12 +344,19 @@
                         
                         <div class="modal-body">
                         	<form class="form-horizontal form-label-left" id="edit-form">
-
+						
+						<div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">国内物流公司 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text" id="logistic-company" name="logistic-company" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">国内物流订单号 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="edit-phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="logistic-no" name="logistic-no" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           
@@ -335,8 +366,8 @@
                         </div>
                         
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary edit-submit" >Save</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                          <button type="button" class="btn btn-primary edit-submit" >提交</button>
                         </div>
                    
                        
@@ -374,7 +405,7 @@
                         
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                          <button type="button" class="btn btn-primary confirm-submit" >确认</button>
+                          <button type="button" class="btn btn-primary edit-confirm-submit" data-dismiss="modal">确认</button>
                         </div>
                    
                        

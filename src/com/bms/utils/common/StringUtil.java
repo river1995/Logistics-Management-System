@@ -83,9 +83,19 @@ public class StringUtil {
 			
 	}
 	
+	public static String generateLogisticNo(){
+		String result = "";
+		result = "ZE-"+(System.currentTimeMillis()+"").substring(4, 13);
+		return result;
+	}
+	
 	public static int getRandomNumber(){
 		int randomNum = (int)(Math.random()*3)+41;
 		return randomNum;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(generateLogisticNo());
 	}
 	
 	
