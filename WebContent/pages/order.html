@@ -33,33 +33,22 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>LMS</span></a>
+              <a href="#" class="site_title"> <span></span></a>
             </div>
 
-            <div class="clearfix"></div>
+            
 
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/user.png"  id="user-img-left" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2 id="user-name-left"></h2>
-              </div>
-              <div class="clearfix"></div>
-            </div>
+            
             <!-- /menu profile quick info -->
 
-            <br />
+            <br>
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>Management</h3>
-                <ul class="nav side-menu" style="margin-top:30px;">
+              <div class="menu_section active">
+                <ul class="nav side-menu" style="margin-top: 30px;">
                  
-                  <li class="current-page account-li" ><a href="order.html"><i class="fa fa-address-book-o fa-fw "></i> 物流订单 </a>
+                  <li class="current-page account-li"><a href="order.html"><i class="fa fa-address-book-o fa-fw "></i> 物流订单 </a>
                     
                   </li>
                 </ul>
@@ -128,7 +117,15 @@
  
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">               
+                <div class="x_panel">      
+                	<div class="col-md-5 col-sm-5 col-xs-4 form-group pull-right top_search">
+                  			<div class="input-group">
+                    			<input type="text" class="form-control search-text"  placeholder="输入系统订单号查询结果">
+                    			<span class="input-group-btn">
+                      			<button class="btn btn-default search-btn" type="button">Go!</button>
+                    			</span>
+                  			</div>
+                			</div>         
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">订单信息</a>
@@ -141,13 +138,14 @@
                           <table id="datatable" class="table table-striped " >
                       <thead>
                         <tr>
-                          <th>订单号</th>
-                          <th>始发国家</th>
+                          <th data-field="order_seq">订单号</th>
+                          <th>收件人</th>
+                          <th>发件人</th>
                           <th>始发城市</th>
-                          <th>创建时间</th>
-                          <th>入关时间</th>
                           <th>海关城市</th>
-                          <th>编辑信息</th>                         
+                          <th>入关时间</th>
+                          <th>国内快递</th>
+                          <th>编辑信息</th>    
                         </tr>
                       </thead>
 
@@ -197,9 +195,42 @@
                         
                         <div class="modal-body">
                         	<form class="form-horizontal form-label-left" id="edit-form">
+                        	
                         	<div class="form-group" style="display:none">
                         		<input type="reset" id="reset" class="reset">
                         	</div>
+                        	<div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">收件人 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="contact" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">发件人<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="sender" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">发件人联系方式<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="sender-phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发件人地址 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              	<select class="form-control character-select col-md-7 col-xs-12" id="sender-address" >
+                              		<option>请选择发件人地址</option>
+                              		<option value='us' class='us'>1175 Pine St, Seattle, WA 98181.USA</option>
+                              		<option value='ita' class='ita'>La Locandina dei Navili, Ripa di Porta Ticinese, 21, 20144 Milano MI, Italy</option>
+                          		</select>
+                            </div>
+                          </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">发货国家 <span class="required">*</span>
                             </label>
@@ -238,20 +269,6 @@
                           		</select>
                             </div>
                           </div>  
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">国外货运时长 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="expire-time" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="单位：天">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">国内货运公司 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="logistic-type" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
-                            </div>
-                          </div>
 
                         </form>
                         </div>
@@ -319,13 +336,28 @@
                         </div>
                         
                         <div class="modal-body">
-                        	<form class="form-horizontal form-label-left" id="edit-form">
-
+                        	<form class="form-horizontal form-label-left" >
+						
+						    <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">物流公司 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <select class="form-control character-select col-md-7 col-xs-12" id="company-select" >
+                              	<option value="sf">顺丰</option>
+                              	<option value="st">申通</option>
+                              	<option value="yt">圆通</option>
+                              	<option value="zt">中通</option>
+                              	<option value="ems">EMS</option>
+                              	<option value="yd">韵达</option>
+                              	<option value="bs">百世</option>
+                          		</select>
+                            </div>
+                          </div>  
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">国内物流订单号 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="edit-phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="logistic-no" name="logistic-no" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           
@@ -335,8 +367,8 @@
                         </div>
                         
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary edit-submit" >Save</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                          <button type="button" class="btn btn-primary edit-submit" >提交</button>
                         </div>
                    
                        
@@ -374,7 +406,7 @@
                         
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                          <button type="button" class="btn btn-primary confirm-submit" >确认</button>
+                          <button type="button" class="btn btn-primary edit-confirm-submit" data-dismiss="modal">确认</button>
                         </div>
                    
                        

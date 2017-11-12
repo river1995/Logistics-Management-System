@@ -49,24 +49,39 @@ public class addLogisticServlet extends HttpServlet {
 		
 		int userId = (int) request.getSession().getAttribute("user_id");
 		ApiResultEntity<String> apiResultEntity = new ApiResultEntity<>();
+		String gatewayTime = request.getParameter("gateway_time");
+		String contact = request.getParameter("contact");
+		//String contactAddress = request.getParameter("contact_address");
+		//String phone = request.getParameter("phone");
+		String sender = request.getParameter("sender");
+		String senderAddress = request.getParameter("sender_address");
 		String fromCountry = request.getParameter("from_country");
 		String fromCity = request.getParameter("from_city");
 		String gatewayCity = request.getParameter("gateway_city");
-		String expireTime = request.getParameter("expire_time");
-		String logisticCompany = request.getParameter("logistic_company");
+		//String expireTime = request.getParameter("expire_time");
 		String logisticJSON = request.getParameter("logistic_json");
+		String senderPhone = request.getParameter("sender-phone");
+		System.out.println("senderPhone:"+senderPhone);
 		//System.out.println("fromCountry:"+fromCountry+"\n"+"fromCity:"+fromCity+"\n"+"gatewayCity:"+gatewayCity+"\n"+"expireTime:"+expireTime+"\n"+"logisticCompany:"+logisticCompany+"\n"+"logisticJSON:"+logisticJSON);
 		
-		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity) && !stringUtil.isNullString(expireTime)
-				&& !stringUtil.isNullString(logisticCompany) && !stringUtil.isNullString(fromCountry) && !stringUtil.isNullString(logisticJSON)) {
+		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity)&& !stringUtil.isNullString(gatewayTime) && !stringUtil.isNullString(senderPhone)
+				&& !stringUtil.isNullString(fromCountry) && !stringUtil.isNullString(logisticJSON)
+				&& !stringUtil.isNullString(contact) && !stringUtil.isNullString(sender) && !stringUtil.isNullString(senderAddress)) {
 			LogisticDetailEntity detailEntity = new LogisticDetailEntity();
-			LogisticEntity logisticEntity = new LogisticEntity();
-			logisticEntity.setExpireTime(expireTime);
+			
+			LogisticEntity logisticEntity = new LogisticEntity();			
+			logisticEntity.setSenderPhone(senderPhone);
+			logisticEntity.setFinishTime(gatewayTime);
+			logisticEntity.setContact(contact);
+			logisticEntity.setContactAddress("Pudong New Area Pudian No. 438 ,Shuangge building,Shanghai city,Shanghai");
+			//logisticEntity.setPhone("");
+			logisticEntity.setSender(sender);
+			logisticEntity.setSenderAddress(senderAddress);
+			//logisticEntity.setExpireTime(expireTime);
 			logisticEntity.setFromCountry(fromCountry);
 			logisticEntity.setFromCity(fromCity);
 			logisticEntity.setGatewayCity(gatewayCity);
-			logisticEntity.setLogisticCompany(logisticCompany);
-			logisticEntity.setOrderSeq(System.currentTimeMillis()+"");
+			logisticEntity.setOrderSeq(StringUtil.generateLogisticNo());
 			logisticEntity.setUserId(userId);
 			
 			List<LogisticStatusEntity> list = JSONArray.toList(JSONArray.fromObject(logisticJSON), new LogisticStatusEntity(), new JsonConfig());//参数1为要转换的JSONArray数据，参数2为要转换的目标数据，即List盛装的数据
