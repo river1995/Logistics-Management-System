@@ -85,7 +85,7 @@ public class StringUtil {
 	
 	public static String generateLogisticNo(){
 		String result = "";
-		result = "ZE-"+(System.currentTimeMillis()+"").substring(4, 13);
+		result = "ZE"+(System.currentTimeMillis()+"").substring(4, 13);
 		return result;
 	}
 	

@@ -17,12 +17,12 @@ public class GenerateLogisticInfoUtil {
 		String gatewayCity = logisticEntity.getGatewayCity();
 		
 		long beginTime = System.currentTimeMillis();
-		long RandomBeginTime = (long) (beginTime+1000*60*60*(RandomUtil.getRandomTime(20 ,32)));
-		long onTheWayTime1 = (long) (RandomBeginTime+1000*60*60*(RandomUtil.getRandomTime(10 ,14)));
+		long RandomBeginTime = (long) (beginTime+1000*60*60*(RandomUtil.getRandomTime(7 ,10)));
+		long onTheWayTime1 = (long) (RandomBeginTime+1000*60*60*(RandomUtil.getRandomTime(7 ,10)));
 		long onTheWayTime2 = (long) (onTheWayTime1+1000*60*60*(RandomUtil.getRandomTime(5 ,9)));
-		long onTheWayTime3 = (long) (onTheWayTime2+1000*60*60*(RandomUtil.getRandomTime(35 ,43)));
+		long onTheWayTime3 = (long) (onTheWayTime2+1000*60*60*(RandomUtil.getRandomTime(30 ,35)));
 		long onTheWayTime4 = (long) (onTheWayTime3+1000*60*60*(RandomUtil.getRandomTime(16 ,20)));
-		long gatewayTime = (long) (onTheWayTime4+1000*60*60*(RandomUtil.getRandomTime(39 ,46)));
+		long gatewayTime = (long) (onTheWayTime4+1000*60*60*(RandomUtil.getRandomTime(35 ,40)));
 		System.out.println(DateFormatUtil.changeLongTimeToString(RandomBeginTime));
 		if(fromCountry.equals("us")){
 			LogisticStatusEntity prepare = new LogisticStatusEntity("Goods Are Consigned By Consignee ,800 Stewart St,Seattle,USA", DateFormatUtil.changeLongTimeToString(RandomBeginTime));

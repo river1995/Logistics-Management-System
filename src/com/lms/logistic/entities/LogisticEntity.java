@@ -8,6 +8,7 @@ public class LogisticEntity {
 	private String phone;
 	private String sender;
 	private String senderAddress;
+	private String senderPhone;
 	private String orderSeq;
 	private String fromCountry;
 	private String fromCity;
@@ -16,7 +17,9 @@ public class LogisticEntity {
 	private String finishTime;
 	private String createTime;
 	private String logisticCompany;
+	private String logisticNo;
 	private int counts;
+	private String createLogTime;
 	public int getId() {
 		return id;
 	}
@@ -48,6 +51,13 @@ public class LogisticEntity {
 	}
 	public void setSender(String sender) {
 		this.sender = sender;
+	}
+	
+	public String getSenderPhone() {
+		return senderPhone;
+	}
+	public void setSenderPhone(String senderPhone) {
+		this.senderPhone = senderPhone;
 	}
 	public String getSenderAddress() {
 		return senderAddress;
@@ -117,5 +127,19 @@ public class LogisticEntity {
 	public void setLogisticCompany(String logisticCompany) {
 		this.logisticCompany = logisticCompany;
 	}
+	public String getLogisticNo() {
+		return logisticNo;
+	}
+	public void setLogisticNo(String logisticNo) {
+		this.logisticNo = logisticNo;
+	}
+	public String getCreateLogTime() {
+		return createLogTime;
+	}
+	public void setCreateLogTime(String createLogTime) {
+		this.createLogTime = createLogTime;
+	}
+	
+	
 	
 }

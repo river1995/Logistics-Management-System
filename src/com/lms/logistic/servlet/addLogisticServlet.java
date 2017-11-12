@@ -51,8 +51,8 @@ public class addLogisticServlet extends HttpServlet {
 		ApiResultEntity<String> apiResultEntity = new ApiResultEntity<>();
 		String gatewayTime = request.getParameter("gateway_time");
 		String contact = request.getParameter("contact");
-		String contactAddress = request.getParameter("contact_address");
-		String phone = request.getParameter("phone");
+		//String contactAddress = request.getParameter("contact_address");
+		//String phone = request.getParameter("phone");
 		String sender = request.getParameter("sender");
 		String senderAddress = request.getParameter("sender_address");
 		String fromCountry = request.getParameter("from_country");
@@ -60,18 +60,21 @@ public class addLogisticServlet extends HttpServlet {
 		String gatewayCity = request.getParameter("gateway_city");
 		//String expireTime = request.getParameter("expire_time");
 		String logisticJSON = request.getParameter("logistic_json");
-		System.out.println(contactAddress);
+		String senderPhone = request.getParameter("sender-phone");
+		System.out.println("senderPhone:"+senderPhone);
 		//System.out.println("fromCountry:"+fromCountry+"\n"+"fromCity:"+fromCity+"\n"+"gatewayCity:"+gatewayCity+"\n"+"expireTime:"+expireTime+"\n"+"logisticCompany:"+logisticCompany+"\n"+"logisticJSON:"+logisticJSON);
 		
-		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity)&& !stringUtil.isNullString(gatewayTime)
-				&& !stringUtil.isNullString(fromCountry) && !stringUtil.isNullString(logisticJSON) && !stringUtil.isNullString(contactAddress)
-				&& !stringUtil.isNullString(contact) && !stringUtil.isNullString(phone) && !stringUtil.isNullString(sender) && !stringUtil.isNullString(senderAddress)) {
+		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity)&& !stringUtil.isNullString(gatewayTime) && !stringUtil.isNullString(senderPhone)
+				&& !stringUtil.isNullString(fromCountry) && !stringUtil.isNullString(logisticJSON)
+				&& !stringUtil.isNullString(contact) && !stringUtil.isNullString(sender) && !stringUtil.isNullString(senderAddress)) {
 			LogisticDetailEntity detailEntity = new LogisticDetailEntity();
-			LogisticEntity logisticEntity = new LogisticEntity();
+			
+			LogisticEntity logisticEntity = new LogisticEntity();			
+			logisticEntity.setSenderPhone(senderPhone);
 			logisticEntity.setFinishTime(gatewayTime);
 			logisticEntity.setContact(contact);
-			logisticEntity.setContactAddress(contactAddress);
-			logisticEntity.setPhone(phone);
+			logisticEntity.setContactAddress("Pudong New Area Pudian No. 438 ,Shuangge building,Shanghai city,Shanghai");
+			//logisticEntity.setPhone("");
 			logisticEntity.setSender(sender);
 			logisticEntity.setSenderAddress(senderAddress);
 			//logisticEntity.setExpireTime(expireTime);

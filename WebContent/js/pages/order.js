@@ -15,9 +15,9 @@ $(document).ready(function(){
 		    country: ''
 		};
 	
-	showUser();
-	showProvince();
 	showLogisticData();
+	//showUser();
+	showProvince();
 	
 	$('.add-info-btn').on('click',function(){
 		$('.confirm-tbody').empty();
@@ -28,21 +28,24 @@ $(document).ready(function(){
 		
 	});
 	
-	$('.edit-confirm-submit').on('click',function(){
-		
-	});
+	
+	
 	
 	$('.add-submit').on('click',function(){
+		
+		$('.confirm-tbody').empty();
 		var contact = $('#contact').val();
 		var phone = $('#phone').val();
 		var sender = $('#sender').val();
-		var senderAddress = $('#sender-address').val();
+		var senderAddress = $('#sender-address').children('option:selected').html();
 		var contactAddress = $('#contact-address').val();
 		var fromCountry = $('#from-country').children('option:selected').val();
 		var fromCity = $('#from-city').children('option:selected').html();
+		var senderPhone = $('#sender-phone').val();
 		//var gatewayProvince = $('#gateway-province').children('option:selected').html();
 		var gatewayCity = $('#gateway-city').children('option:selected').html();
 		//var expireTime = $('#expire-time').val();
+		//alert(senderPhone);
 		$.ajax({
 			type : 'POST',
 			url : '../api/v1.0/generate_logistic_info',
@@ -59,6 +62,7 @@ $(document).ready(function(){
 					$('.confirm').modal('show');
 					
 					$('.confirm-submit').on('click' ,function(){
+						$('.confirm-submit').attr('disabled');
 						var logisticList = new Array();
 						var count = $('.add-time').length;
 						var gatewayTime = $('.add-time').eq(count-1).val();
@@ -71,7 +75,7 @@ $(document).ready(function(){
 						$.ajax({
 							type : 'POST',
 							url : '../api/v1.0/add_logstic',
-							data  : {'gateway_time':gatewayTime,'contact_address':contactAddress,'contact':contact,'phone':phone,'sender':sender,'sender_address':senderAddress,'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'logistic_json' : JSON.stringify(logisticList)},
+							data  : {'sender-phone':senderPhone,'gateway_time':gatewayTime,'contact_address':contactAddress,'contact':contact,'phone':phone,'sender':sender,'sender_address':senderAddress,'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'logistic_json' : JSON.stringify(logisticList)},
 							dataType : 'JSON',
 							success : function(data){
 								console.log("add_logistic:"+JSON.stringify(data));
@@ -82,6 +86,8 @@ $(document).ready(function(){
 									  }, function(){
 										  location.reload();
 									  }); 
+								}else{
+									$('.confirm-submit').removeAttr('disabled');
 								}
 							}
 						});
@@ -182,7 +188,7 @@ $(document).ready(function(){
 			    	$('.edit-submit').on('click' ,function(){
 			    		//alert('run test');
 			    		
-			    		var logisticCompany = $('#logistic-company').val();
+			    		var logisticCompany = $('#company-select').children('option:selected').html();
 			    		var logisticNo = $('#logistic-no').val();
 			    		$.ajax({
 			    			type : 'POST',
@@ -230,17 +236,15 @@ $(document).ready(function(){
 			},{
 				field:'contact'
 			},{
-				field:'phone'
-			},{
 				field:'sender'
 			},{
 				field:'from_city'
 			},{
-				field:'create_time'
+				field:'gateway_city'
 			},{
 				field:'finish_time'
 			},{
-				field:'gateway_city'
+				field:'logistic_company'
 			},{
 				field:'id',
 				formatter:function(value,row,index){
@@ -253,6 +257,31 @@ $(document).ready(function(){
 				
 			}]
 		});
+		
+		$('.search-btn').on('click',function(){
+			
+			var seq = $('.search-text').val();
+			if(seq == ''){
+				
+			}else{
+				
+				$.ajax({
+	    			type : 'POST',
+	    			url : '../api/v1.0/logistic_info_orderseq',
+	    			data  : {"order_seq":seq},
+	    			dataType : 'JSON',
+	    			success : function(res1){
+	    				console.log("根据单号查询:"+JSON.stringify(res1));
+	    				if(res1.code === 0){
+	    					
+	    					$('#datatable').bootstrapTable('removeAll');
+	    					$('#datatable').bootstrapTable('insertRow',{index:0,row:res1.data});
+	    				}
+	    			}
+	    		});
+			}
+			
+		})
 	}
 	
 })

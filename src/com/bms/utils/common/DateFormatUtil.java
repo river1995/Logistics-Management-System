@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class DateFormatUtil {
 
@@ -11,6 +12,7 @@ public class DateFormatUtil {
 
 	public static String changeLongTimeToString(long unixTime) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		format.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 		String result = "";
 		if (unixTime > 0) {
 			result = format.format(unixTime);
@@ -84,10 +86,12 @@ public class DateFormatUtil {
 //		String timeString = changeLongTimeToString(time);
 //		System.out.println(time);
 //		System.out.println(timeString);
-		long t1 = System.currentTimeMillis();
-		long t2 = (long) (t1 + 1000*60*60*23.5);
-		System.out.println("t1:"+changeLongTimeToString(t1));
-		System.out.println("t2:"+changeLongTimeToString(t2));
+//		long t1 = System.currentTimeMillis();
+//		long t2 = (long) (t1 + 1000*60*60*23.5);
+//		System.out.println("t1:"+changeLongTimeToString(t1));
+//		System.out.println("t2:"+changeLongTimeToString(t2));
+//		
+		System.out.println(DateFormatUtil.changeLongTimeToString(1510324863486l));
 	}
 
 }

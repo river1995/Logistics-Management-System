@@ -36,7 +36,7 @@ public interface LogisticServiceDao {
 	 * @param logisticEntity
 	 * @return
 	 */
-	List<LogisticEntity> logisticList();
+	List<LogisticEntity> logisticList(int userId);
 	
 	/**
 	 * 客户获取物流信息
@@ -53,4 +53,6 @@ public interface LogisticServiceDao {
 	LogisticEntity logisticInfo(int orderId);
 	
 	boolean addLogisticNo(String logisticNo ,String logisticCompany ,int orderId);
+	
+	LogisticEntity logisticInfoById(String orderSeq);
 }

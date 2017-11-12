@@ -40,8 +40,9 @@ public class LogisticListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int userId = (int) request.getSession().getAttribute("user_id");
 		ApiResultEntity<List<LogisticEntity>> apiResultEntity = new ApiResultEntity<>();
-		List<LogisticEntity> list = logisticService.logisticList();
+		List<LogisticEntity> list = logisticService.logisticList(userId);
 		if (list != null && list.size() > 0) {
 			apiResultEntity.setCode(0);
 			apiResultEntity.setMessage("success");
@@ -51,7 +52,7 @@ public class LogisticListServlet extends HttpServlet {
 			apiResultEntity.setMessage("数据未找到");
 		}
 		JsonConfig jsonConfig = new JsonConfig();
-		jsonConfig.setJsonPropertyFilter(new IgnoreNullProprety());
+		//jsonConfig.setJsonPropertyFilter(new IgnoreNullProprety());
 		jsonConfig.registerJsonPropertyNameProcessor(LogisticEntity.class, new ChangeFieldNameStandard());
 		response.getWriter().print(JSONObject.fromObject(apiResultEntity ,jsonConfig));
 	}

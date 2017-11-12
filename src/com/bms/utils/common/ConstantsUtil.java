@@ -31,6 +31,7 @@ public class ConstantsUtil {
 	public final static long accessTokenTime = 15 * 24 * 60 * 60 * 1000; // token失效时间：单位ms
 	public final static int emailCaptchaTime = 30 * 60 * 1000; // 邮箱验证码失效时间：单位ms
 	public final static int sendCaptchaAgainTime = 60 * 1000; // 允许再次发送验证码的时间:单位ms
+	
 
 	// 邮箱配置
 //	public final static String smtpServer = "smtp.163.com";
@@ -86,7 +87,7 @@ public class ConstantsUtil {
 
 		dbdriver = "com.mysql.jdbc.Driver";
 		if (mode.equals("dev")) {
-			accessIp = "192.168.199.230";
+			accessIp = "192.168.199.225";
 			dburl = "jdbc:mysql://localhost:3306/logistics_center?characterEncoding=UTF-8";
 			dbusername = "root";
 			dbpassword = "1234";

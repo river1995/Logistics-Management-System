@@ -10,71 +10,125 @@
     <title>Zaleno Express | Logistic & Transportation</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-     <!-- css -->
-    <link href="./font-awesome/css/style.css" type="text/css" rel="stylesheet">
-    <link href="./font-awesome/css/print.css" type="text/css" rel="stylesheet">
-    <style type="text/css">
-      @page {
-        size: 10cm 18.5cm;  /* width height */
-        margin: 0;
-      }
-   </style>
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">   
+   
  	<style>
- 	body{padding:0}
+ 	/*order*/
+.order{
+	margin:4% auto;
+	border:2px solid black;
+	height:900px;
+	width:500px;
+	}
+.brand{
+	border-bottom:2px solid black;
+	text-align:center;
+	height:50px;
+	}
+.brand img{
+	position:absolute;
+	top:0;
+	left:22%;
+	width:50px;
+	display:inline;
+	}
+.brand h4{
+	position:absolute;
+	top:2px;
+	left:32%;
+	padding-left:10px;
+	font-size:26px;
+	display:inline;
+	}
+.ex-info{
+	border-bottom:2px solid black;
+	padding:0;
+	}
+.ex-number{
+	text-align:center;
+	margin-top:3%
+	}
+
+.ex-qr{
+	text-align:center;
+	border-left:2px solid black;
+	padding:4px 0;
+	}	
+.ex-qr img{
+	width:100px;
+	}
+.main-section{
+	border-bottom:2px solid black;
+	}
+.hint{
+	margin-left:-20px;
+	margin-top:6px
+	}		
+.sub-hint{
+	font-size:16px;
+	font-weight:200
+	}	
+.person-info{
+	margin-top:-10px;
+	font-size:18px;
+	font-weight:500
+	}	
+.bar{
+	text-align:Center;
+	padding-top:10px
+	}	
+.bar img{
+	width:380px
+	}	
+	
  	</style>
   </head>
 
   <body>
-  <!--  <button type="button" class="btn btn-dark print-btn btn-lg"  style=" width:150px;margin-top: 20px;text-align: center;margin-left: 45%;color: #E9EDEF;background-color: #4B5F71;border-color: #364B5F;">下载打印</button>-->
 	<div class="row">
 	<div class="col-md-12">
-		<div class="order" id="order">
-		<div id="print-area" style="width:495px;height:900px">
-			<div class="col-md-12 col-xs-12 brand" style="border-bottom: 2px solid black;text-align: center;height: 50px;">
-		
-					<img src="images/truck.png" style="position: absolute;top: 0;left: 22%;width: 50px;display: inline">
-	
-
+		<div class="order">
+			<div class="col-md-12 col-xs-12 brand">
+				
+					<img src="images/order-img.png" >
+				
 					<h4>ZALENO EXPRESS</h4>
-
+				
 			</div><!--brand-->
-
+			
 			<div class="col-md-12 col-xs-12 ex-info">
 				<div class="col-md-8 col-xs-8 ex-number">
-					<h2 class="order-seq"></h2>
+					<h2>ZE-273490152</h2>
 				</div>
 				<div class="col-md-4 col-xs-4 ex-qr">
 					<img src="images/qr.png">
 				</div>
 			</div><!--ex-info-->
-
+			
 			<div class="col-md-12 col-xs-12 main-section">
 				<div class="col-md-12 col-xs-12">
 					<h3 class="hint">From:</h3>
 				</div>
 				<div class="col-md-6 col-xs-6">
 					<p class="sub-hint">#Sender's Name</h3>
-					<p class="sender"></p>
+					<p class="person-info">Selena Gomez</p>
 				</div>
 				<div class="col-md-6 col-xs-6">
-					<p class="sub-hint">#Phone
-					</p><p class="sender-phone"></p>
+					<p class="sub-hint">#Phone</h3>
+					<p class="person-info">13265889655</p>
 				</div>
 				<div class="col-md-12 col-xs-12">
 					<p class="sub-hint">#Address</h3>
-					<p class="sender-address"></p>
-					<p class="person-info"></p>
+					<p class="person-info">99 Margaret Corbin Drive</p>
+					<p class="person-info">Fort Tryon Park</p>
 				</div>
 				<div class="col-md-12 col-xs-12">
 					<p class="sub-hint">#City</h3>
-					<p class="from-city"></p>
+					<p class="person-info">New York, NY 10040</p>					
 				</div>
 				<div class="col-md-12 col-xs-12">
 					<p class="sub-hint">#Country</h3>
-					<p class="from-country"></p>
+					<p class="person-info">America</p>					
 				</div>
 			</div><!--marin-section-->
 			<div class="col-md-12 col-xs-12 main-section">
@@ -83,38 +137,40 @@
 				</div>
 				<div class="col-md-6 col-xs-6">
 					<p class="sub-hint">#Recipient's Name</h3>
-					<p class="contact"></p>
+					<p class="person-info">John Doe</p>
 				</div>
 				<div class="col-md-6 col-xs-6">
 					<p class="sub-hint">#Phone</h3>
-					<p >(+86) <font class="phone"></font></p>
+					<p class="person-info">13266558899</p>
 				</div>
 				<div class="col-md-12 col-xs-12">
 					<p class="sub-hint">#Address</h3>
-					<p class="contact-address"></p>
+					<p class="person-info">99 Margaret Corbin Drive</p>
+					<p class="person-info">Fort Tryon Park</p>
+				</div>
+				<div class="col-md-12 col-xs-12">
+					<p class="sub-hint">#City</h3>
+					<p class="person-info">New York, NY 10040</p>					
 				</div>
 				<div class="col-md-12 col-xs-12">
 					<p class="sub-hint">#Country</h3>
-					<p class="contact-country"></p>
+					<p class="person-info">America</p>					
 				</div>
 			</div><!--marin-section-->
-
+			
 			<div class="col-md-12 col-xs-12 bar">
 				<img src="images/bar.jpg">
 			</div>
-		</div>
-		<div id="canvas"></div>
 		</div><!--order-->
 
 	</div>
+	 
 	</div><!--row-->
      <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../js/libs/dom-to-image.min.js"></script>
-    <script src="../js/pages/print.js"></script>
-	
+
 
   </body>
 </html>
