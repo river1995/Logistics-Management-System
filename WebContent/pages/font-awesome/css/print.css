@@ -30,7 +30,7 @@ h1 {
 }
 #print-content{
    background:none !important;
-   font-family: "normal", "Lucida Sans Unicode", sans-serif;
+   font-family: "inherit", "Lucida Sans Unicode", sans-serif;
    font-size:14px;
    position: relative;
    word-wrap:break-word;
@@ -156,7 +156,7 @@ th {
    margin:2.5em;
    padding:0 .75em;
    border-left:2px solid #ccc;
-   font-style:italic;
+   font-style:inherit;
    color:#666;
 }
 #actual-print-area table {
@@ -175,7 +175,7 @@ th {
 #actual-print-area tfoot {font-style:italic;}
 
 #actual-print-area code {
-    font:1em "Courier New", Monaco, Courier, monospace;
+    font:1em "inherit, Monaco, Courier, monospace;
 }
 #actual-print-area center {
   margin:0 !important; text-align: inherit !important;
@@ -263,7 +263,7 @@ table.src th.thirtypct{
       padding:0;
    }
    body {
-      font-family: Georgia, "Times New Roman", Times, serif;
+      font-family: serif, "Times New Roman", Times, serif;
       font-size: 14px;
    }
    table.src{
