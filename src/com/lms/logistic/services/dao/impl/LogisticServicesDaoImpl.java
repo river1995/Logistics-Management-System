@@ -4,8 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
-
+import com.bms.commom.domain.QueryEntity;
 import com.bms.utils.common.DateFormatUtil;
 import com.bms.utils.common.GenerateLogisticInfoUtil;
 import com.bms.utils.common.RandomUtil;
@@ -58,8 +57,8 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	}
 
 	@Override
-	public List<LogisticEntity> logisticList(int userId) {
-		List<LogisticEntity> list = logisticDao.logisticList(userId);
+	public List<LogisticEntity> logisticList(int userId ,QueryEntity queryEntity) {
+		List<LogisticEntity> list = logisticDao.logisticList(userId ,queryEntity);
 		return list;
 	}
 
@@ -132,6 +131,12 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 //		System.out.println(DateFormatUtil.changeTimeStampToUnixTime("2017-11-11 17:28"));
 		System.out.println(DateFormatUtil.changeLongTimeToString(Long.parseLong("1510511700000")));
 		//System.out.println(DateFormatUtil.changeTimeStampToUnixTime("2017-11-13 02:35"));
+	}
+
+	@Override
+	public int getOrderCounts(int userId) {
+		int  result = logisticDao.getOrderCounts(userId);
+		return result;
 	}
 
 

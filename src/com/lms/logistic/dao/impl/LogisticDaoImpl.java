@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bms.commom.domain.QueryEntity;
 import com.bms.utils.common.DBConnector;
 import com.bms.utils.common.DateFormatUtil;
 import com.lms.logistic.dao.LogisticDao;
@@ -142,15 +143,18 @@ public class LogisticDaoImpl implements LogisticDao {
 	}
 
 	@Override
-	public List<LogisticEntity> logisticList(int userId) {
+	public List<LogisticEntity> logisticList(int userId ,QueryEntity queryEntity) {
 		ResultSet rs = null;
 		Connection conn = null;
 		PreparedStatement stat = null;
 		List<LogisticEntity> list = new ArrayList<>();
 		try {
-			String sql = "select id,order_seq,counts,created_at,finished_at,from_city,gateway_city,logistic_company,from_country,contact,phone,sender,sender_address,contact_address,sender_phone  from `order` where order.user_id="+userId+" order by created_at desc" ;
+			String sql = "select id,order_seq,counts,created_at,finished_at,from_city,gateway_city,logistic_company,from_country,contact,phone,sender,sender_address,contact_address,sender_phone  from `order` where order.user_id=? order by created_at desc limit ?,?" ;
 			conn = DBConnector.getConnection();
 			stat = conn.prepareStatement(sql);
+			stat.setInt(1, userId);
+			stat.setInt(2, queryEntity.getOffset()*queryEntity.getLimit());
+			stat.setInt(3, queryEntity.getLimit());
 			System.out.println("LogisticDaoImpl.logisticList():" + stat.toString());
 			rs = stat.executeQuery();
 			while(rs.next()){
