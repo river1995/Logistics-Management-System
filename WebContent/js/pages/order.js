@@ -249,8 +249,8 @@ $(document).ready(function(){
 				field:'id',
 				formatter:function(value,row,index){
 					return "<a href='#' class='btn btn-primary btn-xs view clear-view' data-toggle='modal'><i class='fa fa-folder'></i> 查看 </a>"+
-					"<a href='#' class='btn btn-primary btn-xs print' ><i class='fa fa-folder'></i> 打印 </a>"+
-					"<a href='#' class='btn btn-primary btn-xs edit' ><i class='fa fa-folder'></i> 绑定 </a>";
+					"<a href='#' class='btn btn-primary btn-xs print' ><i class='fa fa-print'></i> 打印 </a>"+
+					"<a href='#' class='btn btn-primary btn-xs edit' ><i class='fa fa-plus'></i> 绑定 </a>";
 				},
 				events : operateEvents
 				

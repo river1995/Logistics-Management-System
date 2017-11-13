@@ -64,4 +64,10 @@ public interface LogisticDao {
 	 * @return
 	 */
 	LogisticEntity getLogisticNo(String orderSeq);
+	
+	/**
+	 * 获取订单列表总数
+	 * @return
+	 */
+	int getOrderCounts(int userId);
 }

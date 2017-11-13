@@ -345,6 +345,32 @@ public class LogisticDaoImpl implements LogisticDao {
 		
 		return logisticEntity;
 	}
+
+	@Override
+	public int getOrderCounts(int userId) {
+		ResultSet rs = null;
+		int result = 0;
+		PreparedStatement stat = null;
+		Connection conn = null;
+		try {
+			String sql = "select count(id) as counts from `order` where user_id=?";
+			conn = DBConnector.getConnection();
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, userId);
+			System.out.println("LogisticDaoImpl.getOrderCounts():"+stat.toString());
+			rs = stat.executeQuery();
+			while (rs.next()) {
+				result = rs.getInt("counts");				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		
+		return result;
+	}
 	
 
 }

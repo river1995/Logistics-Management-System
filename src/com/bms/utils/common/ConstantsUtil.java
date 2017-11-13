@@ -21,7 +21,7 @@ public class ConstantsUtil {
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
 	public final static String encrypt = "yes";
-	public final static String mode = "test";
+	public final static String mode = "dev";
 	public final static String server = "outside";
 	public final static String dateFormat = "yyyy-MM-dd HH:mm:ss";
 	public final static int dbSharping = 10;
@@ -34,9 +34,9 @@ public class ConstantsUtil {
 	
 
 	// 邮箱配置
-//	public final static String smtpServer = "smtp.163.com";
-//	public final static String emailUser = "gecko_browser@163.com";
-//	public final static String emailPassword = "hellogecko123";
+	//	public final static String smtpServer = "smtp.163.com";
+	//	public final static String emailUser = "gecko_browser@163.com";
+	//	public final static String emailPassword = "hellogecko123";
 	 public final static String smtpServer = "smtp.gmail.com";
 	 public final static String emailUser = "riverjiang1995@gmail.com";
 	 public final static String emailPassword = "jy3561854";
@@ -87,7 +87,7 @@ public class ConstantsUtil {
 
 		dbdriver = "com.mysql.jdbc.Driver";
 		if (mode.equals("dev")) {
-			accessIp = "192.168.199.225";
+			accessIp = "192.168.2.175";
 			dburl = "jdbc:mysql://localhost:3306/logistics_center?characterEncoding=UTF-8";
 			dbusername = "root";
 			dbpassword = "1234";
