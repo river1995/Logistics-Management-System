@@ -51,8 +51,8 @@ public class addLogisticServlet extends HttpServlet {
 		ApiResultEntity<String> apiResultEntity = new ApiResultEntity<>();
 		String gatewayTime = request.getParameter("gateway_time");
 		String contact = request.getParameter("contact");
-		//String contactAddress = request.getParameter("contact_address");
-		//String phone = request.getParameter("phone");
+		String contactAddress = request.getParameter("contact_address");
+		String phone = request.getParameter("phone");
 		String sender = request.getParameter("sender");
 		String senderAddress = request.getParameter("sender_address");
 		String fromCountry = request.getParameter("from_country");
@@ -65,7 +65,7 @@ public class addLogisticServlet extends HttpServlet {
 		//System.out.println("fromCountry:"+fromCountry+"\n"+"fromCity:"+fromCity+"\n"+"gatewayCity:"+gatewayCity+"\n"+"expireTime:"+expireTime+"\n"+"logisticCompany:"+logisticCompany+"\n"+"logisticJSON:"+logisticJSON);
 		
 		if (!stringUtil.isNullString(fromCity) && !stringUtil.isNullString(gatewayCity)&& !stringUtil.isNullString(gatewayTime) && !stringUtil.isNullString(senderPhone)
-				&& !stringUtil.isNullString(fromCountry) && !stringUtil.isNullString(logisticJSON)
+				&& !stringUtil.isNullString(fromCountry) && !stringUtil.isNullString(logisticJSON) && !stringUtil.isNullString(phone) && !stringUtil.isNullString(contactAddress)
 				&& !stringUtil.isNullString(contact) && !stringUtil.isNullString(sender) && !stringUtil.isNullString(senderAddress)) {
 			LogisticDetailEntity detailEntity = new LogisticDetailEntity();
 			
@@ -73,8 +73,8 @@ public class addLogisticServlet extends HttpServlet {
 			logisticEntity.setSenderPhone(senderPhone);
 			logisticEntity.setFinishTime(gatewayTime);
 			logisticEntity.setContact(contact);
-			logisticEntity.setContactAddress("Pudong New Area Pudian No. 438 ,Shuangge building,Shanghai city,Shanghai");
-			//logisticEntity.setPhone("");
+			logisticEntity.setContactAddress(contactAddress);
+			logisticEntity.setPhone(phone);
 			logisticEntity.setSender(sender);
 			logisticEntity.setSenderAddress(senderAddress);
 			//logisticEntity.setExpireTime(expireTime);

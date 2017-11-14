@@ -75,7 +75,7 @@ $(document).ready(function(){
 						$.ajax({
 							type : 'POST',
 							url : '../api/v1.0/add_logstic',
-							data  : {'sender-phone':senderPhone,'gateway_time':gatewayTime,'contact_address':contactAddress,'contact':contact,'phone':phone,'sender':sender,'sender_address':senderAddress,'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'logistic_json' : JSON.stringify(logisticList)},
+							data  : {'phone':phone,'contact_address':contactAddress,'sender-phone':senderPhone,'gateway_time':gatewayTime,'contact_address':contactAddress,'contact':contact,'phone':phone,'sender':sender,'sender_address':senderAddress,'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'logistic_json' : JSON.stringify(logisticList)},
 							dataType : 'JSON',
 							success : function(data){
 								console.log("add_logistic:"+JSON.stringify(data));
@@ -229,7 +229,7 @@ $(document).ready(function(){
             		return {
             			"rows": res.data.rows,
             			"total": res.data.total
-            			};
+            		};
             	}else{
             		return {total:0,rows:[]};
             	}
