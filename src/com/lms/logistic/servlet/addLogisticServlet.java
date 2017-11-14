@@ -55,6 +55,7 @@ public class addLogisticServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String sender = request.getParameter("sender");
 		String senderAddress = request.getParameter("sender_address");
+		System.out.println("senderAddress:"+senderAddress);
 		String fromCountry = request.getParameter("from_country");
 		String fromCity = request.getParameter("from_city");
 		String gatewayCity = request.getParameter("gateway_city");

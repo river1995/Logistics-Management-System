@@ -11,7 +11,6 @@ import com.bms.commom.domain.QueryEntity;
 import com.bms.utils.common.DBConnector;
 import com.bms.utils.common.DateFormatUtil;
 import com.lms.logistic.dao.LogisticDao;
-import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
 
@@ -38,7 +37,7 @@ public class LogisticDaoImpl implements LogisticDao {
 			stat.setString(6, logisticEntity.getContact());
 			stat.setString(7, logisticEntity.getPhone());
 			stat.setString(8, logisticEntity.getSender());
-			stat.setString(9, logisticEntity.getFromCountry());
+			stat.setString(9, logisticEntity.getSenderAddress());
 			stat.setString(10, logisticEntity.getContactAddress());
 			stat.setLong(11, DateFormatUtil.changeTimeStampToUnixTime(logisticEntity.getFinishTime()));
 			stat.setString(12, logisticEntity.getSenderPhone());

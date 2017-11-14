@@ -25,18 +25,34 @@ public class GenerateLogisticInfoUtil {
 		long gatewayTime = (long) (onTheWayTime4+1000*60*60*(RandomUtil.getRandomTime(35 ,40)));
 		System.out.println(DateFormatUtil.changeLongTimeToString(RandomBeginTime));
 		if(fromCountry.equals("us")){
-			LogisticStatusEntity prepare = new LogisticStatusEntity("Goods Are Consigned By Consignee ,800 Stewart St,Seattle,USA", DateFormatUtil.changeLongTimeToString(RandomBeginTime));
-			LogisticStatusEntity onTheWay1 = new LogisticStatusEntity("Shipment Held For Consignee Pickup ,Seattle,USA", DateFormatUtil.changeLongTimeToString(onTheWayTime1));
-			LogisticStatusEntity onTheWay2 = new LogisticStatusEntity("Shipment To The Station ,Seattle,USA", DateFormatUtil.changeLongTimeToString(onTheWayTime2));
-			LogisticStatusEntity onTheWay3 = new LogisticStatusEntity("Arrival Processing Center ,San Francisco,USA", DateFormatUtil.changeLongTimeToString(onTheWayTime3));
-			LogisticStatusEntity onTheWay4 = new LogisticStatusEntity("Ready to send to "+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(onTheWayTime4));
-			LogisticStatusEntity gateway = new LogisticStatusEntity("Parcel Delivery Customs,Waiting for clearance ,"+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(gatewayTime));
-			list.add(prepare);
-			list.add(onTheWay1);
-			list.add(onTheWay2);
-			list.add(onTheWay3);
-			list.add(onTheWay4);
-			list.add(gateway);
+			if (fromCity.equals("西雅图")) {
+				LogisticStatusEntity prepare = new LogisticStatusEntity("Goods Are Consigned By Consignee ,800 Stewart St,Seattle,USA", DateFormatUtil.changeLongTimeToString(RandomBeginTime));
+				LogisticStatusEntity onTheWay1 = new LogisticStatusEntity("Shipment Held For Consignee Pickup ,Seattle,USA", DateFormatUtil.changeLongTimeToString(onTheWayTime1));
+				LogisticStatusEntity onTheWay2 = new LogisticStatusEntity("Shipment To The Station ,Seattle,USA", DateFormatUtil.changeLongTimeToString(onTheWayTime2));
+				LogisticStatusEntity onTheWay3 = new LogisticStatusEntity("Arrival Processing Center ,San Francisco,USA", DateFormatUtil.changeLongTimeToString(onTheWayTime3));
+				LogisticStatusEntity onTheWay4 = new LogisticStatusEntity("Ready to send to "+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(onTheWayTime4));
+				LogisticStatusEntity gateway = new LogisticStatusEntity("Parcel Delivery Customs,Waiting for clearance ,"+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(gatewayTime));
+				list.add(prepare);
+				list.add(onTheWay1);
+				list.add(onTheWay2);
+				list.add(onTheWay3);
+				list.add(onTheWay4);
+				list.add(gateway);
+			}else if(fromCity.equals("纽约")){
+				LogisticStatusEntity prepare = new LogisticStatusEntity("Delivered - Signed for by : Zaleno Express ,Halsey St,Brooklyn, New York, USA", DateFormatUtil.changeLongTimeToString(RandomBeginTime));
+				LogisticStatusEntity onTheWay1 = new LogisticStatusEntity("Arrived at Delivery Facility in Brooklun, New York, USA", DateFormatUtil.changeLongTimeToString(onTheWayTime1));
+				LogisticStatusEntity onTheWay2 = new LogisticStatusEntity("Shipment To The Station , New York, USA", DateFormatUtil.changeLongTimeToString(onTheWayTime2));
+				LogisticStatusEntity onTheWay3 = new LogisticStatusEntity("Arrival Chicago Processing Center , Chicago, USA", DateFormatUtil.changeLongTimeToString(onTheWayTime3));
+				LogisticStatusEntity onTheWay4 = new LogisticStatusEntity("Ready to send to "+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(onTheWayTime4));
+				LogisticStatusEntity gateway = new LogisticStatusEntity("Parcel Delivery Customs,Waiting for clearance ,"+PinyinUtil.changeChineseToPinyin(gatewayCity)+", China", DateFormatUtil.changeLongTimeToString(gatewayTime));
+				list.add(prepare);
+				list.add(onTheWay1);
+				list.add(onTheWay2);
+				list.add(onTheWay3);
+				list.add(onTheWay4);
+				list.add(gateway);
+			}
+			
 		}else if(fromCountry.equals("ita")){
 			LogisticStatusEntity prepare = new LogisticStatusEntity("Goods Are Consigned By Consignee ,Corso Matteotti 1/a, 20129 Milano MI", DateFormatUtil.changeLongTimeToString(RandomBeginTime));
 			LogisticStatusEntity onTheWay1 = new LogisticStatusEntity("Shipment Held For Consignee Pickup ,Milano,Italy", DateFormatUtil.changeLongTimeToString(onTheWayTime1));

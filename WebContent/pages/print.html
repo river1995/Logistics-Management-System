@@ -21,6 +21,9 @@
         size: 10cm 18.5cm;  /* width height */
         margin: 0;
       }
+      p {
+   		 margin: 3px 0 5px;
+		}
    </style>
  	<style>
  	body{padding:0}
@@ -28,12 +31,17 @@
   </head>
 
   <body>
-  	<button type="button" class="btn btn-dark print-btn btn-lg"  style=" width:150px;margin-top: 20px;text-align: center;margin-left: 45%;color: #E9EDEF;background-color: #4B5F71;border-color: #364B5F;">下载打印</button>
+  	
+  	
 	<div class="row">
+	<div class="col-md-12 btn-area">
+		<a type="button" class="btn btn-default btn-lg" href="order.html">返回主页</a>
+		<button type="button" class="btn btn-primary print-btn btn-lg pull-right">下载打印</button>
+	</div>
 	<div class="col-md-12">
 		<div class="order" id="order" style="width:500px;height:900px" >		
 			<div id="print-area" style="width:500px;height:900px;background:white">
-			<div class="col-md-12 col-xs-12 main-section" style="height:29.2%;">
+			<div class="col-md-12 col-xs-12 main-section" style="height:23%;">
 				<div class="col-md-12 col-xs-12">
 					<h3 class="hint">From:</h3>
 				</div>
@@ -55,7 +63,7 @@
 					<p class="from-city"></p>
 				</div>
 			</div><!--marin-section-->
-			<div class="col-md-12 col-xs-12 main-section" style="height:29.1%;">
+			<div class="col-md-12 col-xs-12 main-section" style="height:34%;">
 				<div class="col-md-12 col-xs-12">
 					<h3 class="hint">To:</h3>
 				</div>
@@ -84,16 +92,15 @@
 					<img src="images/qr.png">
 				</div>
 			</div><!--ex-info-->
+			<div class="col-md-12 col-xs-12 brand" >		
+					<img src="images/truck.png">					
+					<h4>ZALENO EXPRESS</h4>
+			</div><!--brand-->
 			<div class="col-md-12 col-xs-12 bar" >
 				<img src="images/bar.jpg">
+				<p class="bar-number"></p>
 			</div>
-			<div class="col-md-12 col-xs-12 brand" >		
-					<img src="images/truck.png" style="position: absolute;top: 0;left: 22%;width: 50px;display: inline">
-	
-
-					<h4>ZALENO EXPRESS</h4>
-
-			</div><!--brand-->
+			
 		</div>
 		</div><!--order-->
 

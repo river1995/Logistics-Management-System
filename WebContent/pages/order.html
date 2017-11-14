@@ -24,7 +24,7 @@
     <link href="../vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
     <!-- nprogress.css -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-	
+
   </head>
 
   <body class="nav-md">
@@ -33,32 +33,36 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"> <span></span></a>
+             
             </div>
 
-            
+			
 
-            
             <!-- /menu profile quick info -->
-
+			 <div class="zx-logo profile">
+                <img src="images/logo.png" alt="..." >             
+                <h3>ZALENO EXPRESS</h3>      
+            </div>
+            <!-- /menu profile quick info -->
+            
             <br>
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section active">
-                <ul class="nav side-menu" style="margin-top: 30px;">
-                 
-                  <li class="current-page account-li"><a href="order.html"><i class="fa fa-address-book-o fa-fw "></i> 物流订单 </a>
-                    
+              <div class="menu_section ">
+                <ul class="nav side-menu">
+
+                  <li class="current-page"><a href="order.html"><i class="fa fa-archive fa-fw "></i> 物流订单 </a>
                   </li>
+                  
                 </ul>
               </div>
-             
+
 
             </div>
             <!-- /sidebar menu -->
 
-           
+
           </div>
         </div>
 
@@ -77,19 +81,19 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    
+
                     <li>
                       <a href="settings.html">
-                        
+
                         <span>Settings</span>
                       </a>
                     </li>
-                    
+
                     <li><a href="../api/v1.0/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
-                
+
               </ul>
             </nav>
           </div>
@@ -110,14 +114,14 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
 
             <div class="clearfix"></div>
- 
+
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">      
+                <div class="x_panel">
                 	<div class="col-md-5 col-sm-5 col-xs-4 form-group pull-right top_search">
                   			<div class="input-group">
                     			<input type="text" class="form-control search-text"  placeholder="输入系统订单号查询结果">
@@ -125,13 +129,13 @@
                       			<button class="btn btn-default search-btn" type="button">Go!</button>
                     			</span>
                   			</div>
-                			</div>         
+                			</div>
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                         <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">订单信息</a>
-                        
+
                         </li>
-                        
+
                       </ul>
                       <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in " id="tab_content1" aria-labelledby="home-tab">
@@ -145,17 +149,14 @@
                           <th>海关城市</th>
                           <th>入关时间</th>
                           <th>国内快递</th>
-                          <th>编辑信息</th>    
+                          <th>编辑信息</th>
                         </tr>
                       </thead>
 
 
                       <tbody class="user-table">
-                        
-                       
-                        
-                        
-                       
+
+
                       </tbody>
                     </table>
                         </div>
@@ -163,11 +164,11 @@
                       </div>
                     </div>
                     <div class="clearfix"></div>
-                </div>                
+                </div>
               </div>
-                    
+
               </div>
-                       
+
           </div>
         </div>
         <!-- /page content -->
@@ -175,7 +176,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            BMS -  
+             -
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -192,10 +193,10 @@
                           </button>
                           <h4 class="modal-title" id="myModalLabel">生成物流信息</h4>
                         </div>
-                        
+
                         <div class="modal-body">
                         	<form class="form-horizontal form-label-left" id="edit-form">
-                        	
+
                         	<div class="form-group" style="display:none">
                         		<input type="reset" id="reset" class="reset">
                         	</div>
@@ -207,17 +208,17 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">收件人地址 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="contact-address" value="Pudong New Area Pudian No. 438 ,Shuangge building,Shanghai city,Shanghai" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
-                            </div>
-                          </div>
-                          <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">收件人联系方式 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="phone" value="15888888888" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                              <input id="phone"  value="15888888888" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">收件人地址<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="contact-address" value="Pudong New Area Pudian No. 438 ,Shuangge building,Shanghai city,Shanghai" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
                             </div>
                           </div>
                           <div class="form-group">
@@ -240,8 +241,9 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               	<select class="form-control character-select col-md-7 col-xs-12" id="sender-address" >
                               		<option>请选择发件人地址</option>
-                              		<option value='us' class='us'>1175 Pine St, Seattle, WA 98181.USA</option>
+                              		<option value='us' class='us'>1175 Pine St, Seattle,USA</option>
                               		<option value='ita' class='ita'>La Locandina dei Navili, Ripa di Porta Ticinese, 21, 20144 Milano MI, Italy</option>
+                              		<option value='ita' class='us'>Nostrand Ave, Brooklyn ,New York ,USA</option>
                           		</select>
                             </div>
                           </div>
@@ -261,7 +263,7 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               	<select class="form-control character-select col-md-7 col-xs-12" id="from-city" >
-                              		
+
                           		</select>
                             </div>
                           </div>
@@ -273,7 +275,7 @@
                               	<option>请选择入关省份</option>
                           	  </select>
                             </div>
-                          </div>  
+                          </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">入关城市 <span class="required">*</span>
                             </label>
@@ -282,21 +284,21 @@
                               	<option>请选择入关城市</option>
                           		</select>
                             </div>
-                          </div>  
+                          </div>
 
                         </form>
                         </div>
-                        
+
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                           <button type="button" class="btn btn-primary add-submit" >提交</button>
                         </div>
-                   
-                       
+
+
                       </div>
                     </div>
                   </div>
-  <!-- confirm -->                
+  <!-- confirm -->
                   <div class="modal fade confirm" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg" style="width:70%;">
                       <div class="modal-content">
@@ -305,7 +307,7 @@
                           </button>
                           <h4 class="modal-title" id="myModalLabel">物流信息确认</h4>
                         </div>
-                        
+
                         <div class="modal-body" >
 
                     <table class="table table-bordered">
@@ -317,29 +319,29 @@
                         </tr>
                       </thead>
                       <tbody class="confirm-tbody">
-                        
-                        
+
+
                       </tbody>
                     </table>
 
                         </div>
-                        
+
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                           <button type="button" class="btn btn-primary confirm-submit" >确认</button>
                         </div>
-                   
-                       
+
+
                       </div>
                     </div>
                   </div>
-    
+
 <!-- add test  -->
 
-	
 
 
-<!-- edit -->				  
+
+<!-- edit -->
 				  <div class="modal fade edit-info" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -348,10 +350,10 @@
                           </button>
                           <h4 class="modal-title" id="myModalLabel">添加国内物流单号</h4>
                         </div>
-                        
+
                         <div class="modal-body">
                         	<form class="form-horizontal form-label-left" >
-						
+
 						    <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">物流公司 <span class="required">*</span>
                             </label>
@@ -366,7 +368,7 @@
                               	<option value="bs">百世</option>
                           		</select>
                             </div>
-                          </div>  
+                          </div>
                           <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">国内物流订单号 <span class="required">*</span>
                             </label>
@@ -374,23 +376,23 @@
                               <input type="text" id="logistic-no" name="logistic-no" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
-                          
-                         
+
+
 
                         </form>
                         </div>
-                        
+
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                           <button type="button" class="btn btn-primary edit-submit" >提交</button>
                         </div>
-                   
-                       
+
+
                       </div>
                     </div>
                   </div>
 
- <!-- view -->             
+ <!-- view -->
                   <div class="modal fade view-info" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg" style="width:70%;">
                       <div class="modal-content">
@@ -399,7 +401,7 @@
                           </button>
                           <h4 class="modal-title" id="myModalLabel">物流信息确认</h4>
                         </div>
-                        
+
                         <div class="modal-body" >
 
                     <table class="table table-bordered">
@@ -411,28 +413,28 @@
                         </tr>
                       </thead>
                       <tbody class="view-tbody">
-                        
-                        
+
+
                       </tbody>
                     </table>
 
                         </div>
-                        
+
                         <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                           <button type="button" class="btn btn-primary edit-confirm-submit" data-dismiss="modal">确认</button>
                         </div>
-                   
-                       
+
+
                       </div>
                     </div>
                   </div>
- 				 
- <!-- edit -->				  
-				  
-				
+
+ <!-- edit -->
+
+
 				  <div class="modal" id="picModal">
-				  	
+
 				  <div class="picModal-content">
 				  	<span class="close picClose" onclick="document.getElementById('picModal').style.display='none'">&times;</span>
 				  	<img class="big-pic" id="bImg">
@@ -456,22 +458,22 @@
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <!-- nrogress js -->
     <script src="../js/libs/nprogress.js"></script>
- 
-  
+
+
     <!-- Switchery -->
     <script src="../vendors/switchery/dist/switchery.min.js"></script>
     <!-- Dropzone.js -->
     <script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
     <script src="../js/pages/order.js"></script>
-  	
+
   </body>
   	<script type="text/javascript">
 	  	$(document).ready(function(){
 	  		$('.buttonFinish').on('click', function(){
 	  			$('.close').click();
 	  		});
-	  		
+
 	  	});
-	  	
+
 	</script>
 </html>

@@ -14,7 +14,7 @@
     <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./vendors/layui-css/layui.css">
     <!-- Font Awesome -->
-    <link href="./pages/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
+    <link href="./pages/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="./vendors/animate.css/animate.min.css" rel="stylesheet">
     <!-- nprogress.css -->
@@ -29,7 +29,7 @@
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>
-      
+
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
@@ -65,14 +65,14 @@
           <section class="login_content">
             <form>
               <h1>Password Reset</h1>
-              
+
               <div>
                 <input type="email" class="form-control" placeholder="Email" required="" />
               </div>
               <div>
-                <a class="btn btn-success form-control" href="reset-password.html" >Reset Password</a>            
+                <a class="btn btn-success form-control" href="reset-password.html" >Reset Password</a>
               </div>
-              
+
 
               <div class="clearfix"></div>
 
@@ -81,7 +81,7 @@
                    Enter your email address. We'll send you password reset instructions.
                 </p>
 
-               
+
                 <div>
                   <h1><i class="fa fa-paw"></i> BMS</h1>
                   <p>©BMS All Rights Reserved.</p>
@@ -97,12 +97,12 @@
     <!-- layer ui js -->
     <script src="./js/libs/nprogress.js"></script>
     <script src="./js/libs/layui.all.js"></script>
-    
+
   	<script src="./js/libs/director.min.js"></script>
   	<script type="text/javascript">
   	$(document).ready(function(){
   		$('body').on('click','.log-in', login);
-  		
+
   	});
 
   	function KeyDown(){
@@ -113,11 +113,11 @@
   	}
 
   	function login() {
-  		
+
   		NProgress.start();
   		var name = $('#username').val();
   		var password = $('#password').val();
-  		
+
   		$.ajax({
   			type: "POST",
   			url: "./api/v1.0/login",
@@ -138,9 +138,9 @@
   					alert(data.message);
   				}
   				/* if(data.result.indexOf("True") > -1){
-  					
+
   					window.location.href = './home'+goUrl;
-  					
+
   				}else{
   					alert(data.msg);
   				} */

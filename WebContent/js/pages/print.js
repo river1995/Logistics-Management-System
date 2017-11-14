@@ -8,24 +8,7 @@ $(document).ready(function(){
 	getData();
 	
 	
-	$('.print-btn').on('click',function(){
-		//var node = document.getElementById('#print-area');
-		//var node = document.getElementById('print-area');
-		domtoimage.toJpeg(document.getElementById('print-area'), { quality: 0.95 })
-	    .then(function (dataUrl) {
-	    	
-	        var link = document.createElement('a');
-	        link.download = 'my-image-name.jpeg';
-	        link.href = dataUrl;
-	        link.click();
-	    });
-//		var obj = $('#print-area');
-//		var des = "";  
-//	    for(var name in obj){  
-//	    	des += name + ":" + obj[name] + ";";  
-//	     }  
-//	    window.dump(des); 
-	})
+	
 	function getData(){
 		var orderId = window.location.href.split('orderId=')[1];
 		$.ajax({
@@ -45,6 +28,9 @@ $(document).ready(function(){
 					}else if(data.from_city === '米兰'){
 						fromCity = 'Milano';
 						fromCountry = 'Italy';
+					}else if(data.from_city === '纽约'){
+						fromCity = 'New York';
+						fromCountry = 'The United States';
 					}
 					$('.order-seq').html(data.order_seq);
 					$('.sender').html(data.sender);
@@ -56,7 +42,26 @@ $(document).ready(function(){
 					$('.phone').html(data.phone);
 					$('.contact-address').html(data.contact_address);
 					$('.contact-country').html('People\'s Republic of China');
+					$('.bar-number').html(Math.floor(Math.random()*Math.pow(10,12)));
 				}
+				$('.print-btn').on('click',function(){
+					//var node = document.getElementById('#print-area');
+					//var node = document.getElementById('print-area');
+					domtoimage.toJpeg(document.getElementById('print-area'), { quality: 0.95 })
+				    .then(function (dataUrl) {
+				    	
+				        var link = document.createElement('a');
+				        link.download = data.contact+'.jpeg';
+				        link.href = dataUrl;
+				        link.click();
+				    });
+//					var obj = $('#print-area');
+//					var des = "";  
+//				    for(var name in obj){  
+//				    	des += name + ":" + obj[name] + ";";  
+//				     }  
+//				    window.dump(des); 
+				})
 			}
 		});
 	}

@@ -148,7 +148,7 @@ $(document).ready(function(){
 		var countryVal = $(this).children('option:selected').val()
 		console.log(countryVal);
 		if(countryVal === 'us'){
-			$('#from-city').append("<option value='0' class='us-city'>西雅图</option>");
+			$('#from-city').append("<option value='0' class='us-city'>西雅图</option><option value='1' class='us-city'>纽约</option>");
 		}else if(countryVal === 'ita'){
 			$('#from-city').append("<option value='0' class='ita-city'>米兰</option>");
 		}
