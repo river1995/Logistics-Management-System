@@ -2,6 +2,7 @@ package com.lms.logistic.services.dao;
 
 import java.util.List;
 
+import com.bms.commom.domain.QueryEntity;
 import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
@@ -36,7 +37,7 @@ public interface LogisticServiceDao {
 	 * @param logisticEntity
 	 * @return
 	 */
-	List<LogisticEntity> logisticList(int userId);
+	List<LogisticEntity> logisticList(int userId ,QueryEntity queryEntity);
 	
 	/**
 	 * 客户获取物流信息
@@ -55,4 +56,11 @@ public interface LogisticServiceDao {
 	boolean addLogisticNo(String logisticNo ,String logisticCompany ,int orderId);
 	
 	LogisticEntity logisticInfoById(String orderSeq);
+	
+	/**
+	 * 获取所有订单列表总数
+	 * @param userId
+	 * @return
+	 */
+	int getOrderCounts(int userId);
 }

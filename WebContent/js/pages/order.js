@@ -75,7 +75,7 @@ $(document).ready(function(){
 						$.ajax({
 							type : 'POST',
 							url : '../api/v1.0/add_logstic',
-							data  : {'sender-phone':senderPhone,'gateway_time':gatewayTime,'contact_address':contactAddress,'contact':contact,'phone':phone,'sender':sender,'sender_address':senderAddress,'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'logistic_json' : JSON.stringify(logisticList)},
+							data  : {'phone':phone,'contact_address':contactAddress,'sender-phone':senderPhone,'gateway_time':gatewayTime,'contact_address':contactAddress,'contact':contact,'phone':phone,'sender':sender,'sender_address':senderAddress,'from_country' : fromCountry ,'from_city' : fromCity  ,'gateway_city' : gatewayCity ,'logistic_json' : JSON.stringify(logisticList)},
 							dataType : 'JSON',
 							success : function(data){
 								console.log("add_logistic:"+JSON.stringify(data));
@@ -219,12 +219,17 @@ $(document).ready(function(){
 			pageSize : 10,
 			url: '../api/v1.0/logistic_list',
 			contentType:"application/x-www-form-urlencoded",
-			//queryParams : {"type" : type},
+			queryParamsType: "limit",
+			sidePagination: "server",
+			//smartDisplay:false,
 			method: 'POST',
 			responseHandler: function(res) {
             	console.log(res);
             	if(res.code == 0){
-            		return res.data;
+            		return {
+            			"rows": res.data.rows,
+            			"total": res.data.total
+            		};
             	}else{
             		return {total:0,rows:[]};
             	}
@@ -248,9 +253,9 @@ $(document).ready(function(){
 			},{
 				field:'id',
 				formatter:function(value,row,index){
-					return "<a href='#' class='btn btn-primary btn-xs view clear-view' data-toggle='modal'><i class='fa fa-folder'></i> 查看 </a>"+
-					"<a href='#' class='btn btn-primary btn-xs print' ><i class='fa fa-print'></i> 打印 </a>"+
-					"<a href='#' class='btn btn-primary btn-xs edit' ><i class='fa fa-plus'></i> 绑定 </a>";
+					return "<a href='#' class='btn btn-primary btn-xs view clear-view' data-toggle='modal' ><i class='fa fa-folder'></i> 查看 </a>"+
+					"<a href='#' class='btn btn-primary btn-xs print' style='color: #fff;background-color: #5bc0de;border-color: #46b8da;'><i class='fa fa-print' ></i> 打印 </a>"+
+					"<a href='#' class='btn btn-primary btn-xs edit'  style='color: #fff;background-color: #26B99A;border-color: #46b8da;'><i class='fa fa-plus'></i> 绑定 </a>";
 				},
 				events : operateEvents
 				

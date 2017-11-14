@@ -62,7 +62,7 @@ public class TestDistance {
     }  
 	
 	public static void main(String[] args) {
-		System.out.println(System.currentTimeMillis());
+		System.out.println(DateFormatUtil.changeTimeStampToUnixTime("2017-11-14 12:30:00"));
 		
 		
 	}

@@ -19,6 +19,12 @@ $(document).ready(function(){
 	        link.href = dataUrl;
 	        link.click();
 	    });
+//		var obj = $('#print-area');
+//		var des = "";  
+//	    for(var name in obj){  
+//	    	des += name + ":" + obj[name] + ";";  
+//	     }  
+//	    window.dump(des); 
 	})
 	function getData(){
 		var orderId = window.location.href.split('orderId=')[1];
