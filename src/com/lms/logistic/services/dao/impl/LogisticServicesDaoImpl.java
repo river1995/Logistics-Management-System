@@ -75,7 +75,7 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 			if (object != null) {
 				JSONArray jsonArray = object.getJSONArray("data");
 				if (jsonArray != null && jsonArray.size()>0) {
-					LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to China courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
+					LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
 					list.add(gatewayStatusEntity);
 					for(int i = 0;i<jsonArray.size();i++){
 						LogisticStatusEntity statusEntity = new LogisticStatusEntity();

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>BMS Management System</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+     <!-- bms -->
+    <link href="../build/css/bms.css" rel="stylesheet">
+	
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+             
+            </div>
+
+			
+
+            <!-- /menu profile quick info -->
+			 <div class="zx-logo profile">
+                <img src="images/logo.png" alt="...">             
+                <h3>ZALENO EXPRESS</h3>      
+            </div>
+            <!-- /menu profile quick info -->
+            
+            <br>
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section  active">
+                <ul class="nav side-menu" style="">
+
+                  <li class="current-page"><a href="view-admin.html"><i class="fa fa-archive fa-fw "></i>权限管理 </a>
+                  </li>
+                  
+                </ul>
+              </div>
+
+
+            </div>
+            <!-- /sidebar menu -->
+
+
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">John Doe
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    
+                    <li>
+                      <a href="settings.html">
+                        
+                        <span>设置</span>
+                      </a>
+                    </li>
+                    
+                    <li><a href="../login.html"><i class="fa fa-sign-out pull-right"></i>退出登陆</a></li>
+                  </ul>
+                </li>
+
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <ol class="breadcrumb">
+   			 		<li><a href="permission.html" class="bread">权限管理</a></li>
+   			 		<li class="unbread">账号管理</li>   			 		
+				</ol>
+              </div>
+			  <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group pull-right" style="margin-right:10%;">
+                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target=".add-admin-modal">添加新账号</button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <div class="clearfix"></div>
+           
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+               
+                
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>超级管理员 <small>账号信息</small></h2>
+                     
+                    <div class="clearfix"></div>
+                   
+                  </div>
+                  <div class="x_content">
+                    
+                    <table  id="datatable2" class="table table-striped ">
+                      <thead>
+                        <tr>                          
+                          <th>登陆账号</th>
+                          <th>姓名</th>
+                          <th>联系方式</th>
+                          <th>账号类型</th>
+                          <th>创建时间</th>
+                          <th>编辑</th>
+                         
+                        </tr>
+                      </thead>
+
+
+                      <tbody class="user-table">
+                        <tr>
+                          <td>admin</td>
+                          <td>Jerry</td>
+                          <td>18868680389</td>
+                          <td>超级管理员</td>
+                          <td>2017-11-21 14:38</td>                        
+                          <td>                           	
+                            <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target=".add-admin-modal"><i class="fa fa-pencil"></i> Edit </a>
+                          </td>
+                        </tr>
+                        
+                        
+                                  
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            BMS -  
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+
+ <!-- add admin modal -->
+
+                  <div class="modal fade add-admin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">添加管理员账号</h4>
+                        </div>
+                        <div class="modal-body">
+                        	<form class="form-horizontal form-label-left">
+
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">E-mail <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text"  required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Name <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="text"   required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Phone Number <span class="required">*</span></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input  class="form-control col-md-7 col-xs-12" type="text" >
+                            </div>
+                          </div>
+                          
+                      	  
+                      	  <div class="form-group">
+                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Company <span class="required">*</span></label>
+                        	<div class="col-md-6 col-sm-6 col-xs-12">
+                         	 <select class="form-control">
+                           	 	<option>Company1</option>
+                           	 	<option>Company1</option>
+                           	 	<option>Company1</option>
+                            	<option>Company1</option>
+                            	<option>Company1</option>
+                            	<option>Company1</option>
+                            	<option>Company1</option>
+                            	<option>Company1</option>
+                          	</select>
+                        	</div>
+                      		</div>
+                      	  
+                          
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Password <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input  class="form-control col-md-7 col-xs-12" required="required" type="password" >
+                            </div>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Confirm Password <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input  class="form-control col-md-7 col-xs-12" required="required" type="password" >
+                            </div>
+                          </div>
+
+                        </form>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                   
+                       
+                      </div>
+                    </div>
+                  </div>
+
+	<!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+   
+
+
+  
+  </body>
+</html>

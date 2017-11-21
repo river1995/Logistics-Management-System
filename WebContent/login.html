@@ -133,9 +133,18 @@
   				if(data.code === 0){
   					var dataJSON = data.data;
   					document.cookie = "user_info="+JSON.stringify(dataJSON);
-  					window.location.href = './pages/order.html';
+  					if(dataJSON.type === 1){
+  						window.location.href = './pages/order.html';  						
+  					}else if(dataJSON.type === 2){
+  						window.location.href = './pages/permission.html';  			
+  					}else if(dataJSON.type === 3){
+  						window.location.href = './pages/account.html';  			
+  					}
   				}else {
-  					alert(data.message);
+  					layer.msg('用户名或密码不正确', {
+						  icon: 2,
+						  time: 1500 //2秒关闭（如果不配置，默认是3秒）
+					  }); 
   				}
   				/* if(data.result.indexOf("True") > -1){
 
