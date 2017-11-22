@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>BMS Management System</title>
+    <title>物流管理系统</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -76,21 +76,11 @@
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
-                    <span class=" fa fa-angle-down"></span>
+                  <a  href="../api/v1.0/logout" class="user-profile dropdown-toggle" aria-expanded="false">
+                    <i class="fa fa-anchor"></i><font style="font-size:15px">  &nbsp; 退出登陆</font>
+                  
                   </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    
-                    <li>
-                      <a href="settings.html">
-                        
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    
-                    <li><a href="../login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
+                  
                 </li>
 
                 
@@ -110,7 +100,7 @@
 			  <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group pull-right" style="margin-right:10%">
-                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target=".add-info">添加新账号</button>
+                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target=".add-user">添加新账号</button>
                   </div>
                 </div>
               </div>
@@ -124,26 +114,24 @@
                 <div class="x_panel">               
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">普通用户</a>
+                        <li role="presentation" class="user-tab active"><a class="home-tab" href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true" data-type="1">普通用户</a>
                         
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">代理用户</a>
+                        <li role="presentation" class="proxy-tab"><a class="home-tab" href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false" data-type="2">代理用户</a>
                         </li>
                         
                       </ul>
                       <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in " id="tab_content1" aria-labelledby="home-tab">
-                          <table  id="datatable2" class="table table-striped ">
+                          <table  id="datatable" class="table table-striped ">
                       <thead>
                         <tr>                          
-                          <th>#</th>
                           <th>登陆账号</th>
-                          <th>姓名</th>
                           <th>联系方式</th>
-                          <th>账号类型</th>
+                          <th>账号类型</th>                         
+                          <th class="user-thread">总使用量</th>
+                          <th class="user-thread">库存</th>
                           <th>创建时间</th>
-                          <th>总量</th>
-                          <th>库存</th>
                           <th>编辑</th>
                          
                         </tr>
@@ -151,19 +139,7 @@
 
 
                       <tbody class="user-table">
-                        <tr>
-                          <td>1</td>
-                          <td>admin</td>
-                          <td>Jerry</td>
-                          <td>18868680389</td>
-                          <td>代理用户</td>
-                          <td>2017-11-21 14:38</td>                        
-                          <td>100</td>                        
-                          <td>20</td>                        
-                          <td class="sorting" style="">
-                          	<a href="#" class="btn btn-info btn-xs edit" data-toggle="modal" data-target=".edit-info"><i class="fa fa-pencil"></i> 编辑 </a>
-                          	<a href="#" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> 删除 </a></td>
-                        </tr>
+                      
                         
                         
                                   
@@ -187,7 +163,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            BMS -  
+             -  
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -201,100 +177,66 @@
                   
 
                  
- <!-- view -->
- 
- 				  <div class="modal fade view-info" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-md">
-                      <div class="modal-content">
 
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                          </button>
-                          <h4 class="modal-title" id="myModalLabel">Personal Info</h4>
-                        </div>
-                        <div class="modal-body" style="text-align:center;">
-                        	<div class="view-body">
-                        	<img src="images/icon_account_user@3x.png" width="20%" class="img-thumbnail img-circle" id="view-profile-photo">
-                   			<h2 class="show-name"></h2>
-                   			<h4 class="show-character"></h4>
-                   			<div class="personal-info">
-                   				<div class="row">
-                   					<div class="col-md-4 col-sm-4 col-xs-4  left">
-                   						<p><i class="fa fa-phone fa-fw"></i>&nbsp; Phone<p>
-                   						<p><i class="fa fa-envelope-o fa-fw"></i>&nbsp; Email<p>
-                   						<p><i class="fa fa-suitcase fa-fw"></i>&nbsp; Company<p>
-                   						<p><i class="fa fa-map-marker fa-fw"></i>&nbsp; Address<p>
-                   					</div>
-                   					
-                   					<div class="col-md-8 col-sm-8 col-xs-8  right">
-                   						<p class="show-phone"><p>
-                   						<p class="show-email"><p>
-                   						<p class="show-company"><p>
-                   						<p class="show-address"><p>
-                   					</div>
-                   					
-                   				</div>
-                   			</div>
-                   			
-                   			<div class="personal-pic">
-                   				<h5>Photo of ID</h5>
-                   				<img id="id-photo"  class="img-thumbnail" width="20%" >
-                   			</div>
-                   			
-                   			<div class="personal-pic2">
-                   				<h5 >Photo of Credential</h5>
-                   				<div id="cert-photo"></div>
-                   			</div>
-                   			</div>
-       
-                        </div>
-                       
-                      </div>
-                    </div>
-                  </div>
 
  <!-- edit -->				  
-				  <div class="modal fade edit-info" tabindex="-1" role="dialog" aria-hidden="true">
+				  <div class="modal fade add-user" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
 
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                           </button>
-                          <h4 class="modal-title" id="myModalLabel">Edit Info</h4>
+                          <h4 class="modal-title" id="myModalLabel">添加新用户</h4>
                         </div>
                         <div class="modal-body">
                         	<form class="form-horizontal form-label-left" id="edit-form">
 
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">账号 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="edit-phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
+                              <input type="text" id="username" name="username" required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                           </div>
                           
                           <div class="form-group">
-                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Character <span class="required">*</span></label>
-                        	<div class="col-md-6 col-sm-6 col-xs-12">
-                         	 <select class="form-control character-select" id="edit-character">
-                          	</select>
-                        	</div>
-                      		</div>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">密码 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="password" id="password" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">确认密码 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input type="password" id="confirm-password" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                          </div>
                       	  
                       	  <div class="form-group">
-                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">Company <span class="required">*</span></label>
+                        	<label class="control-label col-md-3 col-sm-3 col-xs-12">类型<span class="required">*</span></label>
                         	<div class="col-md-6 col-sm-6 col-xs-12">
-                         	 <select class="form-control company-select" id="edit-company">
+                         	 <select class="form-control company-select" id="type">
+                         	 	<option value="1">普通用户</option>
+                         	 	<option value="2" class="proxy" style="display:none">代理用户</option>
                           	</select>
                         	</div>
                       		</div>
                           
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">联系方式<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="edit-address" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" placeholder="Staff Only">
+                              <input id="phone" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+                          <div class="form-group number">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">库存数<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="remain_num" class=" form-control col-md-7 col-xs-12" required="required" type="text" value="50" disabled>
                             </div>
                           </div>
 
@@ -302,8 +244,8 @@
                         </div>
                         
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary edit-submit" >Save</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">充值</button>
+                          <button type="button" class="btn btn-primary add-user-btn" >添加</button>
                         </div>
                    
                        
@@ -338,22 +280,11 @@
     <script src="../vendors/switchery/dist/switchery.min.js"></script>
     <!-- Dropzone.js -->
     <script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
+    
+    <script src="../js/pages/account.js"></script>
 
 	
-	<script>
-		var picModal=document.getElementById("picModal");
-		
-		var img=document.getElementById("id-photo");
-		var modalImg=document.getElementById("bImg");
-		
-		img.onclick=function(){
-			picModal.style.display="block";
-			modalImg.src=this.src;
-			
-		}
-		
-		
-	</script>
+
   
   </body>
 </html>

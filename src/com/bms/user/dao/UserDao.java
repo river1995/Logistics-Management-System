@@ -1,5 +1,8 @@
 package com.bms.user.dao;
 
+import java.util.List;
+
+import com.bms.commom.domain.QueryEntity;
 import com.bms.user.entities.UserEntity;
 
 public interface UserDao {
@@ -11,5 +14,34 @@ public interface UserDao {
 	 * @return
 	 */
 	UserEntity login(String username ,String password);
+	
+	/**
+	 * 添加新用户
+	 * @param userEntity
+	 * @return
+	 */
+	int addUser(UserEntity userEntity);
+	
+	
+	/**
+	 * 获取用户信息列表
+	 * @param type
+	 * @return
+	 */
+	List<UserEntity> userList(int type ,QueryEntity queryEntity);
+	
+	/**
+	 * 计算用户总数，用于分页计算
+	 * @param type
+	 * @return
+	 */
+	public int countUser(int type);
+	
+	/**
+	 * 检测用户名是否重复
+	 * @param userName
+	 * @return
+	 */
+	int checkUserName(String userName);
 	
 }

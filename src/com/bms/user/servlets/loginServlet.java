@@ -21,7 +21,7 @@ import net.sf.json.JsonConfig;
 /**
  * Servlet implementation class LoginBackendServlet
  */
-@WebServlet("/api/v1.0/login")
+@WebServlet("/lms/v1.0/login")
 public class loginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StringUtil stringUtil = new StringUtil();

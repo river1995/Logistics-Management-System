@@ -120,7 +120,7 @@
 
   		$.ajax({
   			type: "POST",
-  			url: "./api/v1.0/login",
+  			url: "./lms/v1.0/login",
   			data: "username="+name+"&password="+password,
   			cache:false,
   			error:function(data){
@@ -136,7 +136,7 @@
   					if(dataJSON.type === 1){
   						window.location.href = './pages/order.html';  						
   					}else if(dataJSON.type === 2){
-  						window.location.href = './pages/permission.html';  			
+  						window.location.href = './pages/account.html';  			
   					}else if(dataJSON.type === 3){
   						window.location.href = './pages/account.html';  			
   					}

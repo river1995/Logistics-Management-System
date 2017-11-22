@@ -19,12 +19,12 @@ import com.bms.utils.common.ConstantsUtil;
  * Servlet Filter implementation class APIFilter
  */
 @WebFilter(filterName = "/APIFilter", urlPatterns = "/pages/*")
-public class APIFilter implements Filter {
+public class PageFilter implements Filter {
 
 	/**
 	 * Default constructor.
 	 */
-	public APIFilter() {
+	public PageFilter() {
 		// TODO Auto-generated constructor stub
 	}
 
