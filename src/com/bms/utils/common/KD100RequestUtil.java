@@ -7,27 +7,53 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class GetExpressByCaiNiao {
+public class KD100RequestUtil {
 	
-	public void requestLogisticInfo(String postId ,String logisticType)  {
+	public JSONObject requestLogisticInfo(String postId ,String logisticType)  {
 		JSONObject jsonObject = null;
 		String type = "";
+		switch(logisticType){
+		case "顺丰":
+			type = "shunfeng";
+			break;
+		case "申通":
+			type = "shentong";
+			break;
+		case "中通":
+			type = "zhongtong";
+			break;
+		case "EMS":
+			type = "ems";
+			break;
+		case "韵达":
+			type = "yunda";
+			break;
+		case "圆通":
+			type = "yuantong";
+			break;
+		case "百世":
+			type = "huitongkuaidi";
+			break;
+		default :
+			break;
+		}
 		try {
-			URL url = new URL("https://biz.trace.ickd.cn/shentong/402832822880?mailNo=402832822880&spellName=&exp-textName=&ts=123456&enMailNo=123456789&callback=_jqjsp&_1511254521748=");
+			URL url = new URL("https://p.kuaidi100.com/rss/weixin/query.do");
 			
 			try {
 				HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
-				urlConnection.setRequestMethod("GET");
-				urlConnection.setRequestProperty("m-content-md5", "205e0a9ad9ce1206fbca13ad0966c88b");
+				urlConnection.setRequestMethod("POST");
 				urlConnection.setDoOutput(true);
 				urlConnection.setUseCaches(true);
 				DataOutputStream outputStream = new DataOutputStream(urlConnection.getOutputStream());
-				
-				//outputStream.writeBytes(params);
+				String params = "token="+ConstantsUtil.queryToken+"&com="+type+"&num="+postId;
+				outputStream.writeBytes(params);
 				outputStream.flush();
 				outputStream.close();
 				
@@ -41,9 +67,7 @@ public class GetExpressByCaiNiao {
 
 				bufferedReader.close();
 				String responseBody  = response.toString();
-				System.out.println("response:"+JSONObject.fromObject(responseBody));
-				//jsonObject = JSONObject.fromObject(responseBody);
-				System.out.println(responseBody);
+				jsonObject = JSONObject.fromObject(responseBody);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -52,11 +76,16 @@ public class GetExpressByCaiNiao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return jsonObject;
 	}
 	
 	public static void main(String[] args) {
-		GetExpressByCaiNiao caiNiao = new GetExpressByCaiNiao();
-		caiNiao.requestLogisticInfo("402832822880", "shentong");
+		KD100RequestUtil caiNiao = new KD100RequestUtil();
+		System.out.println(caiNiao.requestLogisticInfo("402832822891", "申通"));
 		//System.out.println();
+	
+		
+		
 	}
 }

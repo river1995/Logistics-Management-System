@@ -18,6 +18,8 @@ public class ConstantsUtil {
 	
 	public static String accessIp;
 
+	public final static String queryToken = "89F2A85B2AA090F269C03A29225BC51C";
+	
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
 	public final static String encrypt = "yes";

@@ -81,7 +81,7 @@ public class RequestLogisticUtil {
 	
 	public static void main(String[] args) {
 		RequestLogisticUtil requestUtil = new RequestLogisticUtil();
-		JSONObject object= requestUtil.requestLogisticInfo("614134452661","顺丰");
+		JSONObject object= requestUtil.requestLogisticInfo("402832822891","申通");
 		JSONArray jsonArray = object.getJSONArray("data");
 		System.out.println("object:"+object);
 		System.out.println(jsonArray);

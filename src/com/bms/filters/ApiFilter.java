@@ -36,7 +36,7 @@ import net.sf.json.JsonConfig;
  *                                                的URL模式,也可使用属性value来声明.(指定要过滤的URL模式是必选属性)
  *                                                urlPatterns="/*" 表示过滤掉所有请求
  */
-@WebFilter(filterName = "ApiFilter", urlPatterns = "/api/*")
+@WebFilter(filterName = "ApiFilter", urlPatterns = "/api/v1.0/*")
 public class ApiFilter implements Filter {
 	
 	private UserServiceImpl userService = new UserServiceImpl();
