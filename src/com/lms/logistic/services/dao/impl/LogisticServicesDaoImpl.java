@@ -69,14 +69,16 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 		String company = logisticEntity.getLogisticCompany();
 		String logNo = logisticEntity.getLogisticNo();
 		String finishTimeStr = logisticEntity.getCreateLogTime();
+		long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
+		
 		if (!stringUtil.isNullString(logNo) && !stringUtil.isNullString(company) && !stringUtil.isNullString(finishTimeStr)) {
-			long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(RandomUtil.getRandomTime(4, 6))));					
+			LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
+			list.add(gatewayStatusEntity);
 			JSONObject object = requestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
 			if (object != null) {
 				JSONArray jsonArray = object.getJSONArray("data");
 				if (jsonArray != null && jsonArray.size()>0) {
-					LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
-					list.add(gatewayStatusEntity);
+					
 					for(int i = 0;i<jsonArray.size();i++){
 						LogisticStatusEntity statusEntity = new LogisticStatusEntity();
 						statusEntity.setAddress(jsonArray.getJSONObject(i).getString("context"));
