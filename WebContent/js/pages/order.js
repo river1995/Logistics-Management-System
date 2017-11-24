@@ -143,14 +143,25 @@ $(document).ready(function(){
 	$('#gateway-province').change(function(){
 		showCity(this);
 	});
+	$('#from-city').change(function(){
+		//alert($(this).children('option:selected').val());
+		if($(this).children('option:selected').val() === 'seattle'){
+			console.log('执行选择西雅图地址');
+			$('#sender-address').val('seattle');
+		}else if($(this).children('option:selected').val() === 'newyork'){
+			$('#sender-address').val('newyork');
+		}else if($(this).children('option:selected').val() === 'milano'){
+			$('#sender-address').val('milano');
+		}
+	});
 	$('#from-country').change(function(){
 		$('#from-city').empty();
 		var countryVal = $(this).children('option:selected').val()
 		console.log(countryVal);
 		if(countryVal === 'us'){
-			$('#from-city').append("<option value='0' class='us-city'>西雅图</option><option value='1' class='us-city'>纽约</option>");
+			$('#from-city').append("<option>请选择发货城市</option><option value='seattle' class='us-city'>西雅图</option><option value='newyork' class='us-city'>纽约</option>");
 		}else if(countryVal === 'ita'){
-			$('#from-city').append("<option value='0' class='ita-city'>米兰</option>");
+			$('#from-city').append("<option>请选择发货城市</option><option value='milano' class='ita-city'>米兰</option>");
 		}
 	});
 	

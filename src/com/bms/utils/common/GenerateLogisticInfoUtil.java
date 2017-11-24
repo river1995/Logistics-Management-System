@@ -23,6 +23,7 @@ public class GenerateLogisticInfoUtil {
 		long onTheWayTime3 = (long) (onTheWayTime2+1000*60*60*(RandomUtil.getRandomTime(30 ,35)));
 		long onTheWayTime4 = (long) (onTheWayTime3+1000*60*60*(RandomUtil.getRandomTime(16 ,20)));
 		long gatewayTime = (long) (onTheWayTime4+1000*60*60*(RandomUtil.getRandomTime(35 ,40)));
+		long clearanceTime = DateFormatUtil.createDayTime((long) (gatewayTime+1000*60*60*(RandomUtil.getRandomTime(64 ,75))));
 		System.out.println(DateFormatUtil.changeLongTimeToString(RandomBeginTime));
 		if(fromCountry.equals("us")){
 			if (fromCity.equals("西雅图")) {
@@ -32,12 +33,14 @@ public class GenerateLogisticInfoUtil {
 				LogisticStatusEntity onTheWay3 = new LogisticStatusEntity("Arrival Processing Center ,San Francisco,USA", DateFormatUtil.changeLongTimeToString(onTheWayTime3));
 				LogisticStatusEntity onTheWay4 = new LogisticStatusEntity("Ready to send to "+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(onTheWayTime4));
 				LogisticStatusEntity gateway = new LogisticStatusEntity("Parcel Delivery Customs,Waiting for clearance ,"+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(gatewayTime));
+				LogisticStatusEntity clearance = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company", DateFormatUtil.changeLongTimeToString(clearanceTime));
 				list.add(prepare);
 				list.add(onTheWay1);
 				list.add(onTheWay2);
 				list.add(onTheWay3);
 				list.add(onTheWay4);
 				list.add(gateway);
+				list.add(clearance);
 			}else if(fromCity.equals("纽约")){
 				LogisticStatusEntity prepare = new LogisticStatusEntity("Delivered - Signed for by : Zaleno Express ,Halsey St,Brooklyn, New York, USA", DateFormatUtil.changeLongTimeToString(RandomBeginTime));
 				LogisticStatusEntity onTheWay1 = new LogisticStatusEntity("Arrived at Delivery Facility in Brooklun, New York, USA", DateFormatUtil.changeLongTimeToString(onTheWayTime1));
@@ -45,12 +48,14 @@ public class GenerateLogisticInfoUtil {
 				LogisticStatusEntity onTheWay3 = new LogisticStatusEntity("Arrival Chicago Processing Center , Chicago, USA", DateFormatUtil.changeLongTimeToString(onTheWayTime3));
 				LogisticStatusEntity onTheWay4 = new LogisticStatusEntity("Ready to send to "+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(onTheWayTime4));
 				LogisticStatusEntity gateway = new LogisticStatusEntity("Parcel Delivery Customs,Waiting for clearance ,"+PinyinUtil.changeChineseToPinyin(gatewayCity)+", China", DateFormatUtil.changeLongTimeToString(gatewayTime));
+				LogisticStatusEntity clearance = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company", DateFormatUtil.changeLongTimeToString(clearanceTime));
 				list.add(prepare);
 				list.add(onTheWay1);
 				list.add(onTheWay2);
 				list.add(onTheWay3);
 				list.add(onTheWay4);
 				list.add(gateway);
+				list.add(clearance);
 			}
 			
 		}else if(fromCountry.equals("ita")){
@@ -60,12 +65,14 @@ public class GenerateLogisticInfoUtil {
 			LogisticStatusEntity onTheWay3 = new LogisticStatusEntity("Arrival Processing Center ,Chieti ,Italy", DateFormatUtil.changeLongTimeToString(onTheWayTime3));
 			LogisticStatusEntity onTheWay4 = new LogisticStatusEntity("Ready to send to "+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(onTheWayTime4));
 			LogisticStatusEntity gateway = new LogisticStatusEntity("Parcel Delivery Customs,Waiting for clearance ,"+PinyinUtil.changeChineseToPinyin(gatewayCity)+",China", DateFormatUtil.changeLongTimeToString(gatewayTime));
+			LogisticStatusEntity clearance = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company", DateFormatUtil.changeLongTimeToString(clearanceTime));
 			list.add(prepare);
 			list.add(onTheWay1);
 			list.add(onTheWay2);
 			list.add(onTheWay3);
 			list.add(onTheWay4);
 			list.add(gateway);
+			list.add(clearance);
 		}
 		
 		return list;

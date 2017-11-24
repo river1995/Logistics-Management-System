@@ -20,6 +20,7 @@ public class LogisticEntity {
 	private String logisticNo;
 	private int counts;
 	private String createLogTime;
+	
 	public int getId() {
 		return id;
 	}

@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+import javafx.collections.ListChangeListener.Change;
+
 public class DateFormatUtil {
 
 	public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -79,6 +81,33 @@ public class DateFormatUtil {
 		return time;
 	}
 	
+	public static long createDayTime(long unixTime){
+		long time = 0l;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		try {
+			String formatTime = dateFormat.format(unixTime);
+			Date date = dateFormat.parse(formatTime);
+			
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			int year = calendar.get(Calendar.YEAR);
+			int month = calendar.get(Calendar.MONTH)+1;
+			int day = calendar.get(Calendar.DAY_OF_MONTH);
+			int hour = (int)RandomUtil.getRandomTime(10, 17);
+			int second = (int)RandomUtil.getRandomTime(1, 60);
+			String timestamp = year+"-"+month+"-"+day+" "+hour+":"+second;
+			time = format.parse(timestamp).getTime();
+			
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return time;
+	}
+	
 	public static void main(String[] args) {
 		//getDate(1509351453385l);
 		//System.out.println(System.currentTimeMillis());
@@ -91,7 +120,10 @@ public class DateFormatUtil {
 //		System.out.println("t1:"+changeLongTimeToString(t1));
 //		System.out.println("t2:"+changeLongTimeToString(t2));
 //		
-		System.out.println(DateFormatUtil.changeLongTimeToString(1510324863486l));
+		DateFormatUtil.createDayTime(1511461440000l);
+		//System.out.println(System.currentTimeMillis());
+		//System.out.println(DateFormatUtil.getDate(1510516080000l));
+		System.out.println(DateFormatUtil.changeTimeStampToUnixTime("2017-11-24 02:24"));
 	}
 
 }

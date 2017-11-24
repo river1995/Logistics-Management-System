@@ -82,7 +82,7 @@ public class KD100RequestUtil {
 	
 	public static void main(String[] args) {
 		KD100RequestUtil caiNiao = new KD100RequestUtil();
-		System.out.println(caiNiao.requestLogisticInfo("402832822891", "申通"));
+		System.out.println(caiNiao.requestLogisticInfo("240825063169", "顺丰"));
 		//System.out.println();
 	
 		
