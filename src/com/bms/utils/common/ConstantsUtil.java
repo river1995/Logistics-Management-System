@@ -14,14 +14,14 @@ public class ConstantsUtil {
 
 	public static String redisUrl;
 	public static String redisPassword;
-	public static int redisPort;
+	public static int redisPort;	
 	
 	public static String accessIp;
-
+	public final static String queryToken="9B8EC3B44745428FAB7010D97BB4D0C1";
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
 	public final static String encrypt = "yes";
-	public final static String mode = "dev";
+	public final static String mode = "test";
 	public final static String server = "outside";
 	public final static String dateFormat = "yyyy-MM-dd HH:mm:ss";
 	public final static int dbSharping = 10;

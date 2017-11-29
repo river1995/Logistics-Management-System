@@ -40,7 +40,7 @@ public class CustomerLogisticInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		System.out.println("run test");
 		ApiResultEntity<List<LogisticStatusEntity>> apiResultEntity = new ApiResultEntity<>();
 		String orderSeq = request.getParameter("order_seq");
 		if (!stringUtil.isNullString(orderSeq)) {

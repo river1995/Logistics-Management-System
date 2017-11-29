@@ -21,12 +21,12 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 
-public class LogisticServicesDaoImpl implements LogisticServiceDao {
+public class LogisticServicesDaoImpl2 implements LogisticServiceDao {
 	
 	private LogisticDaoImpl logisticDao = new LogisticDaoImpl();
 	private GenerateLogisticInfoUtil generateUtil = new GenerateLogisticInfoUtil();
-	private RequestLogisticUtil requestUtil = new RequestLogisticUtil();
 	private KD100RequestUtil kd100RequestUtil = new KD100RequestUtil();
+	private RequestLogisticUtil requestUtil = new RequestLogisticUtil();
 	private StringUtil stringUtil = new StringUtil();
 
 	@Override
@@ -67,39 +67,58 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	@Override
 	public List<LogisticStatusEntity> customerLogisticList(String orderSeq) {
 		List<LogisticStatusEntity> list = logisticDao.customerLogisticList(orderSeq);
-		LogisticEntity  logisticEntity = logisticDao.getLogisticNo(orderSeq);
+		LogisticEntity logisticEntity = logisticDao.getLogisticNo(orderSeq);
 		String company = logisticEntity.getLogisticCompany();
 		String logNo = logisticEntity.getLogisticNo();
 		String finishTimeStr = logisticEntity.getCreateLogTime();
-		long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
-		
-		if (!stringUtil.isNullString(logNo) && !stringUtil.isNullString(company) && !stringUtil.isNullString(finishTimeStr)) {
-			LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
+		if (!stringUtil.isNullString(logNo) && !stringUtil.isNullString(company)
+				&& !stringUtil.isNullString(finishTimeStr)) {
+			long finishTime = (long) (Long.parseLong(finishTimeStr)
+					- (1000 * 60 * 60 * 4.35));
+			LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity(
+					"Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",
+					DateFormatUtil.changeLongTimeToString(finishTime));
 			list.add(gatewayStatusEntity);
-			JSONObject object = kd100RequestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
-			if (object != null) {
+			JSONObject object = requestUtil.requestLogisticInfo(logNo, company);
+			if (object != null && object.getJSONArray("data").size() > 0) {
 				JSONArray jsonArray = object.getJSONArray("data");
-				if (jsonArray != null && jsonArray.size()>0) {
-					
-					for(int i = 0;i<jsonArray.size();i++){
+				if (jsonArray != null && jsonArray.size() > 0) {
+					for (int i = 0; i < jsonArray.size(); i++) {
 						LogisticStatusEntity statusEntity = new LogisticStatusEntity();
 						statusEntity.setAddress(jsonArray.getJSONObject(i).getString("context"));
 						String timeResult = "";
 						String[] times = jsonArray.getJSONObject(i).getString("time").split(":");
-						timeResult = times[0]+":"+times[1].split(":")[0];
+						timeResult = times[0] + ":" + times[1].split(":")[0];
 						statusEntity.setTime(timeResult);
 						list.add(statusEntity);
 					}
 				}
+			} else {
+				JSONObject KD100Mobileobject = kd100RequestUtil.requestLogisticInfo(logNo, company);
+				System.out.println("KD100Mobileobject:"+KD100Mobileobject);
+				if (KD100Mobileobject != null && KD100Mobileobject.getJSONArray("data").size() > 0) {
+					JSONArray jsonArray = object.getJSONArray("data");
+					if (jsonArray != null && jsonArray.size() > 0) {
+						for (int i = 0; i < jsonArray.size(); i++) {
+							LogisticStatusEntity statusEntity = new LogisticStatusEntity();
+							statusEntity.setAddress(jsonArray.getJSONObject(i).getString("context"));
+							String timeResult = "";
+							String[] times = jsonArray.getJSONObject(i).getString("time").split(":");
+							timeResult = times[0] + ":" + times[1].split(":")[0];
+							statusEntity.setTime(timeResult);
+							list.add(statusEntity);
+						}
+					}
+				}
 			}
+			Collections.sort(list, new Comparator<LogisticStatusEntity>() {
+				@Override
+				public int compare(LogisticStatusEntity status1, LogisticStatusEntity status2) {
+					// TODO Auto-generated method stub
+					return status1.getTime().compareTo(status2.getTime());
+				}
+			});
 		}
-		Collections.sort(list,new Comparator<LogisticStatusEntity>(){
-			@Override
-			public int compare(LogisticStatusEntity status1, LogisticStatusEntity status2) {
-				// TODO Auto-generated method stub
-				return status1.getTime().compareTo(status2.getTime());
-			}
-        });
 		return list;
 	}
 
