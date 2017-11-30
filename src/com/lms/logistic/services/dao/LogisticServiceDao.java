@@ -63,4 +63,11 @@ public interface LogisticServiceDao {
 	 * @return
 	 */
 	int getOrderCounts(int userId);
+	
+	/**
+	 * 通过快递100移动端api查询快递
+	 * @param orderSeq
+	 * @return
+	 */
+	public List<LogisticStatusEntity> queryByKD100Mobile(String orderSeq);
 }

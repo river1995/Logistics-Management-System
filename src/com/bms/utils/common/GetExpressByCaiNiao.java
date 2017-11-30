@@ -41,6 +41,7 @@ public class GetExpressByCaiNiao {
 
 				bufferedReader.close();
 				String responseBody  = response.toString();
+				System.out.println("response:"+responseBody);
 				System.out.println("response:"+JSONObject.fromObject(responseBody));
 				//jsonObject = JSONObject.fromObject(responseBody);
 				System.out.println(responseBody);

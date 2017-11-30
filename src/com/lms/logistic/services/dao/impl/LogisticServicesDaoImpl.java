@@ -71,13 +71,14 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 		String company = logisticEntity.getLogisticCompany();
 		String logNo = logisticEntity.getLogisticNo();
 		String finishTimeStr = logisticEntity.getCreateLogTime();
-		long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
 		
 		if (!stringUtil.isNullString(logNo) && !stringUtil.isNullString(company) && !stringUtil.isNullString(finishTimeStr)) {
+			long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
 			LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
 			list.add(gatewayStatusEntity);
 			JSONObject object = kd100RequestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
-			if (object != null) {
+			System.out.println("object:"+object);
+			if (object != null && object.get("status").equals("200")) {
 				JSONArray jsonArray = object.getJSONArray("data");
 				if (jsonArray != null && jsonArray.size()>0) {
 					
@@ -100,6 +101,47 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 				return status1.getTime().compareTo(status2.getTime());
 			}
         });
+		return list;
+	}
+	
+	
+	@Override
+	public List<LogisticStatusEntity> queryByKD100Mobile(String orderSeq) {
+		List<LogisticStatusEntity> list = logisticDao.customerLogisticList(orderSeq);
+		LogisticEntity  logisticEntity = logisticDao.getLogisticNo(orderSeq);
+		String company = logisticEntity.getLogisticCompany();
+		String logNo = logisticEntity.getLogisticNo();
+		String finishTimeStr = logisticEntity.getCreateLogTime();
+		
+		if (!stringUtil.isNullString(logNo) && !stringUtil.isNullString(company) && !stringUtil.isNullString(finishTimeStr)) {
+			long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
+			LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
+			list.add(gatewayStatusEntity);
+			JSONObject object = requestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
+			System.out.println("object:"+object);
+			if (object != null && object.get("status").equals("200")) {
+				JSONArray jsonArray = object.getJSONArray("data");
+				if (jsonArray != null && jsonArray.size()>0) {
+					
+					for(int i = 0;i<jsonArray.size();i++){
+						LogisticStatusEntity statusEntity = new LogisticStatusEntity();
+						statusEntity.setAddress(jsonArray.getJSONObject(i).getString("context"));
+						String timeResult = "";
+						String[] times = jsonArray.getJSONObject(i).getString("time").split(":");
+						timeResult = times[0]+":"+times[1].split(":")[0];
+						statusEntity.setTime(timeResult);
+						list.add(statusEntity);
+					}
+				}
+			}
+		}
+		Collections.sort(list,new Comparator<LogisticStatusEntity>(){
+			@Override
+			public int compare(LogisticStatusEntity status1, LogisticStatusEntity status2) {
+				// TODO Auto-generated method stub
+				return status1.getTime().compareTo(status2.getTime());
+			}
+		});
 		return list;
 	}
 

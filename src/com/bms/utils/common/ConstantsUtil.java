@@ -17,7 +17,7 @@ public class ConstantsUtil {
 	public static int redisPort;	
 	
 	public static String accessIp;
-	public final static String queryToken="9B8EC3B44745428FAB7010D97BB4D0C1";
+	public final static String queryToken="DC92753283E5E5F7B16733BE17BC6867";
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
 	public final static String encrypt = "yes";
