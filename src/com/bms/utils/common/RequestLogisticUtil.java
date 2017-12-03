@@ -43,7 +43,7 @@ public class RequestLogisticUtil {
 			break;
 		}
 		try {
-			URL url = new URL("https://www.kuaidi100.com/query?type="+type+"&postid="+postId+"&temp=0.34571912183775666");
+			URL url = new URL("https://m.kuaidi100.com/query?type="+type+"&postid="+postId+"&id=1&valicode=&temp=0.026317220867324576 ");
 			
 			try {
 				HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();

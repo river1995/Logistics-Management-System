@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form id="queryForm">
+		<input type="text" id="log_no" name="log_no" >
+		<input type="button" id="sub-btn" name="sub-btn" value="查询">
+	</form>
+	
+	<table class="table" style="margin-top:30px">
+		<thead class="table-thread">
+			<tr>
+				<th>Time</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody class="table-body"></tbody>
+	</table>
+
+
+	<script src="./vendors/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#sub-btn').on('click',function(){
+			$('.table-body').empty();
+			$.ajax({
+	  			type: "POST",
+	  			url: "./lms/test/query_logistic",
+	  			data: "order_seq="+$('#log_no').val(),
+	  			success: function(res){
+	  				console.log(res);
+	  					
+	  				if(res.code === 0){
+	  					var data = res.data;
+	  					for(var i = 0;i<data.length;i++){
+	  						$('.table-body').append("<tr><td>"+data[i].time+"</td><td>"+data[i].address+"</td></tr>");	  						
+	  					}
+	  				}else {
+	  					alert("查询失败");
+	  				}
+	  			}
+	  		});
+		})
+	</script>
+</body>
+</html>

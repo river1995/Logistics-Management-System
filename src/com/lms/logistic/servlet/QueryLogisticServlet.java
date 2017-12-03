@@ -20,21 +20,23 @@ import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
 /**
- * Servlet implementation class CustomerLogisticInfoServlet
+ * Servlet implementation class QueryLogisticServlet
  */
-@WebServlet("/api/ex/v1.0/logistic_info")
-public class CustomerLogisticInfoServlet extends HttpServlet {
+@WebServlet("/lms/test/query_logistic")
+public class QueryLogisticServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StringUtil stringUtil = new StringUtil();
-    private LogisticServicesDaoImpl logisticService = new LogisticServicesDaoImpl();
+	private LogisticServicesDaoImpl logisticService = new LogisticServicesDaoImpl();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CustomerLogisticInfoServlet() {
+    public QueryLogisticServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +46,7 @@ public class CustomerLogisticInfoServlet extends HttpServlet {
 		ApiResultEntity<List<LogisticStatusEntity>> apiResultEntity = new ApiResultEntity<>();
 		String orderSeq = request.getParameter("order_seq");
 		if (!stringUtil.isNullString(orderSeq)) {
-			List<LogisticStatusEntity> list = logisticService.customerLogisticList(orderSeq);
+			List<LogisticStatusEntity> list = logisticService.queryByKD100Mobile(orderSeq);
 			if (list.size() > 0 && list != null) {
 				apiResultEntity.setCode(0);
 				apiResultEntity.setMessage("success");

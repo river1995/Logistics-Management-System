@@ -67,7 +67,11 @@ public class KD100RequestUtil {
 
 				bufferedReader.close();
 				String responseBody  = response.toString();
-				jsonObject = JSONObject.fromObject(responseBody);
+
+				System.out.println("response:"+responseBody);
+				System.out.println("response:"+JSONObject.fromObject(responseBody));
+				//jsonObject = JSONObject.fromObject(responseBody);
+				System.out.println(responseBody);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
