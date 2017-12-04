@@ -79,10 +79,54 @@ $('docuemnt').ready(function(){
 		
 		window.operateEvents = {
 			    'click .edit': function (e, value, row, index) {
+			    	var type = $("#home-tab").data("type");
+			    	if(type === 2){
+			    		$('.form-group-number').css('display','none');
+			    		$('.edit-user').modal('show');
+			    	}else{
+			    		$('.form-group-number').css('display','initial');
+			    		$('.edit-user').modal('show');
+			    		$('.edit-user-btn').on('click',function(){
+				    		var num = $('#edit_remain_num').val();
+				    		$.ajax({
+								type : 'POST',
+								url : '../api/v1.0/add_remain_no',
+								data  : {'user_id' : value ,"remain_num":num},
+								dataType : 'JSON',
+								success : function(data){
+									console.log("add_remain_no:"+JSON.stringify(data));
+									if(data.code === 0){
+										layer.msg('添加库存成功', {
+											  icon: 1,
+											  time: 1500 //2秒关闭（如果不配置，默认是3秒）
+										  }, function(){
+											  location.reload();
+										  }); 
+									}
+								}
+							});
+				    	})
+			    	}
 			    	
 			    },
 			    'click .delete': function (e, value, row, index) {
-			    	
+			    	$.ajax({
+						type : 'POST',
+						url : '../api/v1.0/disable_user',
+						data  : {'user_id' : value},
+						dataType : 'JSON',
+						success : function(data){
+							console.log("disable_user:"+JSON.stringify(data));
+							if(data.code === 0){
+								layer.msg('删除用户成功', {
+									  icon: 1,
+									  time: 1500 //2秒关闭（如果不配置，默认是3秒）
+								  }, function(){
+									  location.reload();
+								  }); 
+							}
+						}
+					});
 			    }
 			};
 		$('#datatable').bootstrapTable({
@@ -128,6 +172,8 @@ $('docuemnt').ready(function(){
 					}
 				},
 			},{
+				field:'proxy'
+			},{
 				field:'total'
 			},{
 				field:'remain_num'
@@ -136,8 +182,7 @@ $('docuemnt').ready(function(){
 			},{
 				field:'id',
 				formatter:function(value,row,index){
-					return '<a href="#" class="btn btn-info btn-xs edit" data-toggle="modal" data-target=".add-user"><i class="fa fa-pencil"></i> 编辑 </a>'+
-                          	'<a href="#" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> 删除 </a>';
+					return '<a href="#" class="btn btn-info btn-xs edit" ><i class="fa fa-pencil"></i> 编辑 </a>';
 				},
 				events : operateEvents
 				

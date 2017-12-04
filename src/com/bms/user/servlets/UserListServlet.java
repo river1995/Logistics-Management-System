@@ -44,6 +44,7 @@ public class UserListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int role = (int) request.getSession().getAttribute("type");
+		int userId = (int) request.getSession().getAttribute("user_id");
 		ApiResultEntity<PageEntity<UserEntity>> apiResultEntity = new ApiResultEntity<>();
 		PageEntity<UserEntity> pageEntity = new PageEntity<>();
 		QueryEntity queryEntity = new QueryEntity();
@@ -66,19 +67,36 @@ public class UserListServlet extends HttpServlet {
 				response.getWriter().print(JSONObject.fromObject(apiResultEntity ,jsonConfig));
 				return;
 			}
-			int count  = userService.countUser(type);
-			pageEntity.setTotal(count);
-			System.out.println("type:"+type+"queryEntity:"+JSONObject.fromObject(queryEntity));
-			List<UserEntity> list = userService.userList(type ,queryEntity);
-			if (list != null && list.size() > 0) {
-				pageEntity.setRows(list);
-				apiResultEntity.setCode(0);
-				apiResultEntity.setMessage("success");
-				apiResultEntity.setData(pageEntity);
-			}else {
-				apiResultEntity.setCode(40016);
-				apiResultEntity.setMessage("数据未找到");
-			}			
+			if (role == 2 && type == 1) {
+				int count  = userService.proxyCountUser(type);
+				pageEntity.setTotal(count);
+				System.out.println("type:"+type+"queryEntity:"+JSONObject.fromObject(queryEntity));
+				List<UserEntity> list = userService.proxyUserList(queryEntity ,userId);
+				if (list != null && list.size() > 0) {
+					pageEntity.setRows(list);
+					apiResultEntity.setCode(0);
+					apiResultEntity.setMessage("success");
+					apiResultEntity.setData(pageEntity);
+				}else {
+					apiResultEntity.setCode(40016);
+					apiResultEntity.setMessage("数据未找到");
+				}	
+			}else{
+				int count  = userService.countUser(type);
+				pageEntity.setTotal(count);
+				System.out.println("type:"+type+"queryEntity:"+JSONObject.fromObject(queryEntity));
+				List<UserEntity> list = userService.userList(type ,queryEntity);
+				if (list != null && list.size() > 0) {
+					pageEntity.setRows(list);
+					apiResultEntity.setCode(0);
+					apiResultEntity.setMessage("success");
+					apiResultEntity.setData(pageEntity);
+				}else {
+					apiResultEntity.setCode(40016);
+					apiResultEntity.setMessage("数据未找到");
+				}	
+			}
+					
 		}else{
 			apiResultEntity.setCode(40000);
 			apiResultEntity.setMessage("参数不齐全");

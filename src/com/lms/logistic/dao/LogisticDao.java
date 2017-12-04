@@ -71,4 +71,7 @@ public interface LogisticDao {
 	 * @return
 	 */
 	int getOrderCounts(int userId);
+	
+	
+	int reduceRemainNo(int userId);
 }

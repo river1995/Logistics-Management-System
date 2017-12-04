@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bms.commom.domain.ApiResultEntity;
+import com.bms.user.services.impl.UserServiceImpl;
 import com.bms.utils.common.StringUtil;
 import com.bms.utils.json.ChangeFieldNameCamel;
 import com.bms.utils.json.IgnoreNullProprety;
@@ -31,6 +32,7 @@ public class addLogisticServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StringUtil stringUtil = new StringUtil();
 	private LogisticServicesDaoImpl logisticService = new LogisticServicesDaoImpl();
+	private UserServiceImpl userService = new UserServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()

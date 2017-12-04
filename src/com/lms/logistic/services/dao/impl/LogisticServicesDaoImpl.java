@@ -36,7 +36,11 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 			
 			int rs = logisticDao.addLogisticStatus(detailEntity.getStatusEntity(), orderId);
 			if (rs > 0) {
-				flag = true;
+				System.out.println("执行");
+				int reduceRs = logisticDao.reduceRemainNo(detailEntity.getLogisticEntity().getUserId());
+				if (reduceRs > 0) {					
+					flag = true;
+				}
 			}else{
 				logisticDao.deleteLogistic(orderId);
 			}

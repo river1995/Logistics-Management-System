@@ -47,7 +47,7 @@
             <br>
 
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" style="margin-top:80px;">
               <div class="menu_section  active">
                 <ul class="nav side-menu" style="">
 
@@ -129,6 +129,7 @@
                           <th>登陆账号</th>
                           <th>联系方式</th>
                           <th>账号类型</th>                         
+                          <th class="user-thread">代理</th>                         
                           <th class="user-thread">总使用量</th>
                           <th class="user-thread">库存</th>
                           <th>创建时间</th>
@@ -174,13 +175,7 @@
 
 
  <!-- add -->
-                  
-
-                 
-
-
- <!-- edit -->				  
-				  <div class="modal fade add-user" tabindex="-1" role="dialog" aria-hidden="true">
+             <div class="modal fade add-user" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                       <div class="modal-content">
 
@@ -244,8 +239,49 @@
                         </div>
                         
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">充值</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">重置</button>
                           <button type="button" class="btn btn-primary add-user-btn" >添加</button>
+                        </div>
+                   
+                       
+                      </div>
+                    </div>
+                  </div>     
+
+                 
+
+
+ <!-- edit -->				  
+				  <div class="modal fade edit-user" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">添加新用户</h4>
+                        </div>
+                        <div class="modal-body">
+                        	<form class="form-horizontal form-label-left" id="edit-form">        
+                          
+                         
+                          
+                          
+                          
+                          <div class="form-group form-group-number">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">添加库存数<span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                              <input id="edit_remain_num" class=" form-control col-md-7 col-xs-12" required="required" type="text" >
+                            </div>
+                          </div>
+
+                        </form>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">重置</button>
+                          <button type="button" class="btn btn-primary edit-user-btn" >添加</button>
                         </div>
                    
                        

@@ -44,4 +44,14 @@ public interface UserDao {
 	 */
 	int checkUserName(String userName);
 	
+	int disableUser(int id);
+	
+	int getRemainNo(int userId);
+	
+	int addRemainNum(int userId ,int remainNum);
+	
+	int proxyCountUser(int userId);
+	
+	
+	List<UserEntity> proxyUserList(QueryEntity queryEntity ,int userId);
 }

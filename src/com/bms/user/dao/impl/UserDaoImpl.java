@@ -80,7 +80,12 @@ public class UserDaoImpl implements UserDao {
 		List<UserEntity> list = new ArrayList<UserEntity>();
 		try {
 			conn = DBConnector.getConnection();
-			String sql = "select id,username,password,type,created_at,total,remain_num,phone from `user` where type=? limit ?,?";
+			String sql = " SELECT "+
+					" `user`.id,	`user`.username,	`user`.`password`,	`user`.type,	`user`.created_at,	`user`.total,	`user`.remain_num,	`user`.phone,	`proxy_user`.username as proxy "+
+					" FROM	`user` "+
+					" left join (select id,username from `user`) as proxy_user "+
+					" on `user`.proxy_id = proxy_user.id "+
+					" WHERE	type = ? LIMIT ?, ?";
 			stat = conn.prepareStatement(sql);
 			stat.setInt(1, type);
 			stat.setInt(2, queryEntity.getOffset());
@@ -96,6 +101,7 @@ public class UserDaoImpl implements UserDao {
 				userEntity.setTotal(rs.getInt("total"));
 				userEntity.setRemainNum(rs.getInt("remain_num"));
 				userEntity.setPhone(rs.getString("phone"));
+				userEntity.setProxy(rs.getString("proxy"));
 				list.add(userEntity);
 			}
 		} catch (SQLException e) {
@@ -153,6 +159,130 @@ public class UserDaoImpl implements UserDao {
 			DBConnector.closeConnection(conn);
 		}
 		return id;
+	}
+	@Override
+	public int disableUser(int id) {
+		Connection conn = null;
+		PreparedStatement stat = null;
+		int rs = 0;
+		try {
+			conn = DBConnector.getConnection();
+			String sql = "update `user` set deleted_at=? where id=?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, id);
+			System.out.println("UserDaoImpl.disableUser():"+stat.toString());
+			rs = 0;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return rs;
+	}
+	@Override
+	public int getRemainNo(int userId) {
+		Connection conn = null;
+		PreparedStatement stat = null;
+		ResultSet rs = null;
+		int remaonNo = 0;
+		try {
+			conn = DBConnector.getConnection();
+			String sql = "select remain_num from `user` where id=?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, userId);
+			System.out.println("UserDaoImpl.getRemainNo():"+stat.toString());
+			rs = stat.executeQuery();
+			while(rs.next()){
+				remaonNo = rs.getInt("remain_num");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return remaonNo;
+	}
+	@Override
+	public int addRemainNum(int userId, int remainNum) {
+		Connection conn = null;
+		PreparedStatement stat = null;
+		int rs = 0;
+		try {
+			conn = DBConnector.getConnection();
+			String sql = "update `user` set remain_num=remain_num+? where id=?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, remainNum);
+			stat.setInt(2, userId);
+			System.out.println("UserDaoImpl.addRemainNum():"+stat.toString());
+			stat.executeUpdate();
+			rs = 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return rs;
+	}
+	@Override
+	public int proxyCountUser(int userId) {
+		Connection conn = null;
+		PreparedStatement stat = null;
+		int count = 0;
+		ResultSet rs = null;
+		try {
+			conn = DBConnector.getConnection();
+			String sql = "select count(id) as total from `user` where `user`.proxy_id=? ";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, userId);
+			System.out.println("UserDaoImpl.proxyCountUser():"+stat.toString());
+			rs = stat.executeQuery();
+			while(rs.next()){
+				count = rs.getInt("total");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return count;
+	}
+	@Override
+	public List<UserEntity> proxyUserList(QueryEntity queryEntity, int userId) {
+		Connection conn = null;
+		PreparedStatement stat = null;
+		ResultSet rs = null;
+		List<UserEntity> list = new ArrayList<UserEntity>();
+		try {
+			conn = DBConnector.getConnection();
+			String sql = "select id,username,password,type,created_at,total,remain_num,phone from `user` where proxy_id=? limit ?,?";
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, userId);
+			stat.setInt(2, queryEntity.getOffset());
+			stat.setInt(3, queryEntity.getLimit());
+			System.out.println("UserDaoImpl.proxyUserList():"+stat.toString());
+			rs = stat.executeQuery();
+			while(rs.next()){
+				UserEntity userEntity = new UserEntity();
+				userEntity.setId(rs.getInt("id"));
+				userEntity.setUsername(rs.getString("username"));
+				userEntity.setType(rs.getInt("type"));
+				userEntity.setCreateTime(DateFormatUtil.changeLongTimeToString(rs.getLong("created_at")));
+				userEntity.setTotal(rs.getInt("total"));
+				userEntity.setRemainNum(rs.getInt("remain_num"));
+				userEntity.setPhone(rs.getString("phone"));
+				list.add(userEntity);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		return list;
 	}
 
 }

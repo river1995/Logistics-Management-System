@@ -49,4 +49,42 @@ public class UserServiceImpl implements UserService {
 		return flag;
 	}
 
+	@Override
+	public boolean disableUser(int id) {
+		boolean flag = false;
+		int rs = userDao.disableUser(id);
+		if (rs > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public int getRemainNo(int userId) {
+		int remainNo = userDao.getRemainNo(userId);
+		return remainNo;
+	}
+
+	@Override
+	public boolean addRemainNum(int userId, int remainNum) {
+		boolean flag = false;
+		int addRs = userDao.addRemainNum(userId, remainNum);
+		if (addRs > 0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	@Override
+	public int proxyCountUser(int userId) {
+		int rs = userDao.proxyCountUser(userId);
+		return rs;
+	}
+
+	@Override
+	public List<UserEntity> proxyUserList(QueryEntity queryEntity, int userId) {
+		List<UserEntity> list = userDao.proxyUserList(queryEntity, userId);
+		return list;
+	}
+
 }

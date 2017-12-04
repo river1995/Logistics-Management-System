@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bms.commom.domain.ApiResultEntity;
+import com.bms.user.entities.UserEntity;
+import com.bms.user.services.impl.UserServiceImpl;
 import com.bms.utils.common.StringUtil;
 import com.bms.utils.json.ChangeFieldNameStandard;
 import com.bms.utils.json.IgnoreNullProprety;
@@ -28,6 +30,7 @@ public class generateLogisticInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StringUtil stringUtil = new StringUtil();
 	private LogisticServicesDaoImpl logisticService = new LogisticServicesDaoImpl();
+	private UserServiceImpl userService = new UserServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,6 +47,17 @@ public class generateLogisticInfoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ApiResultEntity<List<LogisticStatusEntity>> apiResultEntity = new ApiResultEntity<>();
+		int userId = (int) request.getSession().getAttribute("user_id");
+		int remainNo = userService.getRemainNo(userId);
+		if (remainNo  <= 0) {
+			apiResultEntity.setCode(40007);
+			apiResultEntity.setMessage("库存不足");
+			JsonConfig jsonConfig = new JsonConfig();
+			jsonConfig.setJsonPropertyFilter(new IgnoreNullProprety());
+			response.getWriter().print(JSONObject.fromObject(apiResultEntity ,jsonConfig));
+			return ;
+		}
+		
 		String fromCountry = request.getParameter("from_country");
 		String fromCity = request.getParameter("from_city");
 		String gatewayCity = request.getParameter("gateway_city");

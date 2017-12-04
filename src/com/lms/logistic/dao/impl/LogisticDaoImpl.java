@@ -374,6 +374,29 @@ public class LogisticDaoImpl implements LogisticDao {
 		
 		return result;
 	}
+
+	@Override
+	public int reduceRemainNo(int userId) {
+		int rs = 0;
+		PreparedStatement stat = null;
+		Connection conn = null;
+		try {
+			String sql = "update `user` set remain_num=remain_num-1,total=total+1 where id=?";
+			conn = DBConnector.getConnection();
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, userId);
+			System.out.println("LogisticDaoImpl.reduceRemainNo():"+stat.toString());
+			stat.executeUpdate();
+			rs = 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		
+		return rs;
+	}
 	
 
 }

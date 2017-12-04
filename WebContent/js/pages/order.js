@@ -93,6 +93,13 @@ $(document).ready(function(){
 						});
 						
 					});
+				}else if(res.code === 40007){
+					layer.msg('您的库存不足，无法添加', {
+						  icon: 2,
+						  time: 1500 //2秒关闭（如果不配置，默认是3秒）
+					  }, function(){
+						 
+					  }); 
 				}else{
 					
 				}

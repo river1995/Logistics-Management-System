@@ -43,4 +43,15 @@ public interface UserService {
 	 * @return
 	 */
 	boolean checkUserName(String username);
+	
+	boolean disableUser(int id);
+	
+	int getRemainNo(int userId);
+	
+	boolean addRemainNum(int userId, int remainNum);
+	
+	int proxyCountUser(int userId);
+	
+	public List<UserEntity> proxyUserList(QueryEntity queryEntity ,int userId);
+	
 }
