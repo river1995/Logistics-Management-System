@@ -42,7 +42,10 @@ $(document).ready(function(){
 		var fromCountry = $('#from-country').children('option:selected').val();
 		var fromCity = $('#from-city').children('option:selected').html();
 		var senderPhone = $('#sender-phone').val();
+		//var gatewayProvince = $('#gateway-province').children('option:selected').html();
 		var gatewayCity = $('#gateway-city').children('option:selected').html();
+		//var expireTime = $('#expire-time').val();
+		//alert(senderPhone);
 		$.ajax({
 			type : 'POST',
 			url : '../api/v1.0/generate_logistic_info',
@@ -199,13 +202,6 @@ $(document).ready(function(){
 			    	window.location.href = "./print.html?orderId="+value;
 			    },
 			    'click .edit': function (e, value, row, index) {
-			    	if(row.logistic_company === "申通"){
-			    		$('#company-select').val("st");
-			    	}else if(row.logistic_company === "顺丰"){
-			    		$('#company-select').val("sf");
-			    	}
-			    	
-			    	$('#logistic-no').val(row.logistic_no);
 			    	$('.edit-info').modal('show');
 			    	$('.edit-submit').on('click' ,function(){
 			    		//alert('run test');

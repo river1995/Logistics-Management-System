@@ -23,7 +23,7 @@ public class ConstantsUtil {
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
 	public final static String encrypt = "yes";
-	public final static String mode = "dev";
+	public final static String mode = "test";
 	public final static String server = "outside";
 	public final static String dateFormat = "yyyy-MM-dd HH:mm:ss";
 	public final static int dbSharping = 10;
