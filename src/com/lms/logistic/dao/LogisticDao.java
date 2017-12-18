@@ -74,4 +74,9 @@ public interface LogisticDao {
 	
 	
 	int reduceRemainNo(int userId);
+	
+	int countLogisticInfo(String orderId);
+	
+	
+	LogisticEntity getLogisticInfoById(int orderId);
 }

@@ -148,7 +148,7 @@ public class LogisticDaoImpl implements LogisticDao {
 		PreparedStatement stat = null;
 		List<LogisticEntity> list = new ArrayList<>();
 		try {
-			String sql = "select id,order_seq,counts,created_at,finished_at,from_city,gateway_city,logistic_company,from_country,contact,phone,sender,sender_address,contact_address,sender_phone  from `order` where order.user_id=? order by created_at desc limit ?,?" ;
+			String sql = "select id,order_seq,counts,created_at,finished_at,from_city,gateway_city,logistic_company,logistic_no,from_country,contact,phone,sender,sender_address,contact_address,sender_phone  from `order` where order.user_id=? order by created_at desc limit ?,?" ;
 			conn = DBConnector.getConnection();
 			stat = conn.prepareStatement(sql);
 			stat.setInt(1, userId);
@@ -164,6 +164,7 @@ public class LogisticDaoImpl implements LogisticDao {
 				logisticEntity.setGatewayCity(rs.getString("gateway_city"));
 				logisticEntity.setCounts(rs.getInt("counts"));
 				logisticEntity.setLogisticCompany(rs.getString("logistic_company"));
+				logisticEntity.setLogisticNo(rs.getString("logistic_no"));
 				logisticEntity.setOrderSeq(rs.getString("order_seq"));
 				logisticEntity.setCreateTime(DateFormatUtil.changeLongTimeToString(rs.getLong("created_at")));
 				logisticEntity.setFinishTime(DateFormatUtil.changeLongTimeToString(rs.getLong("finished_at")));
@@ -396,6 +397,60 @@ public class LogisticDaoImpl implements LogisticDao {
 		}
 		
 		return rs;
+	}
+
+	@Override
+	public int countLogisticInfo(String orderId) {
+		ResultSet rs = null;
+		PreparedStatement stat = null;
+		Connection conn = null;
+		int count = 0;
+		try {
+			String sql = "select count(os.id) as counts from `order` join order_status os on `order`.id = os.order_id where `order`.order_seq=? ;";
+			conn = DBConnector.getConnection();
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, orderId);
+			System.out.println("LogisticDaoImpl.countLogisticInfo():"+stat.toString());
+			rs = stat.executeQuery();
+			while(rs.next()){
+				count = rs.getInt("counts");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		
+		return count;
+	}
+
+	@Override
+	public LogisticEntity getLogisticInfoById(int orderId) {
+		ResultSet rs = null;
+		PreparedStatement stat = null;
+		Connection conn = null;
+		LogisticEntity logisticEntity = new LogisticEntity();
+		try {
+			String sql = "select logistic_company,logistic_no,create_log_time from `order` where id=? ";
+			conn = DBConnector.getConnection();
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, orderId);
+			System.out.println("LogisticDaoImpl.getLogisticInfoById():"+stat.toString());
+			rs = stat.executeQuery();
+			while(rs.next()){
+				logisticEntity.setLogisticCompany(rs.getString("logistic_company"));
+				logisticEntity.setLogisticNo(rs.getString("logistic_no"));
+				logisticEntity.setCreateLogTime(rs.getLong("create_log_time")+"");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnector.closeConnection(conn);
+		}
+		
+		return logisticEntity;
 	}
 	
 

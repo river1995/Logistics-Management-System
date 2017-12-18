@@ -58,6 +58,33 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	@Override
 	public List<LogisticStatusEntity> statusList(int orderId) {
 		List<LogisticStatusEntity> list = logisticDao.statusList(orderId);
+		LogisticEntity logisticEntity = logisticDao.getLogisticInfoById(orderId);
+		if (!stringUtil.isNullString(logisticEntity.getLogisticNo()) && !stringUtil.isNullString(logisticEntity.getLogisticCompany())) {
+			JSONObject object = requestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
+			System.out.println("object:"+object);
+			if (object != null && object.get("status").equals("200")) {
+				JSONArray jsonArray = object.getJSONArray("data");
+				if (jsonArray != null && jsonArray.size()>0) {
+					
+					for(int i = 0;i<jsonArray.size();i++){
+						LogisticStatusEntity statusEntity = new LogisticStatusEntity();
+						statusEntity.setAddress(jsonArray.getJSONObject(i).getString("context"));
+						String timeResult = "";
+						String[] times = jsonArray.getJSONObject(i).getString("time").split(":");
+						timeResult = times[0]+":"+times[1].split(":")[0];
+						statusEntity.setTime(timeResult);
+						list.add(statusEntity);
+					}
+				}
+			}
+		}
+		Collections.sort(list,new Comparator<LogisticStatusEntity>(){
+			@Override
+			public int compare(LogisticStatusEntity status1, LogisticStatusEntity status2) {
+				// TODO Auto-generated method stub
+				return status1.getTime().compareTo(status2.getTime());
+			}
+        });
 		return list;
 	}
 
@@ -70,6 +97,7 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	@Override
 	public List<LogisticStatusEntity> customerLogisticList(String orderSeq) {
 		List<LogisticStatusEntity> list = logisticDao.customerLogisticList(orderSeq);
+		System.out.println();
 		LogisticEntity  logisticEntity = logisticDao.getLogisticNo(orderSeq);
 		String company = logisticEntity.getLogisticCompany();
 		String logNo = logisticEntity.getLogisticNo();
@@ -77,9 +105,12 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 		
 		if (!stringUtil.isNullString(logNo) && !stringUtil.isNullString(company) && !stringUtil.isNullString(finishTimeStr)) {
 			long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
-			LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
-			list.add(gatewayStatusEntity);
-			JSONObject object = kd100RequestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
+			int count = logisticDao.countLogisticInfo(orderSeq);
+			if (count < 7) {
+				LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
+				list.add(gatewayStatusEntity);
+			}			
+			JSONObject object = requestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
 			System.out.println("object:"+object);
 			if (object != null && object.get("status").equals("200")) {
 				JSONArray jsonArray = object.getJSONArray("data");
