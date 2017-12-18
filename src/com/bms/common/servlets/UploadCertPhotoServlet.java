@@ -35,7 +35,7 @@ public class UploadCertPhotoServlet extends HttpServlet {
 	private StringUtil stringUtil = new StringUtil();
 	private String uploadPath = ConstantsUtil.imagePath; // 上传文件的目录
 	private String tempPath = ConstantsUtil.imagePath + "/tmp"; // 临时文件目录
-	File tempPathFile;
+	File tempPathFile; 
 
 	/**
 	 * @see HttpServlet#HttpServlet()
