@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bms.commom.domain.QueryEntity;
-import com.bms.utils.common.DBConnector;
-import com.bms.utils.common.DateFormatUtil;
+import com.lms.commom.domain.QueryEntity;
 import com.lms.logistic.dao.LogisticDao;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
+import com.lms.utils.common.DBConnector;
+import com.lms.utils.common.DateFormatUtil;
 
 import net.sf.json.JSONArray;
 

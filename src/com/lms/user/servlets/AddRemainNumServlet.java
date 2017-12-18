@@ -1,4 +1,4 @@
-package com.lms.logistic.servlet;
+package com.lms.user.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,28 +8,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lms.commom.domain.ApiResultEntity;
-import com.lms.logistic.entities.LogisticEntity;
-import com.lms.logistic.services.dao.impl.LogisticServicesDaoImpl;
+import com.lms.user.services.impl.UserServiceImpl;
 import com.lms.utils.common.StringUtil;
-import com.lms.utils.json.ChangeFieldNameStandard;
 import com.lms.utils.json.IgnoreNullProprety;
 
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
 /**
- * Servlet implementation class LogisticInfoServlet
+ * Servlet implementation class AddRemainNumServlet
  */
-@WebServlet("/api/v1.0/logistic_info")
-public class LogisticInfoServlet extends HttpServlet {
+@WebServlet("/api/v1.0/add_remain_no")
+public class AddRemainNumServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StringUtil stringUtil = new StringUtil();
-	private LogisticServicesDaoImpl logisticService = new LogisticServicesDaoImpl();
+	private UserServiceImpl userService = new UserServiceImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogisticInfoServlet() {
+    public AddRemainNumServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,27 +37,23 @@ public class LogisticInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ApiResultEntity<LogisticEntity> apiResultEntity = new ApiResultEntity<>();
-		String orderIdStr = request.getParameter("order_id");
-		if (!stringUtil.isNullString(orderIdStr)) {
-			int orderId = Integer.parseInt(orderIdStr);
-			LogisticEntity logisticEntity = logisticService.logisticInfo(orderId);
-			if (logisticEntity != null && logisticEntity.getId() > 0) {
+		ApiResultEntity<String> apiResultEntity = new ApiResultEntity<>();
+		String userId = request.getParameter("user_id");
+		String remainNum = request.getParameter("remain_num");
+				
+		if (!stringUtil.isNullString(remainNum) && !stringUtil.isNullString(userId)) {
+			boolean flag = userService.addRemainNum(Integer.parseInt(userId), Integer.parseInt(remainNum));
+			if (flag) {
 				apiResultEntity.setCode(0);
 				apiResultEntity.setMessage("success");
-				apiResultEntity.setData(logisticEntity);
 			}else{
-				apiResultEntity.setCode(40016);
-				apiResultEntity.setMessage("数据未找到");
+				apiResultEntity.setCode(50000);
+				apiResultEntity.setMessage("服务器错误");
 			}
-		}else{
-			apiResultEntity.setCode(40000);
-			apiResultEntity.setMessage("参数不齐全");
 		}
 		
 		JsonConfig jsonConfig = new JsonConfig();
 		jsonConfig.setJsonPropertyFilter(new IgnoreNullProprety());
-		jsonConfig.registerJsonPropertyNameProcessor(LogisticEntity.class, new ChangeFieldNameStandard());
 		response.getWriter().print(JSONObject.fromObject(apiResultEntity ,jsonConfig));
 	}
 

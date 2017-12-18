@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.directwebremoting.impl.StartupUtil;
 
-import com.bms.commom.domain.ApiResultEntity;
-import com.bms.utils.common.StringUtil;
-import com.bms.utils.json.IgnoreNullProprety;
+import com.lms.commom.domain.ApiResultEntity;
 import com.lms.logistic.services.dao.impl.LogisticServicesDaoImpl;
+import com.lms.utils.common.StringUtil;
+import com.lms.utils.json.IgnoreNullProprety;
 
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;

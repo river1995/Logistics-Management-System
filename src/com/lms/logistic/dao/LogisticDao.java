@@ -2,7 +2,7 @@ package com.lms.logistic.dao;
 
 import java.util.List;
 
-import com.bms.commom.domain.QueryEntity;
+import com.lms.commom.domain.QueryEntity;
 import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;

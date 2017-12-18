@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bms.commom.domain.ApiResultEntity;
-import com.bms.user.services.impl.UserServiceImpl;
-import com.bms.utils.common.StringUtil;
-import com.bms.utils.json.ChangeFieldNameCamel;
-import com.bms.utils.json.IgnoreNullProprety;
+import com.lms.commom.domain.ApiResultEntity;
 import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
 import com.lms.logistic.services.dao.impl.LogisticServicesDaoImpl;
+import com.lms.user.services.impl.UserServiceImpl;
+import com.lms.utils.common.StringUtil;
+import com.lms.utils.json.ChangeFieldNameCamel;
+import com.lms.utils.json.IgnoreNullProprety;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;

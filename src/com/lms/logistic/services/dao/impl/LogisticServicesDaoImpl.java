@@ -4,17 +4,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.bms.commom.domain.QueryEntity;
-import com.bms.utils.common.DateFormatUtil;
-import com.bms.utils.common.GenerateLogisticInfoUtil;
-import com.bms.utils.common.KD100RequestUtil;
-import com.bms.utils.common.RequestLogisticUtil;
-import com.bms.utils.common.StringUtil;
+import com.lms.commom.domain.QueryEntity;
 import com.lms.logistic.dao.impl.LogisticDaoImpl;
 import com.lms.logistic.entities.LogisticDetailEntity;
 import com.lms.logistic.entities.LogisticEntity;
 import com.lms.logistic.entities.LogisticStatusEntity;
 import com.lms.logistic.services.dao.LogisticServiceDao;
+import com.lms.utils.common.DateFormatUtil;
+import com.lms.utils.common.GenerateLogisticInfoUtil;
+import com.lms.utils.common.KD100RequestUtil;
+import com.lms.utils.common.RequestLogisticUtil;
+import com.lms.utils.common.StringUtil;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
