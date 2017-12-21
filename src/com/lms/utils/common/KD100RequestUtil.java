@@ -7,10 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class KD100RequestUtil {
@@ -70,7 +67,7 @@ public class KD100RequestUtil {
 
 				System.out.println("response:"+responseBody);
 				System.out.println("response:"+JSONObject.fromObject(responseBody));
-				//jsonObject = JSONObject.fromObject(responseBody);
+				jsonObject = JSONObject.fromObject(responseBody);
 				System.out.println(responseBody);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -86,8 +83,8 @@ public class KD100RequestUtil {
 	
 	public static void main(String[] args) {
 		KD100RequestUtil caiNiao = new KD100RequestUtil();
-		System.out.println(caiNiao.requestLogisticInfo("240825063169", "顺丰"));
-		//System.out.println();
+		//System.out.println(caiNiao.requestLogisticInfo("240825063169", "顺丰"));
+		System.out.println("jsonObject:"+caiNiao.requestLogisticInfo("4021788873252", "申通"));
 	
 		
 		

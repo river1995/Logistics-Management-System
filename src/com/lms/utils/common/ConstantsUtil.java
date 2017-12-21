@@ -18,12 +18,16 @@ public class ConstantsUtil {
 	
 	public static String accessIp;
 
-	public final static String queryToken="DC92753283E5E5F7B16733BE17BC6867";
+	public final static String queryToken="D94712DFA2D2360045343FCDA5CA63B2";
+	
+	public final static String userid="E101NR";
+	public final static String SMSPWD="xVzReA";
+	public final static String SMSKEY="25e5f465c4597734d4cd48f97dcfd955";
 
 	public final static String aeskey = "darkwood_secrect";
 	public final static String aesiv = "secrect_darkwood";
 	public final static String encrypt = "yes";
-	public final static String mode = "dev";
+	public final static String mode = "test";
 	public final static String server = "outside";
 	public final static String dateFormat = "yyyy-MM-dd HH:mm:ss";
 	public final static int dbSharping = 10;
@@ -35,46 +39,8 @@ public class ConstantsUtil {
 	public final static int sendCaptchaAgainTime = 60 * 1000; // 允许再次发送验证码的时间:单位ms
 	
 
-	// 邮箱配置
-	//	public final static String smtpServer = "smtp.163.com";
-	//	public final static String emailUser = "gecko_browser@163.com";
-	//	public final static String emailPassword = "hellogecko123";
-	 public final static String smtpServer = "smtp.gmail.com";
-	 public final static String emailUser = "riverjiang1995@gmail.com";
-	 public final static String emailPassword = "jy3561854";
 
-	// 请求返回码
-	public final static int REQUEST_SUCCESS = 200; // 请求成功
-	public final static int BAD_REQUEST = 400; // 参数不齐全
-	public final static int INVALID_REQUEST = 401; // 参数数据不正确
-	public final static int FORBIDDEN = 403; // 禁止使用，数据已使用
-	public final static int NOT_FOUND = 404; // 数据未找到
-	public final static int SERVER_ERROR = 500; // 服务器出现错误
-	public final static int TokenTimeout = 419; // 令牌过期
 
-	// 默认数量
-	public final static int DEFAULT_BRAND_COUNT = 1;
-	public final static int DEFAULT_SOURCE_DOMAIN_COUNT = 1;
-	public final static int DEFAULT_TARGET_DOMAIN_COUNT = 20;
-
-	public final static int WORKSTATUS_FREE = 0;
-	public final static int WORKSTATUS_BUSY = 1;
-	public final static int WORKSTATUS_OFFLINE = 2;
-
-	public final static int INCIDENT_STATUS_SUBMITTED = 1;
-	public final static int INCIDENT_STATUS_ASSIGNED = 2;
-	public final static int INCIDENT_STATUS_ACCEPTED = 3;
-	public final static int INCIDENT_STATUS_ARRIVED = 4;
-	public final static int INCIDENT_STATUS_FINISHED = 5;
-	public final static int INCIDENT_STATUS_CANCELED = 6;
-
-	public final static int USER_TYPE_CUSTOMER = 1;
-	public final static int USER_TYPE_SECURITY = 2;
-	public final static int USER_TYPE_ADMIN = 3;
-
-	public final static int ACCOUNT_STATUS_OPEN = 0;
-	public final static int ACCOUNT_STATUS_APPROVED = 1;
-	public final static int ACCOUNT_STATUS_REJECTED = 2;
 	
 	public final static String ROLE_SUPER_ADMIN = "super_admin";
 	public final static String ROLE_COMPANY_ADMIN = "company_admin";

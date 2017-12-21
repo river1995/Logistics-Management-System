@@ -1,5 +1,5 @@
 $('docuemnt').ready(function(){
-	var userInfo = JSON.parse(document.cookie.split('user_info=')[1]);
+	var userInfo = JSON.parse(localStorage.getItem('user_info'));
 	var type = userInfo.type;
 	if(type === 3){
 		//$('.proxy-tab').css('display','initial');

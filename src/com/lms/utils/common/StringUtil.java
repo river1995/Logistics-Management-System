@@ -62,26 +62,7 @@ public class StringUtil {
 			
 	}
 	
-	public static String changeAccountStatusIntToString(int accountStatus){
-		String result = "";
-		switch (accountStatus) {
-		case ConstantsUtil.ACCOUNT_STATUS_OPEN:
-			result = "Open";
-			break;
-		case ConstantsUtil.ACCOUNT_STATUS_APPROVED:
-			result = "Approved";
-			break;
-		case ConstantsUtil.ACCOUNT_STATUS_REJECTED:
-			result = "Rejected";
-			break;
-		default:
-			result = "Others";
-			break;
-		}
-		
-		return result;
-			
-	}
+	
 	
 	public static String generateLogisticNo(){
 		String result = "";

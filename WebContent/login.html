@@ -10,7 +10,7 @@
     <title>Logistics Management System</title>
 
     <!-- Bootstrap -->
-    <!--  <link rel="icon" type="image/png" href="./pages/images/user.png" />-->
+    <link rel="icon" type="image/png" href="./pages/images/truck.png" />
     <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./vendors/layui-css/layui.css">
     <!-- Font Awesome -->
@@ -132,7 +132,7 @@
   				NProgress.done();
   				if(data.code === 0){
   					var dataJSON = data.data;
-  					document.cookie = "user_info="+JSON.stringify(dataJSON);
+  					localStorage.setItem('user_info',JSON.stringify(dataJSON)); 
   					if(dataJSON.type === 1){
   						window.location.href = './pages/order.html';  						
   					}else if(dataJSON.type === 2){

@@ -267,11 +267,11 @@ $(document).ready(function(){
 			},{
 				field:'from_city'
 			},{
-				field:'gateway_city'
-			},{
 				field:'finish_time'
 			},{
 				field:'logistic_company'
+			},{
+				field:'logistic_no'
 			},{
 				field:'id',
 				formatter:function(value,row,index){

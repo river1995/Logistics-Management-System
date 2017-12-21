@@ -6,7 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-import javafx.collections.ListChangeListener.Change;
 
 public class DateFormatUtil {
 
@@ -84,6 +83,7 @@ public class DateFormatUtil {
 	public static long createDayTime(long unixTime){
 		long time = 0l;
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		format.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 		try {
 			String formatTime = dateFormat.format(unixTime);
 			Date date = dateFormat.parse(formatTime);
@@ -108,6 +108,14 @@ public class DateFormatUtil {
 		return time;
 	}
 	
+	public static String changePhpTimeToString(String phpTime){
+		String rs = ""; 
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		format.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+		rs = format.format(new Date(Integer.parseInt(phpTime)*1000L));
+		return rs;
+	}
+	
 	public static void main(String[] args) {
 		//getDate(1509351453385l);
 		//System.out.println(System.currentTimeMillis());
@@ -120,7 +128,8 @@ public class DateFormatUtil {
 //		System.out.println("t1:"+changeLongTimeToString(t1));
 //		System.out.println("t2:"+changeLongTimeToString(t2));
 //		
-		DateFormatUtil.createDayTime(1511461440000l);
+		System.out.println("day time:"+DateFormatUtil.createDayTime(1511461440000l));
+		System.out.println("timestamp:"+DateFormatUtil.changeLongTimeToString(1511506260000l));
 		//System.out.println(System.currentTimeMillis());
 		//System.out.println(DateFormatUtil.getDate(1510516080000l));
 		System.out.println(DateFormatUtil.changeTimeStampToUnixTime("2017-11-24 02:24"));

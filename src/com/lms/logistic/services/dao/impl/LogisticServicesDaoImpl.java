@@ -12,6 +12,7 @@ import com.lms.logistic.entities.LogisticStatusEntity;
 import com.lms.logistic.services.dao.LogisticServiceDao;
 import com.lms.utils.common.DateFormatUtil;
 import com.lms.utils.common.GenerateLogisticInfoUtil;
+import com.lms.utils.common.HttpGetLogisticInfo;
 import com.lms.utils.common.KD100RequestUtil;
 import com.lms.utils.common.RequestLogisticUtil;
 import com.lms.utils.common.StringUtil;
@@ -26,6 +27,7 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	private GenerateLogisticInfoUtil generateUtil = new GenerateLogisticInfoUtil();
 	private RequestLogisticUtil requestUtil = new RequestLogisticUtil();
 	private KD100RequestUtil kd100RequestUtil = new KD100RequestUtil();
+	private HttpGetLogisticInfo httpGetLogisticInfo = new HttpGetLogisticInfo();
 	private StringUtil stringUtil = new StringUtil();
 
 	@Override
@@ -110,19 +112,20 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 				LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
 				list.add(gatewayStatusEntity);
 			}			
-			JSONObject object = requestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
-			System.out.println("object:"+object);
-			if (object != null && object.get("status").equals("200")) {
-				JSONArray jsonArray = object.getJSONArray("data");
-				if (jsonArray != null && jsonArray.size()>0) {
-					
+			System.out.println("logistic No :" +logisticEntity.getLogisticNo()+"~~~~~LogisticCompany:"+logisticEntity.getLogisticCompany());
+			JSONObject object = httpGetLogisticInfo.getLogisticByAppKSCX(logisticEntity.getLogisticNo());
+			System.out.println("httpGetLogisticInfo object:"+object);
+			if (object != null && object.get("status").equals("1") && object.getJSONArray("context") != null && object.getJSONArray("context").size() > 0) {
+				JSONArray jsonArray = object.getJSONArray("context");
+				System.out.println("120:"+object.getJSONArray("context"));
+				if (jsonArray != null && jsonArray.size()>0) {					
 					for(int i = 0;i<jsonArray.size();i++){
 						LogisticStatusEntity statusEntity = new LogisticStatusEntity();
-						statusEntity.setAddress(jsonArray.getJSONObject(i).getString("context"));
-						String timeResult = "";
-						String[] times = jsonArray.getJSONObject(i).getString("time").split(":");
-						timeResult = times[0]+":"+times[1].split(":")[0];
-						statusEntity.setTime(timeResult);
+						statusEntity.setAddress(jsonArray.getJSONObject(i).getString("desc"));
+						String time = jsonArray.getJSONObject(i).getString("time");	
+						if (!stringUtil.isNullString(time)) {							
+							statusEntity.setTime(DateFormatUtil.changePhpTimeToString(time));
+						}
 						list.add(statusEntity);
 					}
 				}
@@ -139,6 +142,52 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 	}
 	
 	
+//	@Override
+//	public List<LogisticStatusEntity> customerLogisticList(String orderSeq) {
+//		List<LogisticStatusEntity> list = logisticDao.customerLogisticList(orderSeq);
+//		System.out.println();
+//		LogisticEntity  logisticEntity = logisticDao.getLogisticNo(orderSeq);
+//		String company = logisticEntity.getLogisticCompany();
+//		String logNo = logisticEntity.getLogisticNo();
+//		String finishTimeStr = logisticEntity.getCreateLogTime();
+//		
+//		if (!stringUtil.isNullString(logNo) && !stringUtil.isNullString(company) && !stringUtil.isNullString(finishTimeStr)) {
+//			long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
+//			int count = logisticDao.countLogisticInfo(orderSeq);
+//			if (count < 7) {
+//				LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
+//				list.add(gatewayStatusEntity);
+//			}			
+//			System.out.println("logistic No :" +logisticEntity.getLogisticNo()+"~~~~~LogisticCompany:"+logisticEntity.getLogisticCompany());
+//			JSONObject object = kd100RequestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
+//			System.out.println("kd100RequestUtil object:"+object);
+//			if (object != null && object.get("status").equals("200") && object.getJSONArray("data") != null) {
+//				JSONArray jsonArray = object.getJSONArray("data");
+//				if (jsonArray != null && jsonArray.size()>0) {
+//					
+//					for(int i = 0;i<jsonArray.size();i++){
+//						LogisticStatusEntity statusEntity = new LogisticStatusEntity();
+//						statusEntity.setAddress(jsonArray.getJSONObject(i).getString("context"));
+//						String timeResult = "";
+//						String[] times = jsonArray.getJSONObject(i).getString("time").split(":");
+//						timeResult = times[0]+":"+times[1].split(":")[0];
+//						statusEntity.setTime(timeResult);
+//						list.add(statusEntity);
+//					}
+//				}
+//			}
+//		}
+//		Collections.sort(list,new Comparator<LogisticStatusEntity>(){
+//			@Override
+//			public int compare(LogisticStatusEntity status1, LogisticStatusEntity status2) {
+//				// TODO Auto-generated method stub
+//				return status1.getTime().compareTo(status2.getTime());
+//			}
+//		});
+//		return list;
+//	}
+	
+	
 	@Override
 	public List<LogisticStatusEntity> queryByKD100Mobile(String orderSeq) {
 		List<LogisticStatusEntity> list = logisticDao.customerLogisticList(orderSeq);
@@ -151,7 +200,7 @@ public class LogisticServicesDaoImpl implements LogisticServiceDao {
 			long finishTime = (long)(Long.parseLong(finishTimeStr)-(1000*60*60*(4.35)));					
 			LogisticStatusEntity gatewayStatusEntity = new LogisticStatusEntity("Express completed customs clearance, has been handed over to Chinese courier company, the following data from the Chinese courier company",DateFormatUtil.changeLongTimeToString(finishTime));
 			list.add(gatewayStatusEntity);
-			JSONObject object = requestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
+			JSONObject object = kd100RequestUtil.requestLogisticInfo(logisticEntity.getLogisticNo(), logisticEntity.getLogisticCompany());
 			System.out.println("object:"+object);
 			if (object != null && object.get("status").equals("200")) {
 				JSONArray jsonArray = object.getJSONArray("data");
